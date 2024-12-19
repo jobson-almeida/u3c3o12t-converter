@@ -159,7 +159,6 @@ void submenu_potencia() {
     }
 }
 
-// Funções originais do segundo código
 void unidade_simples(float value) {
     printf("Faca a conversao pela funcao\n");
     printf("\nPressione Enter para continuar...");
@@ -198,7 +197,13 @@ void unidade_com_submenu() {
         printf(":::::::::::::::::::::::::::::::::::::::::::::::::::\n\n");
         
         printf("Digite uma opcao: ");
-        scanf(" %d", &option);
+        if (scanf("%d", &option) != 1) {
+            int opt;
+            while ((opt = getchar()) != '\n' && opt != EOF);
+            option = -1;
+            printf("Opcao invalida!\n");
+            continue;
+        }
         
         if (option != 0) {
             switch (option) {
@@ -206,7 +211,12 @@ void unidade_com_submenu() {
                 case 2:
                 case 3:
                     printf("Digite um valor: ");
-                    scanf("%f", &value);
+                    if (scanf("%f", &value) != 1) {
+                        float opt;
+                        while ((opt = getchar()) != '\n' && opt != EOF);
+                        printf("Valor invalido!\n");
+                        break;
+                    }
                     printf("Faca a conversao\n");
                     printf("\nPressione Enter para continuar...");
                     limparBuffer();
@@ -240,31 +250,43 @@ int main() {
         exibirMenuPrincipal();
         
         printf("Digite uma opcao: ");
-        scanf("%d", &option);
+        if (scanf("%d", &option) != 1) {
+            limparBuffer();
+            printf("Opcao invalida!\n");
+            continue;
+        }
         limparBuffer();
         
         switch (option) {
             case 1:
             case 2:
                 printf("Digite um valor: ");
-                scanf(" %f", &value);
+                if (scanf("%f", &value) != 1) {
+                    printf("Valor invalido!\n");
+                    limparBuffer();
+                    break;
+                }
                 unidade_simples(value);
                 break;
             case 4:
                 unidade_com_submenu();
                 break;
             case 5:
+            case 6:
+                limparTela();
+                submenu_potencia();
+                break;
             case 9:
                 printf("Digite um valor: ");
-                scanf(" %f", &value);
+                if (scanf("%f", &value) != 1) {
+                    printf("Valor invalido!\n");
+                    limparBuffer();
+                    break;
+                }
                 printf("Faca a conversao\n");
                 printf("\nPressione Enter para continuar...");
                 getchar();
                 limparTela();
-                break;
-            case 6:
-                limparTela();
-                submenu_potencia();
                 break;
             case 0:
                 limparTela();
