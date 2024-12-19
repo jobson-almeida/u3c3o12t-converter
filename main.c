@@ -12,14 +12,17 @@ int main()
     while (option != 0)
     {
         printf("\n");
-        printf("MENU PRINCIPAL\n");
-        printf("1. Comprimento (metro, centímetro, milímetro) \n");
-        printf("2. Massa (quilograma, grama, tonelada)\n");
-        printf("4. Temperatura (Celsius, Fahrenheit, Kelvin)\n");
-        printf("5. Velocidade (km/h, m/s, mph)\n");
-        printf("6. Potência (Watts (W), quilowatts (kW), cavalos-vapor (cv ou hp))\n");
-        printf("9. Dados (Bits, bytes, kilobytes (KB), megabytes (MB), gigabytes (GB), terabytes (TB))\n");
-        printf("0. Sair\n");
+        printf("::::: UNIDADES DE MEDIDAS ::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::\n");
+        printf("::                                                                                          ::\n");
+        printf(":: 1. Comprimento (metro, centímetro, milímetro)                                            ::\n");
+        printf(":: 2. Massa (quilograma, grama, tonelada)                                                   ::\n");
+        printf(":: 4. Temperatura (Celsius, Fahrenheit, Kelvin)                                             ::\n");
+        printf(":: 5. Velocidade (km/h, m/s, mph)                                                           ::\n");
+        printf(":: 6. Potência (Watts (W), quilowatts (kW), cavalos-vapor (cv ou hp))                       ::\n");
+        printf(":: 9. Dados (Bits, bytes, kilobytes (KB), megabytes (MB), gigabytes (GB), terabytes (TB))   ::\n");
+        printf(":: 0. Sair                                                                                  ::\n");
+        printf("::                                                                                          ::\n");
+        printf("::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::\n\n");
 
         printf("digite uma opção: ");
         scanf("%d", &option);
