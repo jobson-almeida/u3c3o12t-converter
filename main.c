@@ -24,8 +24,14 @@ int main()
         printf("::                                                                                          ::\n");
         printf("::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::\n\n");
 
-        printf("digite uma opção: ");
-        scanf("%d", &option);
+        printf("digite uma opção: "); 
+        if (scanf("%d", &option) == 0)
+        {
+            int opt;
+             //remove a entrada inválida do buffer de entrada  
+            while ((opt = getchar()) != '\n' && opt != EOF); 
+            option = -1;
+        }
 
         switch (option)
         {
