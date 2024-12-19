@@ -25,14 +25,27 @@ int main()
         printf("::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::\n\n");
 
         printf("digite uma opção: ");
-        scanf("%d", &option);
+        if (scanf("%d", &option) == 0)
+        {
+            int opt;
+            // remove a entrada inválida do buffer de entrada
+            while ((opt = getchar()) != '\n' && opt != EOF);
+            option = -1;
+        }
 
         switch (option)
         {
         case 1:
         case 2:
             printf("digite um valor: ");
-            scanf(" %f", &value);
+            if (scanf("%f", &option) == 0)
+            {
+                float opt;
+                // remove a entrada inválida do buffer de entrada
+                while ((opt = getchar()) != '\n' && opt != EOF);
+                printf("valor inválido!\n");
+                break;
+            }
             unidade_simples(value);
             break;
         case 4:
@@ -42,7 +55,14 @@ int main()
         case 6:
         case 9:
             printf("digite um valor: ");
-            scanf(" %f", &value);
+            if (scanf("%f", &option) == 0)
+            {
+                float opt;
+                // remove a entrada inválida do buffer de entrada
+                while ((opt = getchar()) != '\n' && opt != EOF);
+                printf("valor inválido!\n");
+                break;
+            }
             printf("faça a conversão\n");
             break;
         default:
@@ -77,7 +97,13 @@ void unidade_com_submenu()
         printf("::::::::::::::::::::::::::::::::::::::::::::::::::::\n\n");
 
         printf("digite uma opção: ");
-        scanf(" %d", &option);
+        if (scanf("%d", &option) == 0)
+        {
+            int opt;
+            // remove a entrada inválida do buffer de entrada
+            while ((opt = getchar()) != '\n' && opt != EOF);
+            option = -1;
+        }
 
         if (option != 0)
         {
@@ -87,7 +113,14 @@ void unidade_com_submenu()
             case 2:
             case 3:
                 printf("digite um valor: ");
-                scanf("%f", &value);
+                if (scanf("%f", &option) == 0)
+                {
+                    float opt;
+                    // remove a entrada inválida do buffer de entrada do usuário
+                    while ((opt = getchar()) != '\n' && opt != EOF);
+                    printf("valor inválido!\n");
+                    break;
+                }
                 printf("faça a conversão\n");
                 break;
             default:
