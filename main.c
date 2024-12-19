@@ -1,6 +1,7 @@
 #include <stdio.h>
 
 void unidade_simples(float value);
+void unidade_com_submenu();
 
 int main()
 {
