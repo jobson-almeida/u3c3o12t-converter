@@ -83,7 +83,13 @@ void unidade_com_submenu()
         printf("::::::::::::::::::::::::::::::::::::::::::::::::::::\n\n");
 
         printf("digite uma opção: ");
-        scanf(" %d", &option);
+        if (scanf("%d", &option) == 0)
+        {
+            int opt;
+             //remove a entrada inválida do buffer de entrada  
+            while ((opt = getchar()) != '\n' && opt != EOF); 
+            option = -1;
+        }
 
         if (option != 0)
         {
