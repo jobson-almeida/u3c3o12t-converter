@@ -25,13 +25,17 @@ int main()
         {
         case 1: 
         case 2:
+            printf("digite um valor: ");
+            scanf(" %f", &value);
+            unidade_simples(value);
+            break;
         case 4:
         case 5:
         case 6:
         case 9:
             printf("digite um valor: ");
             scanf(" %f", &value);
-            printf("faça conversão\n");
+            printf("faça a conversão\n");
             break;
         default: 
             break;
@@ -39,4 +43,10 @@ int main()
     }
 
     return 0;
+}
+
+
+void unidade_simples(float value)
+{
+    printf("faça a conversão pela função\n");
 }
