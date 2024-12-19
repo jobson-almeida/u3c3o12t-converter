@@ -67,11 +67,14 @@ void unidade_com_submenu()
     while (option != 0)
     {
         printf("\n");
-        printf("MENU SECUNDÁRIO \n");
-        printf("1. metro -> centímetro \n");
-        printf("2. centímetro <- metro \n");
-        printf("3. opção 3 \n");
-        printf("0. sair \n");
+        printf(":::: Comprimento :::::::::::::::::::::::::::::::::::\n");
+        printf("::                                                ::\n");
+        printf(":: 1. metro -> centímetro                         ::\n");
+        printf(":: 2. centímetro -> metro                         ::\n");
+        printf(":: 3. opção 3                                     ::\n");
+        printf(":: 0. sair                                        ::\n");
+        printf("::                                                ::\n");
+        printf("::::::::::::::::::::::::::::::::::::::::::::::::::::\n\n");
 
         printf("digite uma opção: ");
         scanf(" %d", &option);
