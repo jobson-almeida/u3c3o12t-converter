@@ -116,7 +116,7 @@ void unidade_com_submenu()
                 if (scanf("%f", &option) == 0)
                 {
                     float opt;
-                    // remove a entrada inválida do buffer de entrada
+                    // remove a entrada inválida do buffer de entrada do usuário
                     while ((opt = getchar()) != '\n' && opt != EOF);
                     printf("valor inválido!\n");
                     break;
