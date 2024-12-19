@@ -43,6 +43,7 @@ int main()
             printf("faça a conversão\n");
             break;
         default:
+            printf("opção não encontrada!\n");
             break;
         }
     }
@@ -54,10 +55,10 @@ void unidade_simples(float value)
 {
     printf("faça a conversão pela função\n");
 }
- 
+
 void unidade_com_submenu()
-{ 
-    int option = -1; 
+{
+    int option = -1;
     float value = 0.0;
 
     while (option != 0)
@@ -65,14 +66,28 @@ void unidade_com_submenu()
         printf("\n");
         printf("MENU SECUNDÁRIO \n");
         printf("1. metro -> centímetro \n");
-        printf("2. opção 2 \n");
+        printf("2. centímetro <- metro \n");
         printf("3. opção 3 \n");
         printf("0. sair \n");
 
         printf("digite uma opção: ");
         scanf(" %d", &option);
 
-        printf("digite um valor: ");
-        scanf("%f", &value);
+        if (option != 0)
+        {
+            switch (option)
+            {
+            case 1:
+            case 2:
+            case 3:
+                printf("digite um valor: ");
+                scanf("%f", &value);
+                printf("faça a conversão\n");
+                break;
+            default:
+                printf("opção não encontrada!\n");
+                break;
+            }
+        }
     }
-} 
+}
