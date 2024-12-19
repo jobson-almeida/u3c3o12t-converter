@@ -21,17 +21,19 @@ int main()
         printf("0. Sair\n");
 
         printf("digite uma opção: ");
-        scanf("%d", &option); 
+        scanf("%d", &option);
 
         switch (option)
         {
-        case 1: 
+        case 1:
         case 2:
             printf("digite um valor: ");
             scanf(" %f", &value);
             unidade_simples(value);
             break;
         case 4:
+            unidade_com_submenu();
+            break;
         case 5:
         case 6:
         case 9:
@@ -39,7 +41,7 @@ int main()
             scanf(" %f", &value);
             printf("faça a conversão\n");
             break;
-        default: 
+        default:
             break;
         }
     }
@@ -47,8 +49,29 @@ int main()
     return 0;
 }
 
-
 void unidade_simples(float value)
 {
     printf("faça a conversão pela função\n");
 }
+ 
+void unidade_com_submenu()
+{ 
+    int option = -1; 
+    float value = 0.0;
+
+    while (option != 0)
+    {
+        printf("\n");
+        printf("MENU SECUNDÁRIO \n");
+        printf("1. metro -> centímetro \n");
+        printf("2. opção 2 \n");
+        printf("3. opção 3 \n");
+        printf("0. sair \n");
+
+        printf("digite uma opção: ");
+        scanf(" %d", &option);
+
+        printf("digite um valor: ");
+        scanf("%f", &value);
+    }
+} 
