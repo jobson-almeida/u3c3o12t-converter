@@ -54,16 +54,17 @@ int main()
         case 6:
             break;
         case 9:
-            printf("digite um valor: ");
-            if (scanf("%f", &option) == 0)
-            {
-                float opt;
-                // remove a entrada inválida do buffer de entrada
-                while ((opt = getchar()) != '\n' && opt != EOF);
-                printf("valor inválido!\n");
-                break;
-            }
-            printf("faça a conversão\n");
+            // ESTE BLOCO DE CÓDIGO SERVE DE MODELO, REMOVA SE NECESSÁRIO
+            // printf("digite um valor: ");
+            // if (scanf("%f", &option) == 0)
+            // {
+            //     float opt;
+            //     // remove a entrada inválida do buffer de entrada
+            //     while ((opt = getchar()) != '\n' && opt != EOF);
+            //     printf("valor inválido!\n");
+            //     break;
+            // }
+            // printf("faça a conversão\n");
             break;
         default:
             printf("opção não encontrada!\n");
@@ -74,12 +75,12 @@ int main()
     return 0;
 }
 
-void unidade_simples(float value)
-{
-    printf("faça a conversão pela função\n");
-}
-
 /*ESTE BLOCO DE CÓDIGO SERVE DE MODELO PARA TODAS AS CONVERSÕES
+
+void unidade_nomeDaSuaGrandeza(float value)
+{
+    printf("faça a conversão função\n");
+}
 
     void unidade_com_submenu_nomeDaSuaGrandeza()
     {
