@@ -54,7 +54,9 @@ int main()
         case 6:
             break;
         case 9:
-            // ESTE BLOCO DE CÓDIGO SERVE DE MODELO, REMOVA SE NECESSÁRIO
+            break;
+        default:
+            // ESTE BLOCO DE CÓDIGO SERVE DE MODELO
             // printf("digite um valor: ");
             // if (scanf("%f", &option) == 0)
             // {
@@ -65,8 +67,6 @@ int main()
             //     break;
             // }
             // printf("faça a conversão\n");
-            break;
-        default:
             printf("opção não encontrada!\n");
             break;
         }
