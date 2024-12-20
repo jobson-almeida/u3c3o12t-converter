@@ -1,3 +1,3 @@
 # Mudanças
 
-- Foi adicionado um Submenu para realizar as operações de conversão das medidas de Comprimento.
+- Foi adicionado um Submenu para realizar as operações de conversão das medidas de Potencia.
