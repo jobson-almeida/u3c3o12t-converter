@@ -15,7 +15,7 @@ Com uma usabilidade simples e direta, a comunicação inicial com o usuário é 
 
 ## Unidades de conversões
 
-### Comprimento
+# Comprimento
 
 Bem-vindo ao manual de usuário da feature **Comprimento** do submenu! Este guia fornecerá instruções detalhadas sobre como utilizar corretamente as opções disponíveis. Esta funcionalidade permite converter medidas de comprimento entre diferentes unidades de forma simples e intuitiva.
 
@@ -34,14 +34,14 @@ O submenu **Comprimento** permite realizar as seguintes conversões:
 
 ## Como Utilizar
 
-### Acessando o Submenu Comprimento
+## Acessando o Submenu Comprimento
 
 1. Inicie o programa principal.
 2. No menu principal, selecione a opção correspondente ao submenu **Comprimento**.
 
 > Exemplo: Digite `1` e pressione **Enter** para acessar.
 
-### Realizando uma Conversão
+## Realizando uma Conversão
 
 1. Dentro do submenu **Comprimento**, escolha a opção desejada conforme a conversão que deseja realizar.
    - As opções estão numeradas de 1 a 6.
@@ -53,7 +53,7 @@ O submenu **Comprimento** permite realizar as seguintes conversões:
 
 ---
 
-### Exemplo Prático: Converter Metro para Centímetro
+## Exemplo Prático: Converter Metro para Centímetro
 1. Digite `1` para selecionar "Metro para Centímetro".
 2. Insira o valor em metros:
    ```
@@ -74,27 +74,27 @@ O submenu **Comprimento** permite realizar as seguintes conversões:
 ---
 
 
-### Massa
+# Massa
 
 conteúdo<br><br>
 
 
-### Temperatura
+# Temperatura
 
 conteúdo<br><br>
 
 
-### Velocidade
+# Velocidade
 
 conteúdo<br><br>
 
 
-### Potência
+# Potência
 
 conteúdo<br><br>
 
 
-### Dados
+# Dados
 
 conteúdo
 
