@@ -44,16 +44,7 @@ int main()
             unidade_com_submenu_comprimento();
             break;
         case 2:
-            printf("digite um valor: ");
-            if (scanf("%f", &option) == 0)
-            {
-                float opt;
-                // remove a entrada inválida do buffer de entrada
-                while ((opt = getchar()) != '\n' && opt != EOF);
-                printf("valor inválido!\n");
-                break;
-            }
-            unidade_simples(value);
+            unidade_com_submenu_massa();
             break;
         case 4:
             unidade_com_submenu();
@@ -261,4 +252,7 @@ void unidade_com_submenu_comprimento()
             }
         }
     }
+}
+void unidade_com_submenu_massa(){
+    
 }
