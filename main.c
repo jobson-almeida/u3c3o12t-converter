@@ -386,5 +386,94 @@ void unidade_com_submenu_massa(){
             option = -1;
         }
 
-
+if (option != 0)
+        {
+            switch (option)
+            {
+            case 1: // Conversão de tonelada para quilograma
+                printf("Digite o valor em tonelada: ");
+                // Se o scanf falhar ao interpretar a entrada como um número, ele retorna 0
+                if (scanf("%f", &value) == 0)
+                {
+                    // Remove entrada inválida do buffer
+                    while (getchar() != '\n');
+                    printf("Valor inválido! Tente novamente.\n");
+                }
+                else
+                {
+                    float resultado = value * 1000.0; // 1 t = 1000 kg
+                    printf("%.2f toneladas equivalem a %.2f quilogramas.\n", value, resultado);
+                }
+                break;
+            case 2: // Conversão de tonelada para grama
+                printf("Digite o valor em toneladas: ");
+                if (scanf("%f", &value) == 0)
+                {
+                    while (getchar() != '\n'); // Limpa o buffer
+                    printf("Valor inválido! Tente novamente.\n");
+                }
+                else
+                {
+                    float resultado = value * 1000000.0; // 1 t = 1kk g
+                    printf("%.2f toneladas equivalem a %.2f gramas.\n", value, resultado);
+                }
+                break;
+            case 3: // Conversão de quilograma para tonelada
+                printf("Digite o valor em quilogramas: ");
+                if (scanf("%f", &value) == 0)
+                {
+                    while (getchar() != '\n'); // Limpa o buffer
+                    printf("Valor inválido! Tente novamente.\n");
+                }
+                else
+                {
+                    float resultado = value / 1000.0; // 1 t = 1000 kg
+                    printf("%.2f quilogramas equivalem a %.3f toneladas.\n", value, resultado);
+                }
+                break;
+            case 4: // Conversão de quilograma para grama
+                printf("Digite o valor em quilogramas: ");
+                if (scanf("%f", &value) == 0)
+                {
+                    while (getchar() != '\n'); // Limpa o buffer
+                    printf("Valor inválido! Tente novamente.\n");
+                }
+                else
+                {
+                    float resultado = value * 1000.0; // 1 kg = 1000 g
+                    printf("%.2f quilogramas equivalem a %.2f gramas.\n", value, resultado);
+                }
+                break;
+            case 5: // Conversão de gramas para quilogramas
+                printf("Digite o valor em gramas: ");
+                if (scanf("%f", &value) == 0)
+                {
+                    while (getchar() != '\n'); // Limpa o buffer
+                    printf("Valor inválido! Tente novamente.\n");
+                }
+                else
+                {
+                    float resultado = value / 1000.0; // 1 kg = 1000 g
+                    printf("%.2f gramas equivalem a %.3f quilogramas.\n", value, resultado);
+                }
+                break;
+            case 6: // Conversão de gramas para toneladas
+                printf("Digite o valor em gramas: ");
+                if (scanf("%f", &value) == 0)
+                {
+                    while (getchar() != '\n'); // Limpa o buffer
+                    printf("Valor inválido! Tente novamente.\n");
+                }
+                else
+                {
+                    float resultado = value / 1000000.0; // 1 t = 1kk g
+                    printf("%.2f gramas equivalem a %.6f toneladas.\n", value, resultado);
+                }
+                break;
+            default:
+                printf("Opção não encontrada!\n");
+                break;
+            }
+        }
+    }
 }
