@@ -113,6 +113,7 @@ void unidade_nomeDaSuaGrandeza(float value)
 
             if (option != 0)
             {
+
                 switch (option)
                 {
                 case 1:
@@ -360,6 +361,7 @@ void unidade_com_submenu_temperatura() {
         }
     }
 }
+
 //  -----------------------------UNIDADES DE POTENCIA----------------------------------
 
 // Conversão de potência
@@ -420,3 +422,4 @@ void unidade_com_submenu_potencia()
         }
     }
 }
+

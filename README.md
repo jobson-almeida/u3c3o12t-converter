@@ -90,7 +90,7 @@ conteúdo<br><br>
 
 
 # Potência
-
+ 
 Conversor de Unidades de Potência
 Este é um guia passo a passo para utilizar o conversor de unidades de potência do programa. O conversor permite realizar conversões entre Watts (W), Quilowatts (kW) e Cavalos-Vapor (cv).
 Pré-requisitos
@@ -145,8 +145,8 @@ O programa possui as seguintes validações:
 
 Rejeita entradas não numéricas
 Limpa o buffer de entrada após valores inválidos
-Permite tentar novamente após entrada inválida
-
+Permite tentar novamente após entrada inválida 
+<br><br> 
 
 # Dados
 
