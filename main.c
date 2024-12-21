@@ -3,7 +3,10 @@
 
 void unidade_simples(float value);
 void unidade_com_submenu_comprimento();
+void unidade_com_submenu_massa();
 void unidade_com_submenu_temperatura();
+void unidade_com_submenu_potencia();
+void convert_power(float value, int from_unit, int to_unit);
 
 
 int main()
@@ -52,6 +55,7 @@ int main()
         case 5:
             break;
         case 6:
+            unidade_com_submenu_potencia();
             break;
         case 9:
             break;
@@ -110,6 +114,7 @@ void unidade_nomeDaSuaGrandeza(float value)
 
             if (option != 0)
             {
+
                 switch (option)
                 {
                 case 1:
@@ -357,7 +362,7 @@ void unidade_com_submenu_temperatura() {
         }
     }
 }
-
+ 
 void unidade_com_submenu_massa(){
     int option = -1;
     float value = 0.0;
@@ -476,4 +481,67 @@ if (option != 0)
             }
         }
     }
+} 
+
+//  -----------------------------UNIDADES DE POTENCIA----------------------------------
+
+// Conversão de potência
+void convert_power(float value, int from_unit, int to_unit)
+{
+    float result;
+    const char *unit_names[] = {"Watts (W)", "Quilowatts (kW)", "Cavalos-Vapor (cv)"};
+
+    if (from_unit == 1) // Watts (W)
+        result = (to_unit == 2) ? value / 1000.0 : value / 735.49875;
+    else if (from_unit == 2) // Quilowatts (kW)
+        result = (to_unit == 1) ? value * 1000.0 : value * 1000.0 / 735.49875;
+    else // Cavalos-Vapor (cv)
+        result = (to_unit == 1) ? value * 735.49875 : value * 735.49875 / 1000.0;
+
+    printf("Resultado: %.4f %s\n", result, unit_names[to_unit - 1]);
 }
+
+// Submenu de potência
+void unidade_com_submenu_potencia()
+{
+    int option = -1;
+    float value = 0.0;
+
+    while (option != 0)
+    {
+        printf("\n");
+        printf(":::: Potência :::::::::::::::::::::::::::::::::::::\n");
+        printf("::                                                ::\n");
+        printf(":: 1. Watts (W) -> Quilowatts (kW)                ::\n");
+        printf(":: 2. Watts (W) -> Cavalos-Vapor (cv)             ::\n");
+        printf(":: 3. Quilowatts (kW) -> Watts (W)                ::\n");
+        printf(":: 4. Quilowatts (kW) -> Cavalos-Vapor (cv)       ::\n");
+        printf(":: 5. Cavalos-Vapor (cv) -> Watts (W)             ::\n");
+        printf(":: 6. Cavalos-Vapor (cv) -> Quilowatts (kW)       ::\n");
+        printf(":: 0. Sair                                        ::\n");
+        printf("::                                                ::\n");
+        printf("::::::::::::::::::::::::::::::::::::::::::::::::::::\n\n");
+
+        printf("Digite uma opção: ");
+        if (scanf("%d", &option) == 0)
+        {
+            while (getchar() != '\n');
+            option = -1;
+        }
+
+        if (option != 0)
+        {
+            printf("Digite o valor: ");
+            if (scanf("%f", &value) == 0)
+            {
+                while (getchar() != '\n');
+                printf("Valor inválido! Tente novamente.\n");
+                continue;
+            }
+
+            convert_power(value, option / 2 + 1, option % 2 + 1);
+        }
+    }
+}
+
+ 

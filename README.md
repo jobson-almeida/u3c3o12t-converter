@@ -90,9 +90,63 @@ conteúdo<br><br>
 
 
 # Potência
+ 
+Conversor de Unidades de Potência
+Este é um guia passo a passo para utilizar o conversor de unidades de potência do programa. O conversor permite realizar conversões entre Watts (W), Quilowatts (kW) e Cavalos-Vapor (cv).
+Pré-requisitos
 
-conteúdo<br><br>
+Compilador C instalado
+Sistema operacional compatível com C
+Suporte a caracteres UTF-8
 
+Como Usar
+
+Execute o programa
+No menu principal, selecione a opção 6 (Potência)
+Você verá o submenu de conversão de potência com as seguintes opções:
+
+1: Watts (W) → Quilowatts (kW)
+2: Watts (W) → Cavalos-Vapor (cv)
+3: Quilowatts (kW) → Watts (W)
+4: Quilowatts (kW) → Cavalos-Vapor (cv)
+5: Cavalos-Vapor (cv) → Watts (W)
+6: Cavalos-Vapor (cv) → Quilowatts (kW)
+0: Sair
+
+Digite o número correspondente à conversão desejada
+Digite o valor que deseja converter
+O programa exibirá o resultado da conversão com 4 casas decimais
+
+Exemplo de Uso
+
+Selecione 6 no menu principal
+Para converter 1000 Watts para Quilowatts:
+
+Digite 1 (opção Watts → Quilowatts)
+Digite 1000 quando solicitado o valor
+O programa mostrará: "Resultado: 1.0000 Quilowatts (kW)"
+
+Fatores de Conversão
+O programa utiliza os seguintes fatores de conversão:
+
+1 kW = 1000 W
+1 cv = 735.49875 W
+1 kW ≈ 1.359621617 cv
+
+Notas Importantes
+
+Use ponto (.) como separador decimal
+Para sair do submenu de potência, digite 0
+Valores inválidos serão rejeitados e você será solicitado a inserir novamente
+O programa mantém o submenu aberto até que você escolha sair, permitindo múltiplas conversões
+
+Tratamento de Erros
+O programa possui as seguintes validações:
+
+Rejeita entradas não numéricas
+Limpa o buffer de entrada após valores inválidos
+Permite tentar novamente após entrada inválida 
+<br><br> 
 
 # Dados
 
