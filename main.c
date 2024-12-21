@@ -361,4 +361,30 @@ void unidade_com_submenu_temperatura() {
 void unidade_com_submenu_massa(){
     int option = -1;
     float value = 0.0;
+    
+    while (option != 0)
+    {
+        printf("\n");
+        printf(":::: Comprimento :::::::::::::::::::::::::::::::::::\n");
+        printf("::                                                ::\n");
+        printf(":: 1. tonelada -> quilograma                      ::\n");
+        printf(":: 2. tonelada -> grama                           ::\n");
+        printf(":: 3. quilograma -> tonelada                      ::\n");
+        printf(":: 4. quilograma -> grama                         ::\n");
+        printf(":: 5. grama -> quilograma                         ::\n");
+        printf(":: 6. grama -> tonelada                           ::\n");
+        printf(":: 0. sair                                        ::\n");
+        printf("::                                                ::\n");
+        printf("::::::::::::::::::::::::::::::::::::::::::::::::::::\n\n");
+
+        printf("digite uma opção: ");
+        if (scanf("%d", &option) == 0)
+        {
+            int opt;
+            // remove a entrada inválida do buffer de entrada
+            while ((opt = getchar()) != '\n' && opt != EOF);
+            option = -1;
+        }
+
+
 }
