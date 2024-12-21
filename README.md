@@ -91,61 +91,91 @@ conteúdo<br><br>
 
 # Potência
  
-Conversor de Unidades de Potência
-Este é um guia passo a passo para utilizar o conversor de unidades de potência do programa. O conversor permite realizar conversões entre Watts (W), Quilowatts (kW) e Cavalos-Vapor (cv).
-Pré-requisitos
+# Conversor de Unidades de Potência
 
-Compilador C instalado
-Sistema operacional compatível com C
-Suporte a caracteres UTF-8
+Bem-vindo ao **Conversor de Unidades de Potência**!  
+Este programa permite realizar conversões precisas entre as unidades mais utilizadas de potência: **Watts (W)**, **Quilowatts (kW)** e **Cavalos-Vapor (cv)**. Fácil de usar e confiável, ele foi projetado para fornecer resultados rápidos e exatos.
 
-Como Usar
+---
 
-Execute o programa
-No menu principal, selecione a opção 6 (Potência)
-Você verá o submenu de conversão de potência com as seguintes opções:
+## 🎯 Funcionalidades
 
-1: Watts (W) → Quilowatts (kW)
-2: Watts (W) → Cavalos-Vapor (cv)
-3: Quilowatts (kW) → Watts (W)
-4: Quilowatts (kW) → Cavalos-Vapor (cv)
-5: Cavalos-Vapor (cv) → Watts (W)
-6: Cavalos-Vapor (cv) → Quilowatts (kW)
-0: Sair
+- Conversões rápidas e precisas entre unidades de potência.
+- Interface interativa em console.
+- Resultados exibidos com até **4 casas decimais**.
+- Permite múltiplas conversões sem precisar reiniciar o programa.
 
-Digite o número correspondente à conversão desejada
-Digite o valor que deseja converter
-O programa exibirá o resultado da conversão com 4 casas decimais
+---
 
-Exemplo de Uso
+## 📋 Pré-requisitos
 
-Selecione 6 no menu principal
-Para converter 1000 Watts para Quilowatts:
+Antes de começar, certifique-se de que você possui:
 
-Digite 1 (opção Watts → Quilowatts)
-Digite 1000 quando solicitado o valor
-O programa mostrará: "Resultado: 1.0000 Quilowatts (kW)"
+- Um **compilador C** instalado (ex.: GCC).  
+- Um sistema operacional compatível com execução de programas em C.  
+- Suporte a **caracteres UTF-8** no terminal para exibição correta.
 
-Fatores de Conversão
-O programa utiliza os seguintes fatores de conversão:
+---
 
-1 kW = 1000 W
-1 cv = 735.49875 W
-1 kW ≈ 1.359621617 cv
+## 🚀 Como Usar
 
-Notas Importantes
+1. **Execute o programa** no terminal.
+2. No menu principal, escolha a opção **6 (Potência)**.
+3. No submenu de conversões, escolha entre as opções abaixo:
 
-Use ponto (.) como separador decimal
-Para sair do submenu de potência, digite 0
-Valores inválidos serão rejeitados e você será solicitado a inserir novamente
-O programa mantém o submenu aberto até que você escolha sair, permitindo múltiplas conversões
+   - **1:** Watts (W) → Quilowatts (kW)  
+   - **2:** Watts (W) → Cavalos-Vapor (cv)  
+   - **3:** Quilowatts (kW) → Watts (W)  
+   - **4:** Quilowatts (kW) → Cavalos-Vapor (cv)  
+   - **5:** Cavalos-Vapor (cv) → Watts (W)  
+   - **6:** Cavalos-Vapor (cv) → Quilowatts (kW)  
+   - **0:** Sair  
 
-Tratamento de Erros
-O programa possui as seguintes validações:
+4. Digite o número correspondente à conversão desejada.
+5. Insira o valor que deseja converter.  
+   O resultado será exibido imediatamente.
 
-Rejeita entradas não numéricas
-Limpa o buffer de entrada após valores inválidos
-Permite tentar novamente após entrada inválida 
+---
+
+## 🧪 Exemplo de Uso
+
+### Deseja converter 1000 Watts para Quilowatts?
+
+1. No menu principal, digite **6**.  
+2. No submenu, escolha a opção **1** (Watts → Quilowatts).  
+3. Quando solicitado, insira **1000**.  
+4. O programa exibirá o seguinte:  
+   `"Resultado: 1.0000 Quilowatts (kW)"`
+
+---
+
+## 🔢 Fatores de Conversão
+
+As conversões seguem os padrões aceitos internacionalmente:
+
+- **1 kW = 1000 W**  
+- **1 cv = 735.49875 W**  
+- **1 kW ≈ 1.359621617 cv**
+
+---
+
+## ⚠️ Notas Importantes
+
+- Utilize **ponto (.)** como separador decimal.  
+- Para retornar ao menu principal ou sair, digite **0**.  
+- O programa rejeita automaticamente entradas inválidas e solicita a correção.  
+
+Você pode realizar várias conversões no mesmo submenu antes de sair.
+
+---
+
+## 🛠️ Tratamento de Erros
+
+O programa foi projetado para lidar com erros comuns de entrada:
+
+- Entradas não numéricas são rejeitadas com uma mensagem informativa.  
+- Após valores inválidos, o buffer de entrada é limpo para evitar problemas.  
+- Você pode tentar novamente sem a necessidade de reiniciar o programa.
 <br><br> 
 
 # Dados
