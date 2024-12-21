@@ -358,4 +358,7 @@ void unidade_com_submenu_temperatura() {
     }
 }
 
- 
+void unidade_com_submenu_massa(){
+    int option = -1;
+    float value = 0.0;
+}
