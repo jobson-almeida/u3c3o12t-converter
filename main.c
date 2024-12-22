@@ -301,7 +301,7 @@ void unidade_com_submenu_temperatura() {
                "::                                                ::\n"
                ":::::::::::::::::::::::::::::::::::::::::::::::::::: \n\n");
 
-        printf("Digite uma opção: ");
+        wprintf(L"Digite uma opção: ");
 
         if (scanf("%d", &option) == 0) {
             int opt;
