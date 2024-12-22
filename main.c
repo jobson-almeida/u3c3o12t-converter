@@ -173,6 +173,7 @@ void unidade_com_submenu_comprimento()
 {
     int option = -1;
     float value = 0.0;
+    float resultado = 0.0;
 
     while (option != 0)
     {
@@ -207,18 +208,19 @@ void unidade_com_submenu_comprimento()
             {
             case 1: // Conversão de metro para centímetro
                 printf("Digite o valor em metros: ");
-                // Se o scanf falhar ao interpretar a entrada como um número, ele retorna 0
-                if (scanf("%f", &value) == 0)
+             m1v1:
+                scanf("%s", value_string);
+                while ((getchar()) != '\n'); // limpa o buffer
+                if (!validate_value(value_string)) // valida o valor digitado, aceita ponto ou vígula, inteiro ou float
                 {
-                    // Remove entrada inválida do buffer
-                    while (getchar() != '\n');
                     printf("Valor inválido! Tente novamente.\n");
+                    goto m1v1;
                 }
-                else
-                {
-                    float resultado = value * 100.0; // 1 metro = 100 centímetros
-                    printf("%.2f metros equivalem a %.2f centímetros.\n", value, resultado);
-                }
+                value = atof(value_string); // converte string validada para float
+
+                resultado = value * 100.0; // 1 metro = 100 centímetros
+                printf("%.2f metros equivalem a %.2f centímetros.\n", value, resultado);
+                
                 break;
             case 2: // Conversão de metro para milímetro
                 printf("Digite o valor em metros: ");
