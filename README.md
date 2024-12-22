@@ -81,8 +81,43 @@ conteúdo<br><br>
 
 # Temperatura
 
-conteúdo<br><br>
+<h2 align="center"> Conversor de Unidades de Temperatura</h2>
 
+<p align="center">
+Bem-vindo ao Conversor de Unidades de Temperatura!  
+Este programa permite realizar conversões precisas entre as unidades mais utilizadas de Temperatura: <strong>Celsius(°C)</strong>, <strong>Fahrenheit(°F)</strong> e <strong>Kelvin (K)</strong>. 
+</p>
+---
+
+## 🎯 Objetivos
+
+- Converter o valor de temperatura de uma escala para outra
+- Resultados exibidos com até **2 casas decimais**
+---
+
+## 🚀 Utilizando o programa
+
+1. **Execute o programa** no terminal.
+2. No menu principal, escolha a opção **4 (Temperatura)**.
+3. No submenu de conversões, escolha entre as opções abaixo:
+
+   - **1:** Celsius -> Fahrenheit
+   - **2:** Celsius -> Kelvin
+   - **3:** Fahrenheit -> Kelvin
+   - **4:** Fahrenheit -> Celsius
+   - **5:** Kelvin -> Celsius
+   - **6:** Kelvin -> Fahrenheit   
+   - **0:** Sair  
+
+4. Digite o número correspondente às escalas desejadas
+5. Insira o valor que deseja converter.  
+   O resultado será exibido imediatamente.
+
+## 🛠️ Melhorias Futuras 
+
+Melhorias sempre são bem-vindas: existem outras escalas de temperatura e estas também podem ser convertidas entre Celsius, Kelvin e Fahrenheit através de uma fórmula. Tal melhoria ampliaria a utilização do código, o que tiraria sua limitação de trabalhar apenas com três escalas.
+
+---
 
 # Velocidade
 
