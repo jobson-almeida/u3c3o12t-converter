@@ -490,14 +490,40 @@ void convert_power(float value, int from_unit, int to_unit)
 {
     float result;
     const char *unit_names[] = {"Watts (W)", "Quilowatts (kW)", "Cavalos-Vapor (cv)"};
-
-    if (from_unit == 1) // Watts (W)
-        result = (to_unit == 2) ? value / 1000.0 : value / 735.49875;
-    else if (from_unit == 2) // Quilowatts (kW)
-        result = (to_unit == 1) ? value * 1000.0 : value * 1000.0 / 735.49875;
-    else // Cavalos-Vapor (cv)
-        result = (to_unit == 1) ? value * 735.49875 : value * 735.49875 / 1000.0;
-
+    
+    // Primeiro convertemos para Watts como unidade intermediária
+    float watts;
+    switch(from_unit) {
+        case 1: // De Watts
+            watts = value;
+            break;
+        case 2: // De Quilowatts
+            watts = value * 1000.0;
+            break;
+        case 3: // De Cavalos-Vapor
+            watts = value * 735.49875;
+            break;
+        default:
+            printf("Unidade de origem inválida!\n");
+            return;
+    }
+    
+    // Depois convertemos de Watts para a unidade de destino
+    switch(to_unit) {
+        case 1: // Para Watts
+            result = watts;
+            break;
+        case 2: // Para Quilowatts
+            result = watts / 1000.0;
+            break;
+        case 3: // Para Cavalos-Vapor
+            result = watts / 735.49875;
+            break;
+        default:
+            printf("Unidade de destino inválida!\n");
+            return;
+    }
+    
     printf("Resultado: %.4f %s\n", result, unit_names[to_unit - 1]);
 }
 
@@ -506,30 +532,27 @@ void unidade_com_submenu_potencia()
 {
     int option = -1;
     float value = 0.0;
-
     while (option != 0)
     {
         printf("\n");
         printf(":::: Potência :::::::::::::::::::::::::::::::::::::\n");
         printf("::                                                ::\n");
-        printf(":: 1. Watts (W) -> Quilowatts (kW)                ::\n");
-        printf(":: 2. Watts (W) -> Cavalos-Vapor (cv)             ::\n");
-        printf(":: 3. Quilowatts (kW) -> Watts (W)                ::\n");
-        printf(":: 4. Quilowatts (kW) -> Cavalos-Vapor (cv)       ::\n");
-        printf(":: 5. Cavalos-Vapor (cv) -> Watts (W)             ::\n");
-        printf(":: 6. Cavalos-Vapor (cv) -> Quilowatts (kW)       ::\n");
-        printf(":: 0. Sair                                        ::\n");
-        printf("::                                                ::\n");
-        printf("::::::::::::::::::::::::::::::::::::::::::::::::::::\n\n");
-
+        printf(":: 1. Watts (W) -> Quilowatts (kW)               ::\n");
+        printf(":: 2. Watts (W) -> Cavalos-Vapor (cv)            ::\n");
+        printf(":: 3. Quilowatts (kW) -> Watts (W)               ::\n");
+        printf(":: 4. Quilowatts (kW) -> Cavalos-Vapor (cv)      ::\n");
+        printf(":: 5. Cavalos-Vapor (cv) -> Watts (W)            ::\n");
+        printf(":: 6. Cavalos-Vapor (cv) -> Quilowatts (kW)      ::\n");
+        printf(":: 0. Sair                                       ::\n");
+        printf("::                                               ::\n");
+        printf(":::::::::::::::::::::::::::::::::::::::::::::::::::\n\n");
         printf("Digite uma opção: ");
         if (scanf("%d", &option) == 0)
         {
             while (getchar() != '\n');
             option = -1;
         }
-
-        if (option != 0)
+        if (option > 0 && option <= 6)
         {
             printf("Digite o valor: ");
             if (scanf("%f", &value) == 0)
@@ -538,8 +561,31 @@ void unidade_com_submenu_potencia()
                 printf("Valor inválido! Tente novamente.\n");
                 continue;
             }
-
-            convert_power(value, option / 2 + 1, option % 2 + 1);
+            
+            // Mapeamento correto das opções do menu para as unidades
+            int from_unit, to_unit;
+            switch(option) {
+                case 1: // W -> kW
+                    from_unit = 1; to_unit = 2;
+                    break;
+                case 2: // W -> cv
+                    from_unit = 1; to_unit = 3;
+                    break;
+                case 3: // kW -> W
+                    from_unit = 2; to_unit = 1;
+                    break;
+                case 4: // kW -> cv
+                    from_unit = 2; to_unit = 3;
+                    break;
+                case 5: // cv -> W
+                    from_unit = 3; to_unit = 1;
+                    break;
+                case 6: // cv -> kW
+                    from_unit = 3; to_unit = 2;
+                    break;
+            }
+            
+            convert_power(value, from_unit, to_unit);
         }
     }
 }
