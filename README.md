@@ -112,6 +112,7 @@ Este programa permite realizar conversões precisas entre as unidades mais utili
 4. Digite o número correspondente às escalas desejadas
 5. Insira o valor que deseja converter.  
    O resultado será exibido imediatamente.
+---
 
 ## 🛠️ Melhorias Futuras 
 
