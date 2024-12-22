@@ -3,6 +3,8 @@
 #include <wchar.h>
 #include <stdbool.h>
 #include <stdlib.h> 
+#include <string.h>
+#include <ctype.h> 
 
 void unidade_com_submenu_comprimento();
 void unidade_com_submenu_massa();
@@ -10,12 +12,19 @@ void unidade_com_submenu_temperatura();
 void unidade_com_submenu_potencia();
 void convert_power(float value, int from_unit, int to_unit);
 
-bool validate_option(char c[8]); 
+bool validate_option(char c[2]); 
 bool validate_value(char c[8]); 
 
 
-bool validate_option(char c[8])
+bool validate_option(char c[2])
 {
+    for (int i = 0; i < strlen(c); i++)
+    {
+        if (!isdigit(c[i]))
+        {
+            return false;
+        }
+    }
     return true;
 }
 
