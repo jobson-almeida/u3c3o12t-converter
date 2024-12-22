@@ -1,35 +1,33 @@
 #include <stdio.h>
 #include <locale.h>
+#include <wchar.h>
 
-void unidade_simples(float value);
 void unidade_com_submenu_comprimento();
 void unidade_com_submenu_temperatura();
 
-
 int main()
 {
-    // definir o UTF
-    setlocale(LC_ALL, "pt_BR.UTF-8");
+    //Configurar as definições de localidades do programa de acordo com o ambiente em que o programa será executado
+    setlocale(LC_ALL, "");
 
     int option = -1;
-    float value = 0;
 
     while (option != 0)
     {
         printf("\n");
         printf("::::: UNIDADES DE MEDIDAS ::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::\n");
         printf("::                                                                                          ::\n");
-        printf(":: 1. Comprimento (metro, centímetro, milímetro)                                            ::\n");
+        wprintf(L":: 1. Comprimento (metro, centímetro, milímetro)                                            ::\n");
         printf(":: 2. Massa (quilograma, grama, tonelada)                                                   ::\n");
         printf(":: 4. Temperatura (Celsius, Fahrenheit, Kelvin)                                             ::\n");
         printf(":: 5. Velocidade (km/h, m/s, mph)                                                           ::\n");
-        printf(":: 6. Potência (Watts (W), quilowatts (kW), cavalos-vapor (cv ou hp))                       ::\n");
+        wprintf(L":: 6. Potência (Watts (W), quilowatts (kW), cavalos-vapor (cv ou hp))                       ::\n");
         printf(":: 9. Dados (Bits, bytes, kilobytes (KB), megabytes (MB), gigabytes (GB), terabytes (TB))   ::\n");
         printf(":: 0. Sair                                                                                  ::\n");
         printf("::                                                                                          ::\n");
         printf("::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::\n\n");
 
-        printf("digite uma opção: ");
+        wprintf(L"Digite uma opção: ");
         if (scanf("%d", &option) == 0)
         {
             int opt;
@@ -44,39 +42,36 @@ int main()
             unidade_com_submenu_comprimento();
             break;
         case 2:
-            unidade_com_submenu_massa();
+            ////unidade_com_submenu_massa();
             break;
         case 4:
             unidade_com_submenu_temperatura();
             break;
         case 5:
+            //unidade_com_submenu_velocidade();
             break;
         case 6:
+            //unidade_com_submenu_potencia();
             break;
         case 9:
-            printf("digite um valor: ");
-            if (scanf("%f", &option) == 0)
+            printf("Digite um valor: ");
+            if (scanf("%d", &option) == 0)
             {
                 float opt;
                 // remove a entrada inválida do buffer de entrada
                 while ((opt = getchar()) != '\n' && opt != EOF);
-                printf("valor inválido!\n");
+                wprintf(L"Valor inválido!\n");
                 break;
             }
-            printf("faça a conversão\n");
+            wprintf(L"Faça a conversão\n");
             break;
         default:
-            printf("opção não encontrada!\n");
+            wprintf(L"Opção não encontrada!\n");
             break;
         }
     }
 
     return 0;
-}
-
-void unidade_simples(float value)
-{
-    printf("faça a conversão pela função\n");
 }
 
 /*ESTE BLOCO DE CÓDIGO SERVE DE MODELO PARA TODAS AS CONVERSÕES
@@ -146,17 +141,17 @@ void unidade_com_submenu_comprimento()
         printf("\n");
         printf(":::: Comprimento :::::::::::::::::::::::::::::::::::\n");
         printf("::                                                ::\n");
-        printf(":: 1. metro -> centímetro                         ::\n");
-        printf(":: 2. metro -> milímetro                          ::\n");
-        printf(":: 3. centímetro -> metro                         ::\n");
-        printf(":: 4. centímetro -> milímetro                     ::\n");
-        printf(":: 5. milímetro -> centímetro                     ::\n");
-        printf(":: 6. milímetro -> metro                          ::\n");
+        wprintf(L":: 1. metro -> centímetro                         ::\n");
+        wprintf(L":: 2. metro -> milímetro                          ::\n");
+        wprintf(L":: 3. centímetro -> metro                         ::\n");
+        wprintf(L":: 4. centímetro -> milímetro                     ::\n");
+        wprintf(L":: 5. milímetro -> centímetro                     ::\n");
+        wprintf(L":: 6. milímetro -> metro                          ::\n");
         printf(":: 0. sair                                        ::\n");
         printf("::                                                ::\n");
         printf("::::::::::::::::::::::::::::::::::::::::::::::::::::\n\n");
 
-        printf("digite uma opção: ");
+        wprintf(L"Digite uma opção: ");
         if (scanf("%d", &option) == 0)
         {
             int opt;
@@ -176,12 +171,12 @@ void unidade_com_submenu_comprimento()
                 {
                     // Remove entrada inválida do buffer
                     while (getchar() != '\n');
-                    printf("Valor inválido! Tente novamente.\n");
+                    wprintf(L"Valor inválido! Tente novamente.\n");
                 }
                 else
                 {
                     float resultado = value * 100.0; // 1 metro = 100 centímetros
-                    printf("%.2f metros equivalem a %.2f centímetros.\n", value, resultado);
+                    wprintf(L"%.2f metros equivalem a %.2f centímetros.\n", value, resultado);
                 }
                 break;
             case 2: // Conversão de metro para milímetro
@@ -189,68 +184,68 @@ void unidade_com_submenu_comprimento()
                 if (scanf("%f", &value) == 0)
                 {
                     while (getchar() != '\n'); // Limpa o buffer
-                    printf("Valor inválido! Tente novamente.\n");
+                    wprintf(L"Valor inválido! Tente novamente.\n");
                 }
                 else
                 {
                     float resultado = value * 1000.0; // 1 metro = 1000 milímetros
-                    printf("%.2f metros equivalem a %.2f milímetros.\n", value, resultado);
+                    wprintf(L"%.2f metros equivalem a %.2f milímetros.\n", value, resultado);
                 }
                 break;
             case 3: // Conversão de centímetro para metro
-                printf("Digite o valor em centímetros: ");
+                wprintf(L"Digite o valor em centímetros: ");
                 if (scanf("%f", &value) == 0)
                 {
                     while (getchar() != '\n'); // Limpa o buffer
-                    printf("Valor inválido! Tente novamente.\n");
+                    wprintf(L"Valor inválido! Tente novamente.\n");
                 }
                 else
                 {
                     float resultado = value / 100.0; // 1 metro = 100 centímetros
-                    printf("%.2f centímetros equivalem a %.2f metros.\n", value, resultado);
+                    wprintf(L"%.2f centímetros equivalem a %.2f metros.\n", value, resultado);
                 }
                 break;
             case 4: // Conversão de centímetro para milímetro
-                printf("Digite o valor em centímetros: ");
+                wprintf(L"Digite o valor em centímetros: ");
                 if (scanf("%f", &value) == 0)
                 {
                     while (getchar() != '\n'); // Limpa o buffer
-                    printf("Valor inválido! Tente novamente.\n");
+                    wprintf(L"Valor inválido! Tente novamente.\n");
                 }
                 else
                 {
                     float resultado = value * 10.0; // 1 centímetro = 10 milímetros
-                    printf("%.2f centímetros equivalem a %.2f milímetros.\n", value, resultado);
+                    wprintf(L"%.2f centímetros equivalem a %.2f milímetros.\n", value, resultado);
                 }
                 break;
             case 5: // Conversão de milímetro para centímetro
-                printf("Digite o valor em milímetros: ");
+                wprintf(L"Digite o valor em milímetros: ");
                 if (scanf("%f", &value) == 0)
                 {
                     while (getchar() != '\n'); // Limpa o buffer
-                    printf("Valor inválido! Tente novamente.\n");
+                    wprintf(L"Valor inválido! Tente novamente.\n");
                 }
                 else
                 {
                     float resultado = value / 10.0; // 1 centímetro = 10 milímetros
-                    printf("%.2f milímetros equivalem a %.2f centímetros.\n", value, resultado);
+                    wprintf(L"%.2f milímetros equivalem a %.2f centímetros.\n", value, resultado);
                 }
                 break;
             case 6: // Conversão de milímetro para metro
-                printf("Digite o valor em milímetros: ");
+                wprintf(L"Digite o valor em milímetros: ");
                 if (scanf("%f", &value) == 0)
                 {
                     while (getchar() != '\n'); // Limpa o buffer
-                    printf("Valor inválido! Tente novamente.\n");
+                    wprintf(L"Valor inválido! Tente novamente.\n");
                 }
                 else
                 {
                     float resultado = value / 1000.0; // 1 metro = 1000 milímetros
-                    printf("%.2f milímetros equivalem a %.2f metros.\n", value, resultado);
+                    wprintf(L"%.2f milímetros equivalem a %.2f metros.\n", value, resultado);
                 }
                 break;
             default:
-                printf("Opção não encontrada!\n");
+                wprintf(L"Opção não encontrada!\n");
                 break;
             }
         }
@@ -259,9 +254,9 @@ void unidade_com_submenu_comprimento()
 
 //  -----------------------------CONVERSÃO DE TEMPERATURA----------------------------------
 
-//Este bloco realiza a conversão de temperatura para Celsius, Fahrenheit, Kelvin ou outras escalas desejadas
+//Este bloco realiza a conversão de temperatura para Celsius, Fahrenheit, Kelvin ou outras escalas desejadas a partir da entrada de um valor pelo usuário
 
-//Declaração das funções que fazem a conversão entre as unidades de temperatura Celsius, Fahrenheit e Kelvin
+//Declaração das funções do tipo float que contém o cálculo da conversão entre as unidades de temperatura Celsius, Fahrenheit e Kelvin
 float celsius_para_fahrenheit(float celsius) {
     return (celsius * 9/5) + 32;
 }
@@ -288,7 +283,7 @@ float kelvin_para_fahrenheit(float kelvin) {
 
 //Inicialização da função que mostrará o menu e os resultados somente da unidade de temperatura
 void unidade_com_submenu_temperatura() {
-    
+
     int option = -1;
     float temperatura, resultado;
 
@@ -310,10 +305,11 @@ void unidade_com_submenu_temperatura() {
 
         if (scanf("%d", &option) == 0) {
             int opt;
-            // Remover a entrada inválida do buffer de entrada
+            // O laço while serve para remover a entrada inválida do buffer de entrada
             while ((opt = getchar()) != '\n' && opt != EOF);
             option = -1;
         } 
+        //Aqui é feito a entrada do valor de temperatura, onde também possui o laço while que remove entrada inválida do buffer de entrada
         else {
             if (option != 0) {
                 printf("\nDigite a temperatura a ser convertida: ");
@@ -322,11 +318,11 @@ void unidade_com_submenu_temperatura() {
                     while ((opt = getchar()) != '\n' && opt != EOF);
                     continue;
                 }
-
+                //Esse switch-case envia para o caso escolhido de 1 a 6 para converter a temperatura e mostrar o resultado ao usuário
                 switch (option) {
                     case 1:
                         resultado = celsius_para_fahrenheit(temperatura);
-                        printf("Resultado: %.2f °F\n", resultado);
+                        wprintf(L"Resultado: %.2f °F\n", resultado);
                         break;
                     case 2:
                         resultado = celsius_para_kelvin(temperatura);
@@ -338,18 +334,18 @@ void unidade_com_submenu_temperatura() {
                         break;
                     case 4:
                         resultado = fahrenheit_para_celsius(temperatura);
-                        printf("Resultado: %.2f °C\n", resultado);
+                        wprintf(L"Resultado: %.2f °C\n", resultado);
                         break;
                     case 5:
                         resultado = kelvin_para_celsius(temperatura);
-                        printf("Resultado: %.2f °C\n", resultado);
+                        wprintf(L"Resultado: %.2f °C\n", resultado);
                         break;
                     case 6:
                         resultado = kelvin_para_fahrenheit(temperatura);
-                        printf("Resultado: %.2f °F\n", resultado);
+                        wprintf(L"Resultado: %.2f °F\n", resultado);
                         break;
                     default:
-                        printf("Opção não encontrada!\n");
+                        wprintf(L"Opção não encontrada!\n");
                         break;
                 }
             }
