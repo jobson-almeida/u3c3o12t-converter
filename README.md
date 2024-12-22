@@ -87,6 +87,7 @@ conteúdo<br><br>
 Bem-vindo ao Conversor de Unidades de Temperatura!  
 Este programa permite realizar conversões precisas entre as unidades mais utilizadas de Temperatura: <strong>Celsius(°C)</strong>, <strong>Fahrenheit(°F)</strong> e <strong>Kelvin (K)</strong>. 
 </p>
+
 ---
 
 ## 🎯 Objetivos
