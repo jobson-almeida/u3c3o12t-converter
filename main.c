@@ -15,7 +15,10 @@ void convert_power(float value, int from_unit, int to_unit);
 bool validate_option(char c[2]); 
 bool validate_value(char c[8]); 
 
+char option_string[8]; 
+char value_string[8]; 
 
+// valida os dados de entrada do menu principal e submenus
 bool validate_option(char c[2])
 {
     for (int i = 0; i < strlen(c); i++)
@@ -38,8 +41,7 @@ int main()
     //Configurar as definições de localidades do programa de acordo com o ambiente em que o programa será executado
     setlocale(LC_ALL, "");
 
-    char option_string[8]; 
-    char value_string[8]; 
+ 
 
     int option = -1;
 
@@ -188,13 +190,16 @@ void unidade_com_submenu_comprimento()
         printf("::::::::::::::::::::::::::::::::::::::::::::::::::::\n\n");
 
         printf("Digite uma opção: ");
-        if (scanf("%d", &option) == 0)
+    m1: // inicio do saldo submenu
+        scanf("%s", option_string);
+        while ((getchar()) != '\n'); // limpa o buffer
+        if (!validate_option(option_string)) // valida a opção digitada, aceita apenas inteiros
         {
-            int opt;
-            // remove a entrada inválida do buffer de entrada
-            while ((opt = getchar()) != '\n' && opt != EOF);
-            option = -1;
+            printf("Opção inválida, digite apenas números\n");
+            goto m1; // salto do submenu
         }
+        option = atoi(option_string); // converte a string já validada para float
+
 
         if (option != 0)
         {
