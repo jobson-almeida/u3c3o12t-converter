@@ -324,6 +324,22 @@ void unidade_com_submenu_comprimento()
 
 //Este bloco realiza a conversão de temperatura para Celsius, Fahrenheit, Kelvin ou outras escalas desejadas a partir da entrada de um valor pelo usuário
 
+//Essa função serve para validar a entrada de dados em temperatura para que sejam apenas float
+float validate_temperatura(const char *temp_string){
+    int decimal_count = 0; // Contador de vírgulas 
+    
+    for (size_t i = 0; i < strlen(temp_string); i++) { 
+        if (!isdigit(temp_string[i])) { 
+            if (temp_string[i] == ',' && decimal_count == 0) { 
+                decimal_count++; // Conta uma vírgula válida 
+            } else { 
+                return 0; // Retorna 0 se algum caractere não for dígito ou vírgula 
+            } 
+        } 
+    } 
+    return 1; // Retorna 1 se todos os caracteres forem válidos
+}
+
 //Declaração das funções do tipo float que contém o cálculo da conversão entre as unidades de temperatura Celsius, Fahrenheit e Kelvin
 float celsius_para_fahrenheit(float celsius) {
     return (celsius * 9/5) + 32;
@@ -389,6 +405,13 @@ void unidade_com_submenu_temperatura() {
             wprintf(L"\nDigite a temperatura a ser convertida (utilize vírgula): ");
             scanf("%s", temp_string);
 
+            if (!validate_temperatura(temp_string)) {
+                wprintf(L"Entrada inválida. Digite apenas números (utilizando vírgula). \n");
+                while ((getchar()) != '\n');
+                continue;
+            }
+            
+
             for (int i = 0; temp_string[i] != '\0'; i++){
                 if (temp_string[i] == ','){
                     temp_string[i] = '.';
@@ -432,6 +455,7 @@ void unidade_com_submenu_temperatura() {
         
     }
 }
+
 //  -----------------------------CONVERSOR DE MASSA----------------------------------
 void unidade_com_submenu_massa(){
     int option = -1;
