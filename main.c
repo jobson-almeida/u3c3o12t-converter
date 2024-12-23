@@ -13,7 +13,7 @@ void unidade_com_submenu_potencia();
 void convert_power(float value, int from_unit, int to_unit);
 
 bool validate_option(char c[2]); 
-bool validate_value(char c[8]); 
+bool validate_value(char c[17]); 
 
 char option_string[8]; 
 char value_string[8]; 
