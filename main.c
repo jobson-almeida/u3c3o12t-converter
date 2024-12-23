@@ -455,16 +455,18 @@ void unidade_com_submenu_massa(){
         wprintf(L"::                                                ::\n");
         wprintf(L"::::::::::::::::::::::::::::::::::::::::::::::::::::\n\n");
 
-        wprintf(L"digite uma opção: ");
-        if (scanf("%d", &option) == 0)
+        m2:
+        wprintf(L"Digite uma opção: ");
+        scanf("%s", option_string);
+        while ((getchar()) != '\n');  // limpa o buffer
+        if (!validate_option(option_string)) // valida a opção digitada, aceita apenas inteiros
         {
-            int opt;
-            // remove a entrada inválida do buffer de entrada
-            while ((opt = getchar()) != '\n' && opt != EOF);
-            option = -1;
+            wprintf(L"Opção inválida, digite apenas números\n");
+            goto m2;
         }
+        option = atoi(option_string); // converte de string para float
 
-if (option != 0)
+        if (option != 0)
         {
             switch (option)
             {
