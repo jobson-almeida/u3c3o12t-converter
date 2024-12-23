@@ -22,7 +22,8 @@ char value_string[8];
 bool validate_option(char c[2])
 {
     for (int i = 0; i < strlen(c); i++)
-    {
+    {   
+        //invalida o caractere se não for dígito
         if (!isdigit(c[i]))
         {
             return false;
@@ -31,8 +32,40 @@ bool validate_option(char c[2])
     return true;
 }
 
-bool validate_value(char c[8]) 
+// valida os valores que serão convertidos
+bool validate_value(char c[17])
 { 
+    int point = 0;
+    for (int i = 0; i < strlen(c); i++)
+    {
+
+        //replace o ponto para virgula
+        if (ispunct(c[i]))
+        {
+            c[i] = ',';
+            point++;
+        }
+
+        //invalida se ocorrência de ponto/virgula for maior que 1
+        if (point > 1)
+            return false;
+
+        //invalida se hover alguma letra
+        if (point == 0 && !isdigit(c[i]))
+            return false;
+
+        if (point == 1)
+        {  
+            //invalida se o ponto/vírgula for o primeiro caractere
+            if (i == 0)
+                return false;
+
+            // invalida se o valor, pue possui já um ponto, é maior ou igual a 2 dígitos 
+            // recebe um caractere não dígito e não ponto/vírgula
+            if (i >= 2 && !ispunct(c[i]) && !isdigit(c[i])) 
+                return false;
+        }
+    }
     return true;
 }
 
