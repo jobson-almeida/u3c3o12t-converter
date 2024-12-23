@@ -102,7 +102,7 @@ int main()
         while ((getchar()) != '\n');  // limpar o buffer
         if (!validate_option(option_string)) // valida a opção digitada, aceita apenas inteiros
         {
-            wprintf(L"Opção inválida, digite apenas números\n");
+            wprintf(L"Opção inválida. Digite apenas as opções presentes no menu\n");
             goto m;
         }
         option = atoi(option_string); // converte de string para float
@@ -130,7 +130,8 @@ int main()
             wprintf(L"Encerrando...\n");
             break;
         default:
-            wprintf(L"Opção não encontrada!\n");
+            wprintf(L"Opção inválida. Digite apenas as opções presentes no menu\n");
+            goto m;
             break;
         }
     }
@@ -156,14 +157,17 @@ int main()
             wprintf(L"::                                                ::\n");
             wprintf(L"::::::::::::::::::::::::::::::::::::::::::::::::::::\n\n");
 
-            wprintf(L"digite uma opção: ");
-            if (scanf("%d", &option) == 0)
+        m_x: // rótulo m_x
+            wprintf(L"Digite uma opção: ");
+            scanf("%s", option_string);
+            while ((getchar()) != '\n') ;       // limpar o buffer
+            if (!validate_option(option_string) || atoi(option_string) > ...) // valida a opção digitada, aceita apenas inteiros
             {
-                int opt;
-                // remove a entrada inválida do buffer de entrada
-                while ((opt = getchar()) != '\n' && opt != EOF);
-                option = -1;
+                printf("Opção inválida. Digite apenas os números...\n");
+                goto m_x;
             }
+            option = atoi(option_string); // converte de string para float
+
 
             if (option != 0)
             {
@@ -173,20 +177,19 @@ int main()
                 case 1:
                 case 2:
                 case 3:
-                    wprintf(L"digite um valor: ");
-                    if (scanf("%f", &option) == 0)
+                    v3: // rótulo v3
+                    wprintf(L"Digite um valor: ");
+                    scanf("%s", value_string);
+                    while ((getchar()) != '\n'); // limpa o buffer
+                    if (!validate_value(value_string)) // valida o valor digitado, aceita ponto ou vígula, inteiro ou float
                     {
-                        float opt;
-                        // remove a entrada inválida do buffer de entrada do usuário
-                        while ((opt = getchar()) != '\n' && opt != EOF);
-                        wprintf(L"valor inválido!\n");
-                        break;
+                        printf("Valor inválido! Tente novamente.\n");
+                        goto v3; // salto do rótulo v3
                     }
-                    wprintf(L"faça a conversão\n");
-                    break;
-                default:
-                    wprintf(L"opção não encontrada!\n");
-                    break;
+                    value = atof(value_string); // converte de string para float                    
+                    wprintf(L"faça a conversão %f\n", value);
+                
+                    break; 
                 }
             }
         }
