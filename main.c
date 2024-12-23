@@ -12,14 +12,15 @@ void unidade_com_submenu_temperatura();
 void unidade_com_submenu_potencia();
 void convert_power(float value, int from_unit, int to_unit);
 
-bool validate_option(char c[2]); 
+bool validate_option(unsigned char c[2]); 
 bool validate_value(char c[17]); 
 
-char option_string[2]; 
+unsigned char option_string[2]; 
 char value_string[17]; 
 
-// valida os dados de entrada do menu principal e submenus
-bool validate_option(char c[2])
+// valida os dados de entrada do menu principal e submenus. 
+// aceita apenas números não negativos.
+bool validate_option(unsigned char c[2])
 {
     for (int i = 0; i < strlen(c); i++)
     {   
@@ -33,6 +34,7 @@ bool validate_option(char c[2])
 }
 
 // valida os valores que serão convertidos
+// aceita apenas inteiros, floats ou doubles de até 16 caracteres
 bool validate_value(char c[17])
 { 
     int point = 0;
@@ -460,13 +462,13 @@ void unidade_com_submenu_massa(){
         wprintf(L"Digite uma opção: ");
         scanf("%s", option_string);
         while ((getchar()) != '\n');  // limpa o buffer
-        if (!validate_option(option_string)) // valida a opção digitada, aceita apenas inteiros
+        if (!validate_option(option_string) || atoi(option_string) > 6) // valida a opção digitada, aceita apenas inteiros presente
         {
-            wprintf(L"Opção inválida, digite apenas números\n");
+            wprintf(L"Opção inválida. Digite números de 0 a 6. \n");
             goto m2;
         }
         option = atoi(option_string); // converte de string para float
-  
+
         if (option != 0)
         {
             switch (option)
@@ -550,10 +552,7 @@ void unidade_com_submenu_massa(){
                     resultado = value / 1000000.0; // 1 t = 1kk g
                     wprintf(L"%.2f gramas equivalem a %.6f toneladas.\n", value, resultado);
                 }
-                break;
-            default:
-                wprintf(L"Opção não encontrada!\n");
-                break;
+                break; 
             }
             resultado = 0.0;
         }
