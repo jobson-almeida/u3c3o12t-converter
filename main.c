@@ -364,11 +364,13 @@ void unidade_com_submenu_temperatura() {
                ":: 0. Sair                                        ::\n"
                "::                                                ::\n"
                ":::::::::::::::::::::::::::::::::::::::::::::::::::: \n\n");
+    //A função a seguir exibe a entrada de dados
     m2:
         wprintf(L"Digite uma opção: ");
         scanf("%s", option_string);
         while ((getchar()) != '\n');
-
+        
+        //Caso a entrada seja composta por caracteres especiais ou letras, ela volta para a função m2
         if (!validate_option(option_string)){
             wprintf(L"Opção inválida, digite apenas números\n");
             goto m2;
@@ -376,12 +378,13 @@ void unidade_com_submenu_temperatura() {
 
         option = atoi(option_string);
         
+        //Aqui compara a entrada para que a mesma seja de 0 a 6 apenas, caso não seja volta para a função m2
         if (option < 0 || option > 6){
             wprintf(L"Opção inválida. Digite números de 0 a 6. \n");
             goto m2;
         }
 
-        //Aqui é feito a entrada do valor de temperatura, onde também possui o laço while que remove entrada inválida do buffer de entrada
+        //A entrada do valor de temperatura é realizada dentro desse laço, onde também possui ooutro laço while que remove entrada inválida do buffer de entrada
         if (option != 0) {
             wprintf(L"\nDigite a temperatura a ser convertida: ");
             if (scanf("%f", &temperatura) != 1) {
@@ -389,6 +392,7 @@ void unidade_com_submenu_temperatura() {
                 while ((opt = getchar()) != '\n' && opt != EOF);
                 continue;
             }
+            
             //Esse switch-case envia para o caso escolhido de 1 a 6 para converter a temperatura e mostrar o resultado ao usuário
             switch (option) {
                 case 1:
@@ -420,6 +424,7 @@ void unidade_com_submenu_temperatura() {
                     break;
             }
         }
+        //Caso a entrada seja 0, imprime uma mensagem de que o sistema está encerrando
         else{
             wprintf(L"Encerrando...\n");
         }
