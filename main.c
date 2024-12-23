@@ -368,7 +368,7 @@ void unidade_com_submenu_temperatura() {
                "::                                                ::\n"
                ":::::::::::::::::::::::::::::::::::::::::::::::::::: \n\n");
     //A função a seguir exibe a entrada de dados
-    m2:
+    m4:
         wprintf(L"Digite uma opção: ");
         scanf("%s", option_string);
         while ((getchar()) != '\n');
@@ -376,7 +376,7 @@ void unidade_com_submenu_temperatura() {
         //Caso a entrada seja composta por caracteres especiais ou letras, ela volta para a função m2
         if (!validate_option(option_string)){
             wprintf(L"Opção inválida, digite apenas números\n");
-            goto m2;
+            goto m4;
         }
 
         option = atoi(option_string);
@@ -384,7 +384,7 @@ void unidade_com_submenu_temperatura() {
         //Aqui compara a entrada para que a mesma seja de 0 a 6 apenas, caso não seja volta para a função m2
         if (option < 0 || option > 6){
             wprintf(L"Opção inválida. Digite números de 0 a 6. \n");
-            goto m2;
+            goto m4;
         }
 
         //A entrada do valor de temperatura é realizada dentro desse laço, onde também possui ooutro laço while que remove entrada inválida do buffer de entrada
@@ -439,6 +439,7 @@ void unidade_com_submenu_temperatura() {
 void unidade_com_submenu_massa(){
     int option = -1;
     float value = 0.0;
+    float resultado = 0.0;
     
     while (option != 0)
     {
@@ -465,25 +466,25 @@ void unidade_com_submenu_massa(){
             goto m2;
         }
         option = atoi(option_string); // converte de string para float
-
+  
         if (option != 0)
         {
             switch (option)
             {
             case 1: // Conversão de tonelada para quilograma
+                m2v1: 
                 wprintf(L"Digite o valor em tonelada: ");
-                // Se o scanf falhar ao interpretar a entrada como um número, ele retorna 0
-                if (scanf("%f", &value) == 0)
+                scanf("%s", value_string);
+                while ((getchar()) != '\n'); // limpa o buffer
+                if (!validate_value(value_string)) // valida o valor digitado, aceita ponto ou vígula, inteiro ou float
                 {
-                    // Remove entrada inválida do buffer
-                    while (getchar() != '\n');
                     wprintf(L"Valor inválido! Tente novamente.\n");
+                    goto m2v1;
                 }
-                else
-                {
-                    float resultado = value * 1000.0; // 1 t = 1000 kg
-                    wprintf(L"%.2f toneladas equivalem a %.2f quilogramas.\n", value, resultado);
-                }
+                value = atof(value_string); // converte de string para float
+
+                resultado = value * 1000.0; // 1 t = 1000 kg
+                wprintf(L"%.2f toneladas equivalem a %.2f quilogramas.\n", value, resultado);
                 break;
             case 2: // Conversão de tonelada para grama
                 wprintf(L"Digite o valor em toneladas: ");
@@ -494,7 +495,7 @@ void unidade_com_submenu_massa(){
                 }
                 else
                 {
-                    float resultado = value * 1000000.0; // 1 t = 1kk g
+                    resultado = value * 1000000.0; // 1 t = 1kk g
                     wprintf(L"%.2f toneladas equivalem a %.2f gramas.\n", value, resultado);
                 }
                 break;
@@ -507,7 +508,7 @@ void unidade_com_submenu_massa(){
                 }
                 else
                 {
-                    float resultado = value / 1000.0; // 1 t = 1000 kg
+                    resultado = value / 1000.0; // 1 t = 1000 kg
                     wprintf(L"%.2f quilogramas equivalem a %.3f toneladas.\n", value, resultado);
                 }
                 break;
@@ -520,7 +521,7 @@ void unidade_com_submenu_massa(){
                 }
                 else
                 {
-                    float resultado = value * 1000.0; // 1 kg = 1000 g
+                    resultado = value * 1000.0; // 1 kg = 1000 g
                     wprintf(L"%.2f quilogramas equivalem a %.2f gramas.\n", value, resultado);
                 }
                 break;
@@ -533,7 +534,7 @@ void unidade_com_submenu_massa(){
                 }
                 else
                 {
-                    float resultado = value / 1000.0; // 1 kg = 1000 g
+                    resultado = value / 1000.0; // 1 kg = 1000 g
                     wprintf(L"%.2f gramas equivalem a %.3f quilogramas.\n", value, resultado);
                 }
                 break;
@@ -546,7 +547,7 @@ void unidade_com_submenu_massa(){
                 }
                 else
                 {
-                    float resultado = value / 1000000.0; // 1 t = 1kk g
+                    resultado = value / 1000000.0; // 1 t = 1kk g
                     wprintf(L"%.2f gramas equivalem a %.6f toneladas.\n", value, resultado);
                 }
                 break;
@@ -554,6 +555,7 @@ void unidade_com_submenu_massa(){
                 wprintf(L"Opção não encontrada!\n");
                 break;
             }
+            resultado = 0.0;
         }
     }
 } 
