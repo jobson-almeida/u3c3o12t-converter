@@ -15,8 +15,8 @@ void convert_power(float value, int from_unit, int to_unit);
 bool validate_option(char c[2]); 
 bool validate_value(char c[17]); 
 
-char option_string[8]; 
-char value_string[8]; 
+char option_string[2]; 
+char value_string[17]; 
 
 // valida os dados de entrada do menu principal e submenus
 bool validate_option(char c[2])
