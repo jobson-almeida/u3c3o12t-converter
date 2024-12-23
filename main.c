@@ -375,19 +375,13 @@ void unidade_com_submenu_temperatura() {
         scanf("%s", option_string);
         while ((getchar()) != '\n');
         
-        //Caso a entrada seja composta por caracteres especiais ou letras, ela volta para a função m2
-        if (!validate_option(option_string)){
-            wprintf(L"Opção inválida, digite apenas números\n");
+        //As unicas opções aceitas são os números representados no menu, caso contrário volta ao rótulo m4
+        if (!validate_option(option_string) || atoi(option_string) > 6){
+            wprintf(L"Opção inválida. Digite números de 0 a 6. \n");
             goto m4;
         }
 
         option = atoi(option_string);
-        
-        //Aqui compara a entrada para que a mesma seja de 0 a 6 apenas, caso não seja volta para a função m2
-        if (option < 0 || option > 6){
-            wprintf(L"Opção inválida. Digite números de 0 a 6. \n");
-            goto m4;
-        }
 
         //A entrada do valor de temperatura é realizada dentro desse laço, onde também possui ooutro laço while que remove entrada inválida do buffer de entrada
         if (option != 0) {
@@ -423,10 +417,7 @@ void unidade_com_submenu_temperatura() {
                 case 6:
                     resultado = kelvin_para_fahrenheit(temperatura);
                     wprintf(L"Resultado: %.2f °F\n", resultado);
-                    break;
-                default:
-                    wprintf(L"Opção não encontrada!\n");
-                    break;
+                    break; 
             }
         }
         //Caso a entrada seja 0, imprime uma mensagem de que o sistema está encerrando
