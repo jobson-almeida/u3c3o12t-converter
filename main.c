@@ -219,31 +219,30 @@ void unidade_com_submenu_comprimento()
         wprintf(L"::                                                ::\n");
         wprintf(L"::::::::::::::::::::::::::::::::::::::::::::::::::::\n\n");
 
+    m1: // rótulo m1
         wprintf(L"Digite uma opção: ");
-    m1: // inicio do saldo submenu
         scanf("%s", option_string);
         while ((getchar()) != '\n'); // limpa o buffer
-        if (!validate_option(option_string)) // valida a opção digitada, aceita apenas inteiros
+        if (!validate_option(option_string) || atoi(option_string) > 6) // valida a opção digitada, aceita apenas inteiros
         {
-            wprintf(L"Opção inválida, digite apenas números\n");
-            goto m1; // salto do submenu
+            wprintf(L"Opção inválida. Digite números de 0 a 6\n");
+            goto m1; // salto do rótulo m1
         }
         option = atoi(option_string); // converte a string já validada para float
-
-
+ 
         if (option != 0)
         {
             switch (option)
             {
             case 1: // Conversão de metro para centímetro
+             m1v1: // rótulo m1v1
                 wprintf(L"Digite o valor em metros: ");
-             m1v1:
                 scanf("%s", value_string);
                 while ((getchar()) != '\n'); // limpa o buffer
                 if (!validate_value(value_string)) // valida o valor digitado, aceita ponto ou vígula, inteiro ou float
                 {
                     wprintf(L"Valor inválido! Tente novamente.\n");
-                    goto m1v1;
+                    goto m1v1; // salto do rótulo m1v1
                 }
                 value = atof(value_string); // converte string validada para float
 
@@ -315,10 +314,7 @@ void unidade_com_submenu_comprimento()
                     float resultado = value / 1000.0; // 1 metro = 1000 milímetros
                     wprintf(L"%.2f milímetros equivalem a %.2f metros.\n", value, resultado);
                 }
-                break;
-            default:
-                wprintf(L"Opção não encontrada!\n");
-                break;
+                break; 
             }
         }
     }
