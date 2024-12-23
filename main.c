@@ -74,34 +74,30 @@ int main()
     //Configurar as definições de localidades do programa de acordo com o ambiente em que o programa será executado
     setlocale(LC_ALL, "");
 
- 
-
     int option = -1;
 
     while (option != 0)
     {
-        printf("\n");
-        printf("::::: UNIDADES DE MEDIDAS ::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::\n");
-        printf("::                                                                                          ::\n");
-        printf(":: 1. Comprimento (metro, centímetro, milímetro)                                            ::\n");
-        printf(":: 2. Massa (quilograma, grama, tonelada)                                                   ::\n");
-        printf(":: 4. Temperatura (Celsius, Fahrenheit, Kelvin)                                             ::\n");
-        printf(":: 5. Velocidade (km/h, m/s, mph)                                                           ::\n");
-        printf(":: 6. Potência (Watts (W), quilowatts (kW), cavalos-vapor (cv ou hp))                       ::\n");
-        printf(":: 9. Dados (Bits, bytes, kilobytes (KB), megabytes (MB), gigabytes (GB), terabytes (TB))   ::\n");
-        printf(":: 0. Sair                                                                                  ::\n");
-        printf("::                                                                                          ::\n");
-        printf("::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::\n\n");
-
-        printf("Digite uma opção: ");
- 
+        wprintf(L"\n");
+        wprintf(L"::::: UNIDADES DE MEDIDAS ::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::\n");
+        wprintf(L"::                                                                                          ::\n");
+        wprintf(L":: 1. Comprimento (metro, centímetro, milímetro)                                            ::\n");
+        wprintf(L":: 2. Massa (quilograma, grama, tonelada)                                                   ::\n");
+        wprintf(L":: 4. Temperatura (Celsius, Fahrenheit, Kelvin)                                             ::\n");
+        wprintf(L":: 5. Velocidade (km/h, m/s, mph)                                                           ::\n");
+        wprintf(L":: 6. Potência (Watts (W), quilowatts (kW), cavalos-vapor (cv ou hp))                       ::\n");
+        wprintf(L":: 9. Dados (Bits, bytes, kilobytes (KB), megabytes (MB), gigabytes (GB), terabytes (TB))   ::\n");
+        wprintf(L":: 0. Sair                                                                                  ::\n");
+        wprintf(L"::                                                                                          ::\n");
+        wprintf(L"::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::\n\n");
 
   m: // início do salto
+        wprintf(L"Digite uma opção: ");
         scanf("%s", option_string);
         while ((getchar()) != '\n');  // limpar o buffer
         if (!validate_option(option_string)) // valida a opção digitada, aceita apenas inteiros
         {
-            printf("Opção inválida, digite apenas números\n");
+            wprintf(L"Opção inválida, digite apenas números\n");
             goto m;
         }
         option = atoi(option_string); // converte de string para float
@@ -125,19 +121,11 @@ int main()
             break;
         case 9:
             break;
+        case 0:
+            wprintf(L"Encerrando...\n");
+            break;
         default:
-            // ESTE BLOCO DE CÓDIGO SERVE DE MODELO
-            // printf("digite um valor: ");
-            // if (scanf("%f", &option) == 0)
-            // {
-            //     float opt;
-            //     // remove a entrada inválida do buffer de entrada
-            //     while ((opt = getchar()) != '\n' && opt != EOF);
-            //     printf("valor inválido!\n");
-            //     break;
-            // }
-            // printf("faça a conversão\n");
-            printf("opção não encontrada!\n");
+            wprintf(L"Opção não encontrada!\n");
             break;
         }
     }
@@ -153,17 +141,17 @@ int main()
 
         while (option != 0)
         {
-            printf("\n");
-            printf(":::: Grandeza ::::::::::::::::::::::::::::::::::::::\n");
-            printf("::                                                ::\n");
-            printf(":: 1. Exemplo 1                                   ::\n");
-            printf(":: 2. Exemplo 2                                   ::\n");
-            printf(":: 3. Exemplo 3                                   ::\n");
-            printf(":: 0. sair                                        ::\n");
-            printf("::                                                ::\n");
-            printf("::::::::::::::::::::::::::::::::::::::::::::::::::::\n\n");
+            wprintf(L"\n");
+            wprintf(L":::: Grandeza ::::::::::::::::::::::::::::::::::::::\n");
+            wprintf(L"::                                                ::\n");
+            wprintf(L":: 1. Exemplo 1                                   ::\n");
+            wprintf(L":: 2. Exemplo 2                                   ::\n");
+            wprintf(L":: 3. Exemplo 3                                   ::\n");
+            wprintf(L":: 0. sair                                        ::\n");
+            wprintf(L"::                                                ::\n");
+            wprintf(L"::::::::::::::::::::::::::::::::::::::::::::::::::::\n\n");
 
-            printf("digite uma opção: ");
+            wprintf(L"digite uma opção: ");
             if (scanf("%d", &option) == 0)
             {
                 int opt;
@@ -180,19 +168,19 @@ int main()
                 case 1:
                 case 2:
                 case 3:
-                    printf("digite um valor: ");
+                    wprintf(L"digite um valor: ");
                     if (scanf("%f", &option) == 0)
                     {
                         float opt;
                         // remove a entrada inválida do buffer de entrada do usuário
                         while ((opt = getchar()) != '\n' && opt != EOF);
-                        printf("valor inválido!\n");
+                        wprintf(L"valor inválido!\n");
                         break;
                     }
-                    printf("faça a conversão\n");
+                    wprintf(L"faça a conversão\n");
                     break;
                 default:
-                    printf("opção não encontrada!\n");
+                    wprintf(L"opção não encontrada!\n");
                     break;
                 }
             }
@@ -210,26 +198,26 @@ void unidade_com_submenu_comprimento()
 
     while (option != 0)
     {
-        printf("\n");
-        printf(":::: Comprimento :::::::::::::::::::::::::::::::::::\n");
-        printf("::                                                ::\n");
-        printf(":: 1. metro -> centímetro                         ::\n");
-        printf(":: 2. metro -> milímetro                          ::\n");
-        printf(":: 3. centímetro -> metro                         ::\n");
-        printf(":: 4. centímetro -> milímetro                     ::\n");
-        printf(":: 5. milímetro -> centímetro                     ::\n");
-        printf(":: 6. milímetro -> metro                          ::\n");
-        printf(":: 0. sair                                        ::\n");
-        printf("::                                                ::\n");
-        printf("::::::::::::::::::::::::::::::::::::::::::::::::::::\n\n");
+        wprintf(L"\n");
+        wprintf(L":::: Comprimento :::::::::::::::::::::::::::::::::::\n");
+        wprintf(L"::                                                ::\n");
+        wprintf(L":: 1. metro -> centímetro                         ::\n");
+        wprintf(L":: 2. metro -> milímetro                          ::\n");
+        wprintf(L":: 3. centímetro -> metro                         ::\n");
+        wprintf(L":: 4. centímetro -> milímetro                     ::\n");
+        wprintf(L":: 5. milímetro -> centímetro                     ::\n");
+        wprintf(L":: 6. milímetro -> metro                          ::\n");
+        wprintf(L":: 0. sair                                        ::\n");
+        wprintf(L"::                                                ::\n");
+        wprintf(L"::::::::::::::::::::::::::::::::::::::::::::::::::::\n\n");
 
-        printf("Digite uma opção: ");
+        wprintf(L"Digite uma opção: ");
     m1: // inicio do saldo submenu
         scanf("%s", option_string);
         while ((getchar()) != '\n'); // limpa o buffer
         if (!validate_option(option_string)) // valida a opção digitada, aceita apenas inteiros
         {
-            printf("Opção inválida, digite apenas números\n");
+            wprintf(L"Opção inválida, digite apenas números\n");
             goto m1; // salto do submenu
         }
         option = atoi(option_string); // converte a string já validada para float
@@ -240,88 +228,88 @@ void unidade_com_submenu_comprimento()
             switch (option)
             {
             case 1: // Conversão de metro para centímetro
-                printf("Digite o valor em metros: ");
+                wprintf(L"Digite o valor em metros: ");
              m1v1:
                 scanf("%s", value_string);
                 while ((getchar()) != '\n'); // limpa o buffer
                 if (!validate_value(value_string)) // valida o valor digitado, aceita ponto ou vígula, inteiro ou float
                 {
-                    printf("Valor inválido! Tente novamente.\n");
+                    wprintf(L"Valor inválido! Tente novamente.\n");
                     goto m1v1;
                 }
                 value = atof(value_string); // converte string validada para float
 
                 resultado = value * 100.0; // 1 metro = 100 centímetros
-                printf("%.2f metros equivalem a %.2f centímetros.\n", value, resultado);
+                wprintf(L"%.2f metros equivalem a %.2f centímetros.\n", value, resultado);
                 
                 break;
             case 2: // Conversão de metro para milímetro
-                printf("Digite o valor em metros: ");
+                wprintf(L"Digite o valor em metros: ");
                 if (scanf("%f", &value) == 0)
                 {
                     while (getchar() != '\n'); // Limpa o buffer
-                    printf("Valor inválido! Tente novamente.\n");
+                    wprintf(L"Valor inválido! Tente novamente.\n");
                 }
                 else
                 {
                     float resultado = value * 1000.0; // 1 metro = 1000 milímetros
-                    printf("%.2f metros equivalem a %.2f milímetros.\n", value, resultado);
+                    wprintf(L"%.2f metros equivalem a %.2f milímetros.\n", value, resultado);
                 }
                 break;
             case 3: // Conversão de centímetro para metro
-                printf("Digite o valor em centímetros: ");
+                wprintf(L"Digite o valor em centímetros: ");
                 if (scanf("%f", &value) == 0)
                 {
                     while (getchar() != '\n'); // Limpa o buffer
-                    printf("Valor inválido! Tente novamente.\n");
+                    wprintf(L"Valor inválido! Tente novamente.\n");
                 }
                 else
                 {
                     float resultado = value / 100.0; // 1 metro = 100 centímetros
-                    printf("%.2f centímetros equivalem a %.2f metros.\n", value, resultado);
+                    wprintf(L"%.2f centímetros equivalem a %.2f metros.\n", value, resultado);
                 }
                 break;
             case 4: // Conversão de centímetro para milímetro
-                printf("Digite o valor em centímetros: ");
+                wprintf(L"Digite o valor em centímetros: ");
                 if (scanf("%f", &value) == 0)
                 {
                     while (getchar() != '\n'); // Limpa o buffer
-                    printf("Valor inválido! Tente novamente.\n");
+                    wprintf(L"Valor inválido! Tente novamente.\n");
                 }
                 else
                 {
                     float resultado = value * 10.0; // 1 centímetro = 10 milímetros
-                    printf("%.2f centímetros equivalem a %.2f milímetros.\n", value, resultado);
+                    wprintf(L"%.2f centímetros equivalem a %.2f milímetros.\n", value, resultado);
                 }
                 break;
             case 5: // Conversão de milímetro para centímetro
-                printf("Digite o valor em milímetros: ");
+                wprintf(L"Digite o valor em milímetros: ");
                 if (scanf("%f", &value) == 0)
                 {
                     while (getchar() != '\n'); // Limpa o buffer
-                    printf("Valor inválido! Tente novamente.\n");
+                    wprintf(L"Valor inválido! Tente novamente.\n");
                 }
                 else
                 {
                     float resultado = value / 10.0; // 1 centímetro = 10 milímetros
-                    printf("%.2f milímetros equivalem a %.2f centímetros.\n", value, resultado);
+                    wprintf(L"%.2f milímetros equivalem a %.2f centímetros.\n", value, resultado);
                 }
                 break;
             case 6: // Conversão de milímetro para metro
-                printf("Digite o valor em milímetros: ");
+                wprintf(L"Digite o valor em milímetros: ");
                 if (scanf("%f", &value) == 0)
                 {
                     while (getchar() != '\n'); // Limpa o buffer
-                    printf("Valor inválido! Tente novamente.\n");
+                    wprintf(L"Valor inválido! Tente novamente.\n");
                 }
                 else
                 {
                     float resultado = value / 1000.0; // 1 metro = 1000 milímetros
-                    printf("%.2f milímetros equivalem a %.2f metros.\n", value, resultado);
+                    wprintf(L"%.2f milímetros equivalem a %.2f metros.\n", value, resultado);
                 }
                 break;
             default:
-                printf("Opção não encontrada!\n");
+                wprintf(L"Opção não encontrada!\n");
                 break;
             }
         }
@@ -359,13 +347,13 @@ float kelvin_para_fahrenheit(float kelvin) {
 
 //Inicialização da função que mostrará o menu e os resultados somente da unidade de temperatura
 void unidade_com_submenu_temperatura() {
-
+    //Declarando variáveis
     int option = -1;
     float temperatura, resultado;
 
     //Esse laço tem a funcionalidade de abrir um menu com as opções de entrada
     while (option != 0) {
-        printf("\n::::::: Temperatura ::::::::::::::::::::::::::::::::\n"
+        wprintf(L"\n::::::: Temperatura ::::::::::::::::::::::::::::::::\n"
                "::                                                ::\n"
                ":: 1. Celsius -> Fahrenheit                       ::\n"
                ":: 2. Celsius -> Kelvin                           ::\n"
@@ -376,79 +364,90 @@ void unidade_com_submenu_temperatura() {
                ":: 0. Sair                                        ::\n"
                "::                                                ::\n"
                ":::::::::::::::::::::::::::::::::::::::::::::::::::: \n\n");
+    m2:
+        wprintf(L"Digite uma opção: ");
+        scanf("%s", option_string);
+        while ((getchar()) != '\n');
 
-        printf("Digite uma opção: ");
+        if (!validate_option(option_string)){
+            wprintf(L"Opção inválida, digite apenas números\n");
+            goto m2;
+        }
 
-        if (scanf("%d", &option) == 0) {
-            int opt;
-            // O laço while serve para remover a entrada inválida do buffer de entrada
-            while ((opt = getchar()) != '\n' && opt != EOF);
-            option = -1;
-        } 
+        option = atoi(option_string);
+        
+        if (option < 0 || option > 6){
+            wprintf(L"Opção inválida. Digite números de 0 a 6. \n");
+            goto m2;
+        }
+
         //Aqui é feito a entrada do valor de temperatura, onde também possui o laço while que remove entrada inválida do buffer de entrada
-        else {
-            if (option != 0) {
-                printf("\nDigite a temperatura a ser convertida: ");
-                if (scanf("%f", &temperatura) == 0) {
-                    int opt;
-                    while ((opt = getchar()) != '\n' && opt != EOF);
-                    continue;
-                }
-                //Esse switch-case envia para o caso escolhido de 1 a 6 para converter a temperatura e mostrar o resultado ao usuário
-                switch (option) {
-                    case 1:
-                        resultado = celsius_para_fahrenheit(temperatura);
-                        printf("Resultado: %.2f °F\n", resultado);
-                        break;
-                    case 2:
-                        resultado = celsius_para_kelvin(temperatura);
-                        printf("Resultado: %.2f K\n", resultado);
-                        break;
-                    case 3:
-                        resultado = fahrenheit_para_kelvin(temperatura);
-                        printf("Resultado: %.2f K\n", resultado);
-                        break;
-                    case 4:
-                        resultado = fahrenheit_para_celsius(temperatura);
-                        printf("Resultado: %.2f °C\n", resultado);
-                        break;
-                    case 5:
-                        resultado = kelvin_para_celsius(temperatura);
-                        printf("Resultado: %.2f °C\n", resultado);
-                        break;
-                    case 6:
-                        resultado = kelvin_para_fahrenheit(temperatura);
-                        printf("Resultado: %.2f °F\n", resultado);
-                        break;
-                    default:
-                        printf("Opção não encontrada!\n");
-                        break;
-                }
+        if (option != 0) {
+            wprintf(L"\nDigite a temperatura a ser convertida: ");
+            if (scanf("%f", &temperatura) != 1) {
+                int opt;
+                while ((opt = getchar()) != '\n' && opt != EOF);
+                continue;
+            }
+            //Esse switch-case envia para o caso escolhido de 1 a 6 para converter a temperatura e mostrar o resultado ao usuário
+            switch (option) {
+                case 1:
+                    resultado = celsius_para_fahrenheit(temperatura);
+                    wprintf(L"Resultado: %.2f °F\n", resultado);
+                    break;
+                case 2:
+                    resultado = celsius_para_kelvin(temperatura);
+                    wprintf(L"Resultado: %.2f K\n", resultado);
+                    break;
+                case 3:
+                    resultado = fahrenheit_para_kelvin(temperatura);
+                    wprintf(L"Resultado: %.2f K\n", resultado);
+                    break;
+                case 4:
+                    resultado = fahrenheit_para_celsius(temperatura);
+                    wprintf(L"Resultado: %.2f °C\n", resultado);
+                    break;
+                case 5:
+                    resultado = kelvin_para_celsius(temperatura);
+                    wprintf(L"Resultado: %.2f °C\n", resultado);
+                    break;
+                case 6:
+                    resultado = kelvin_para_fahrenheit(temperatura);
+                    wprintf(L"Resultado: %.2f °F\n", resultado);
+                    break;
+                default:
+                    wprintf(L"Opção não encontrada!\n");
+                    break;
             }
         }
+        else{
+            wprintf(L"Encerrando...\n");
+        }
+        
     }
 }
- 
+
+//  -----------------------------CONVERSOR DE MASSA----------------------------------
 void unidade_com_submenu_massa(){
     int option = -1;
     float value = 0.0;
     
     while (option != 0)
     {
-        printf("\n");
-        printf(":::: Comprimento :::::::::::::::::::::::::::::::::::\n");
-        printf("::                                                ::\n");
-        printf(":: 1. tonelada -> quilograma                      ::\n");
-        printf(":: 2. tonelada -> grama                           ::\n");
-        printf(":: 3. quilograma -> tonelada                      ::\n");
-        printf(":: 4. quilograma -> grama                         ::\n");
-        printf(":: 5. grama -> quilograma                         ::\n");
-        printf(":: 6. grama -> tonelada                           ::\n");
-        printf(":: 0. sair                                        ::\n");
-        printf("::                                                ::\n");
-        printf("::::::::::::::::::::::::::::::::::::::::::::::::::::\n\n");
+        wprintf(L"\n");
+        wprintf(L":::: Massa :::::::::::::::::::::::::::::::::::::::::\n");
+        wprintf(L"::                                                ::\n");
+        wprintf(L":: 1. tonelada -> quilograma                      ::\n");
+        wprintf(L":: 2. tonelada -> grama                           ::\n");
+        wprintf(L":: 3. quilograma -> tonelada                      ::\n");
+        wprintf(L":: 4. quilograma -> grama                         ::\n");
+        wprintf(L":: 5. grama -> quilograma                         ::\n");
+        wprintf(L":: 6. grama -> tonelada                           ::\n");
+        wprintf(L":: 0. sair                                        ::\n");
+        wprintf(L"::                                                ::\n");
+        wprintf(L"::::::::::::::::::::::::::::::::::::::::::::::::::::\n\n");
 
-        printf("digite uma opção: ");
+        wprintf(L"digite uma opção: ");
         if (scanf("%d", &option) == 0)
         {
             int opt;
@@ -462,87 +461,87 @@ if (option != 0)
             switch (option)
             {
             case 1: // Conversão de tonelada para quilograma
-                printf("Digite o valor em tonelada: ");
+                wprintf(L"Digite o valor em tonelada: ");
                 // Se o scanf falhar ao interpretar a entrada como um número, ele retorna 0
                 if (scanf("%f", &value) == 0)
                 {
                     // Remove entrada inválida do buffer
                     while (getchar() != '\n');
-                    printf("Valor inválido! Tente novamente.\n");
+                    wprintf(L"Valor inválido! Tente novamente.\n");
                 }
                 else
                 {
                     float resultado = value * 1000.0; // 1 t = 1000 kg
-                    printf("%.2f toneladas equivalem a %.2f quilogramas.\n", value, resultado);
+                    wprintf(L"%.2f toneladas equivalem a %.2f quilogramas.\n", value, resultado);
                 }
                 break;
             case 2: // Conversão de tonelada para grama
-                printf("Digite o valor em toneladas: ");
+                wprintf(L"Digite o valor em toneladas: ");
                 if (scanf("%f", &value) == 0)
                 {
                     while (getchar() != '\n'); // Limpa o buffer
-                    printf("Valor inválido! Tente novamente.\n");
+                    wprintf(L"Valor inválido! Tente novamente.\n");
                 }
                 else
                 {
                     float resultado = value * 1000000.0; // 1 t = 1kk g
-                    printf("%.2f toneladas equivalem a %.2f gramas.\n", value, resultado);
+                    wprintf(L"%.2f toneladas equivalem a %.2f gramas.\n", value, resultado);
                 }
                 break;
             case 3: // Conversão de quilograma para tonelada
-                printf("Digite o valor em quilogramas: ");
+                wprintf(L"Digite o valor em quilogramas: ");
                 if (scanf("%f", &value) == 0)
                 {
                     while (getchar() != '\n'); // Limpa o buffer
-                    printf("Valor inválido! Tente novamente.\n");
+                    wprintf(L"Valor inválido! Tente novamente.\n");
                 }
                 else
                 {
                     float resultado = value / 1000.0; // 1 t = 1000 kg
-                    printf("%.2f quilogramas equivalem a %.3f toneladas.\n", value, resultado);
+                    wprintf(L"%.2f quilogramas equivalem a %.3f toneladas.\n", value, resultado);
                 }
                 break;
             case 4: // Conversão de quilograma para grama
-                printf("Digite o valor em quilogramas: ");
+                wprintf(L"Digite o valor em quilogramas: ");
                 if (scanf("%f", &value) == 0)
                 {
                     while (getchar() != '\n'); // Limpa o buffer
-                    printf("Valor inválido! Tente novamente.\n");
+                    wprintf(L"Valor inválido! Tente novamente.\n");
                 }
                 else
                 {
                     float resultado = value * 1000.0; // 1 kg = 1000 g
-                    printf("%.2f quilogramas equivalem a %.2f gramas.\n", value, resultado);
+                    wprintf(L"%.2f quilogramas equivalem a %.2f gramas.\n", value, resultado);
                 }
                 break;
             case 5: // Conversão de gramas para quilogramas
-                printf("Digite o valor em gramas: ");
+                wprintf(L"Digite o valor em gramas: ");
                 if (scanf("%f", &value) == 0)
                 {
                     while (getchar() != '\n'); // Limpa o buffer
-                    printf("Valor inválido! Tente novamente.\n");
+                    wprintf(L"Valor inválido! Tente novamente.\n");
                 }
                 else
                 {
                     float resultado = value / 1000.0; // 1 kg = 1000 g
-                    printf("%.2f gramas equivalem a %.3f quilogramas.\n", value, resultado);
+                    wprintf(L"%.2f gramas equivalem a %.3f quilogramas.\n", value, resultado);
                 }
                 break;
             case 6: // Conversão de gramas para toneladas
-                printf("Digite o valor em gramas: ");
+                wprintf(L"Digite o valor em gramas: ");
                 if (scanf("%f", &value) == 0)
                 {
                     while (getchar() != '\n'); // Limpa o buffer
-                    printf("Valor inválido! Tente novamente.\n");
+                    wprintf(L"Valor inválido! Tente novamente.\n");
                 }
                 else
                 {
                     float resultado = value / 1000000.0; // 1 t = 1kk g
-                    printf("%.2f gramas equivalem a %.6f toneladas.\n", value, resultado);
+                    wprintf(L"%.2f gramas equivalem a %.6f toneladas.\n", value, resultado);
                 }
                 break;
             default:
-                printf("Opção não encontrada!\n");
+                wprintf(L"Opção não encontrada!\n");
                 break;
             }
         }
@@ -570,7 +569,7 @@ void convert_power(float value, int from_unit, int to_unit)
             watts = value * 735.49875;
             break;
         default:
-            printf("Unidade de origem inválida!\n");
+            wprintf(L"Unidade de origem inválida!\n");
             return;
     }
     
@@ -586,11 +585,11 @@ void convert_power(float value, int from_unit, int to_unit)
             result = watts / 735.49875;
             break;
         default:
-            printf("Unidade de destino inválida!\n");
+            wprintf(L"Unidade de destino inválida!\n");
             return;
     }
     
-    printf("Resultado: %.4f %s\n", result, unit_names[to_unit - 1]);
+    wprintf(L"Resultado: %.4f %s\n", result, unit_names[to_unit - 1]);
 }
 
 // Submenu de potência
@@ -600,19 +599,19 @@ void unidade_com_submenu_potencia()
     float value = 0.0;
     while (option != 0)
     {
-        printf("\n");
-        printf(":::: Potência :::::::::::::::::::::::::::::::::::::\n");
-        printf("::                                                ::\n");
-        printf(":: 1. Watts (W) -> Quilowatts (kW)               ::\n");
-        printf(":: 2. Watts (W) -> Cavalos-Vapor (cv)            ::\n");
-        printf(":: 3. Quilowatts (kW) -> Watts (W)               ::\n");
-        printf(":: 4. Quilowatts (kW) -> Cavalos-Vapor (cv)      ::\n");
-        printf(":: 5. Cavalos-Vapor (cv) -> Watts (W)            ::\n");
-        printf(":: 6. Cavalos-Vapor (cv) -> Quilowatts (kW)      ::\n");
-        printf(":: 0. Sair                                       ::\n");
-        printf("::                                               ::\n");
-        printf(":::::::::::::::::::::::::::::::::::::::::::::::::::\n\n");
-        printf("Digite uma opção: ");
+        wprintf(L"\n");
+        wprintf(L":::: Potência :::::::::::::::::::::::::::::::::::::\n");
+        wprintf(L"::                                                ::\n");
+        wprintf(L":: 1. Watts (W) -> Quilowatts (kW)               ::\n");
+        wprintf(L":: 2. Watts (W) -> Cavalos-Vapor (cv)            ::\n");
+        wprintf(L":: 3. Quilowatts (kW) -> Watts (W)               ::\n");
+        wprintf(L":: 4. Quilowatts (kW) -> Cavalos-Vapor (cv)      ::\n");
+        wprintf(L":: 5. Cavalos-Vapor (cv) -> Watts (W)            ::\n");
+        wprintf(L":: 6. Cavalos-Vapor (cv) -> Quilowatts (kW)      ::\n");
+        wprintf(L":: 0. Sair                                       ::\n");
+        wprintf(L"::                                               ::\n");
+        wprintf(L":::::::::::::::::::::::::::::::::::::::::::::::::::\n\n");
+        wprintf(L"Digite uma opção: ");
         if (scanf("%d", &option) == 0)
         {
             while (getchar() != '\n');
@@ -620,11 +619,11 @@ void unidade_com_submenu_potencia()
         }
         if (option > 0 && option <= 6)
         {
-            printf("Digite o valor: ");
+            wprintf(L"Digite o valor: ");
             if (scanf("%f", &value) == 0)
             {
                 while (getchar() != '\n');
-                printf("Valor inválido! Tente novamente.\n");
+                wprintf(L"Valor inválido! Tente novamente.\n");
                 continue;
             }
             
