@@ -350,10 +350,11 @@ float kelvin_para_fahrenheit(float kelvin) {
 }
 
 //Inicialização da função que mostrará o menu e os resultados somente da unidade de temperatura
-void unidade_com_submenu_temperatura() { 
+void unidade_com_submenu_temperatura() {
     //Declarando variáveis
     int option = -1;
     float temperatura, resultado;
+    char temp_string[10];
 
     //Esse laço tem a funcionalidade de abrir um menu com as opções de entrada
     while (option != 0) {
@@ -368,13 +369,14 @@ void unidade_com_submenu_temperatura() {
                ":: 0. Sair                                        ::\n"
                "::                                                ::\n"
                ":::::::::::::::::::::::::::::::::::::::::::::::::::: \n\n");
+    
     //A função a seguir exibe a entrada de dados
     m4:
         wprintf(L"Digite uma opção: ");
         scanf("%s", option_string);
         while ((getchar()) != '\n');
         
-        //As unicas opções aceitas são os números representados no menu, caso contrário volta ao rótulo m4
+        //O laço a seguir serve para impedir a inserção de letras, caracteres especiais ou números maiores que 6, caso ocorra a entrada destes, o laço envia para a função m4
         if (!validate_option(option_string) || atoi(option_string) > 6){
             wprintf(L"Opção inválida. Digite números de 0 a 6. \n");
             goto m4;
@@ -382,15 +384,19 @@ void unidade_com_submenu_temperatura() {
 
         option = atoi(option_string);
 
-        //A entrada do valor de temperatura é realizada dentro desse laço, onde também possui ooutro laço while que remove entrada inválida do buffer de entrada
+        //A entrada do valor de temperatura é realizada dentro desse laço, onde também faz a modificação de identificar apenas a vírgula como separador
         if (option != 0) {
-            wprintf(L"\nDigite a temperatura a ser convertida: ");
-            if (scanf("%f", &temperatura) != 1) {
-                int opt;
-                while ((opt = getchar()) != '\n' && opt != EOF);
-                continue;
+            wprintf(L"\nDigite a temperatura a ser convertida (utilize vírgula): ");
+            scanf("%s", temp_string);
+
+            for (int i = 0; temp_string[i] != '\0'; i++){
+                if (temp_string[i] == ','){
+                    temp_string[i] = '.';
+                }
             }
-            
+
+            temperatura = strtof(temp_string, NULL);
+        
             //Esse switch-case envia para o caso escolhido de 1 a 6 para converter a temperatura e mostrar o resultado ao usuário
             switch (option) {
                 case 1:
@@ -426,7 +432,6 @@ void unidade_com_submenu_temperatura() {
         
     }
 }
-
 //  -----------------------------CONVERSOR DE MASSA----------------------------------
 void unidade_com_submenu_massa(){
     int option = -1;
