@@ -351,7 +351,7 @@ float kelvin_para_fahrenheit(float kelvin) {
 }
 
 //Inicialização da função que mostrará o menu e os resultados somente da unidade de temperatura
-void unidade_com_submenu_temperatura() {
+void unidade_com_submenu_temperatura() { 
     //Declarando variáveis
     int option = -1;
     float temperatura, resultado;
@@ -613,21 +613,33 @@ void unidade_com_submenu_potencia()
         wprintf(L":: 0. Sair                                       ::\n");
         wprintf(L"::                                               ::\n");
         wprintf(L":::::::::::::::::::::::::::::::::::::::::::::::::::\n\n");
+       
+ m6:
         wprintf(L"Digite uma opção: ");
-        if (scanf("%d", &option) == 0)
-        {
-            while (getchar() != '\n');
-            option = -1;
+        scanf("%s", option_string);
+        while ((getchar()) != '\n');
+        
+        //As unicas opções aceitas são os números representados no menu, caso contrário volta ao rótulo m4
+        if (!validate_option(option_string) || atoi(option_string) > 6){
+            wprintf(L"Opção inválida. Digite números de 0 a 6. \n");
+            goto m6;
         }
-        if (option > 0 && option <= 6)
+
+        option = atoi(option_string);
+         
+        if (option > 0)
         {
-            wprintf(L"Digite o valor: ");
-            if (scanf("%f", &value) == 0)
+
+        v6: 
+            wprintf(L"Digite o valor: ");                      
+            scanf("%s", value_string);
+            while ((getchar()) != '\n'); // limpa o buffer
+            if (!validate_value(value_string)) // valida o valor digitado, aceita ponto ou vígula, inteiro ou float
             {
-                while (getchar() != '\n');
                 wprintf(L"Valor inválido! Tente novamente.\n");
-                continue;
+                goto v6;
             }
+            value = atof(value_string); // converte de string para float 
             
             // Mapeamento correto das opções do menu para as unidades
             int from_unit, to_unit;
