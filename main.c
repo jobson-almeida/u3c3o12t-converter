@@ -66,6 +66,9 @@ bool validate_value(char c[17])
                 return false;
         }
     }
+    // retorna falso se um ponto ou vírgula estiver no final do valor
+    if(c[strlen(c)-1] == ',') return false;
+
     return true;
 }
 
