@@ -74,8 +74,7 @@ O submenu **Comprimento** permite realizar as seguintes conversões:
 ---
 
 
-# Massa
-
+# Massa 
 Bem-vindo ao manual de usuário da feature **Massa** do submenu! Este guia fornecerá instruções detalhadas sobre como utilizar corretamente as opções disponíveis. Esta funcionalidade permite converter medidas de massa entre diferentes unidades de forma simples e intuitiva.
 
 ## Funcionalidades Disponíveis
@@ -85,7 +84,7 @@ O submenu **Massa** permite realizar conversões de valores entre toneladas, qui
 ---
 
 ## Como Utilizar
-
+ 
 ## Acessando o Submenu Massa
 
 1. Inicie o programa principal.
@@ -114,8 +113,8 @@ O submenu **Massa** permite realizar conversões de valores entre toneladas, qui
 3. O programa exibirá:
    ```
    5.00 tonelada equivalem a 5000.00 quilos.
-   ```
----
+ 
+   ``` 
 
 - **Conversões Implementadas:**
   - Baseadas em relações de medida padronizadas:
