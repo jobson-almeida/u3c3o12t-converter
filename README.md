@@ -76,7 +76,54 @@ O submenu **Comprimento** permite realizar as seguintes conversões:
 
 # Massa
 
-conteúdo<br><br>
+Bem-vindo ao manual de usuário da feature **Massa** do submenu! Este guia fornecerá instruções detalhadas sobre como utilizar corretamente as opções disponíveis. Esta funcionalidade permite converter medidas de massa entre diferentes unidades de forma simples e intuitiva.
+
+## Funcionalidades Disponíveis
+
+O submenu **Massa** permite realizar conversões de valores entre toneladas, quilos e gramas.
+
+---
+
+## Como Utilizar
+
+## Acessando o Submenu Massa
+
+1. Inicie o programa principal.
+2. No menu principal, selecione a opção correspondente ao submenu **Comprimento**.
+
+> Exemplo: Digite `2` e pressione **Enter** para acessar.
+
+## Realizando uma Conversão
+
+1. Dentro do submenu **Massa**, escolha a opção desejada conforme a conversão que deseja realizar.
+   - As opções estão numeradas de 1 a 6.
+2. Digite o número correspondente e pressione **Enter**.
+3. Insira o valor a ser convertido quando solicitado.
+4. O resultado da conversão será exibido na tela.
+
+> **Dica:** Para voltar ao menu anterior, digite `0` e pressione **Enter**.
+
+---
+
+## Exemplo Prático: Converter Tonelada para Quilo
+1. Digite `2` para selecionar "Tonelada para quilo".
+2. Insira o valor em metros:
+   ```
+   Digite o valor em toneladas: 5
+   ```
+3. O programa exibirá:
+   ```
+   5.00 tonelada equivalem a 5000.00 quilos.
+   ```
+---
+
+- **Conversões Implementadas:**
+  - Baseadas em relações de medida padronizadas:
+    - 1 tonelada = 1000 quilos
+    - 1 tonelada = 1000000 gramas
+    - 1 quilo = 1000 gramas
+
+---
 
 
 # Temperatura
