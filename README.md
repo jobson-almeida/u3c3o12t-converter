@@ -171,52 +171,64 @@ Melhorias sempre são bem-vindas: existem outras escalas de temperatura e estas 
 
 Este programa é um conversor de unidades de velocidade, permitindo a conversão entre três unidades de medida de velocidade: km/h (quilômetros por hora), m/s (metros por segundo), e mph (milhas por hora). O usuário pode escolher entre seis opções de conversão, com a possibilidade de sair do programa a qualquer momento.
 
-Funcionalidades:
+## 🎯Funcionalidades:
 
-km/h para m/s: Converte velocidade de km/h para metros por segundo.
-km/h para mph: Converte velocidade de km/h para milhas por hora.
-mph para km/h: Converte velocidade de milhas por hora para quilômetros por hora.
-mph para m/s: Converte velocidade de milhas por hora para metros por segundo.
-m/s para km/h: Converte velocidade de metros por segundo para quilômetros por hora.
-m/s para mph: Converte velocidade de metros por segundo para milhas por hora.
+**-** km/h para m/s: Converte velocidade de km/h para metros por segundo.
 
-Como Funciona:
+**-** km/h para mph: Converte velocidade de km/h para milhas por hora.
+
+**-** mph para km/h: Converte velocidade de milhas por hora para quilômetros por hora.
+
+**-** mph para m/s: Converte velocidade de milhas por hora para metros por segundo.
+
+**-** m/s para km/h: Converte velocidade de metros por segundo para quilômetros por hora.
+
+**-** m/s para mph: Converte velocidade de metros por segundo para milhas por hora.
+
+## 🚀Como Funciona:
 
 O programa exibe um menu interativo onde o usuário pode escolher a conversão desejada. Após selecionar a opção, o usuário deve informar o valor da velocidade a ser convertido. O programa, então, exibirá o resultado da conversão.
 
-Menu de Opções
-km/h → m/s
-km/h → mph
-mph → km/h
-mph → m/s
-m/s → km/h
-m/s → mph
-Sair
+### Menu de Opções
+ - **1:** km/h → m/s
+ - **2:** km/h → mph
+ - **3:** mph → km/h
+ - **4:** mph → m/s
+ - **5:** m/s → km/h
+ - **6:** m/s → mph
+ - **0:** Sair
 
-Instruções:
+### 📋Instruções:
 
-Compile o código usando um compilador de C, como gcc.
-Execute o programa. O menu de opções será exibido.
-Selecione a opção desejada, insira o valor da velocidade e veja o resultado da conversão.
-Para sair, escolha a opção 0.
+- **1:** Compile o código usando um compilador de C, como gcc.
+- **2:** Execute o programa. O menu de opções será exibido.
+- **4:** Selecione a opção desejada, insira o valor da velocidade e veja o resultado da conversão.
+- **5:** Para sair, escolha a opção 0.
 
-Exemplo de Execução:
+### Exemplo de Execução:
 
-::::::: Conversor de Velocidade ::::::::::::::::::::::::::
-::                                                ::
+:: Conversor de Velocidade                        ::
+                                                
 :: 1. km/h -> m/s                                 ::
+
 :: 2. km/h -> mph                                 ::
+
 :: 3. mph -> km/h                                 ::
+
 :: 4. mph -> m/s                                  ::
+
 :: 5. m/s -> km/h                                 ::
+
 :: 6. m/s -> mph                                  ::
+
 :: 0. Sair                                        ::
 ::                                                ::
 :::::::::::::::::::::::::::::::::::::::::::::::::::: 
 
-Digite uma opção: 1
-Digite o valor da velocidade: 90
-m/s: 25.00
+
+**-** Digite uma opção: 1
+**-** Digite o valor da velocidade: 90
+**-** m/s: 25.00
 
 # Potência
  
