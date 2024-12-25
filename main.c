@@ -8,6 +8,7 @@
 
 void unidade_com_submenu_comprimento();
 void unidade_com_submenu_massa();
+void unidade_com_submenu_velocidade();
 void unidade_com_submenu_temperatura();
 void unidade_com_submenu_potencia();
 void convert_power(float value, int from_unit, int to_unit);
@@ -114,7 +115,7 @@ int main()
             unidade_com_submenu_temperatura();
             break;
         case 5:
-            //unidade_com_submenu_velocidade();
+            unidade_com_submenu_velocidade();
             break;
         case 6:
             unidade_com_submenu_potencia();
@@ -187,7 +188,117 @@ int main()
         }
     }
 */
+void unidade_com_submenu_velocidade(){
+    int option = -1;
+    double valor = 0.0;
+    //char option_string[10]; // String para a opção digitada
+    //char value_string[20];  // String para o valor digitado
 
+    while (option != 0) {
+        wprintf(L"\n:::: Conversor de Velocidade :::::::::::::::::::::::::\n");
+        wprintf(L"::                                                ::\n");
+        wprintf(L":: 1. km/h -> m/s                                 ::\n");
+        wprintf(L":: 2. km/h -> mph                                 ::\n");
+        wprintf(L":: 3. mph -> km/h                                 ::\n");
+        wprintf(L":: 4. mph -> m/s                                  ::\n");
+        wprintf(L":: 5. m/s -> km/h                                 ::\n");
+        wprintf(L":: 6. m/s -> mph                                  ::\n");
+        wprintf(L":: 0. Sair                                        ::\n");
+        wprintf(L"::                                                ::\n");
+        wprintf(L"::::::::::::::::::::::::::::::::::::::::::::::::::::\n\n");
+
+        wprintf(L"Digite uma opção: ");
+    m1: // inicio do submenu
+        scanf("%s", option_string);
+        while ((getchar()) != '\n'); // limpa o buffer
+        if (!validate_option(option_string)) { // valida a opção digitada, aceita apenas inteiros
+            wprintf(L"Opção inválida, digite apenas números\n");
+            goto m1; // salto do submenu
+        }
+        option = atoi(option_string); // converte a string validada para inteiro
+
+        if (option != 0) {
+            switch (option) {
+            case 1: // Conversão de km/h para m/s
+                wprintf(L"Digite o valor em km/h: ");
+            m1v1: // inicio da validação do valor
+                scanf("%s", value_string);
+                while ((getchar()) != '\n'); // limpa o buffer
+                if (!validate_value(value_string)) { // valida o valor digitado
+                    wprintf(L"Valor inválido! Tente novamente.\n");
+                    goto m1v1;
+                }
+                valor = atof(value_string); // converte a string validada para double
+
+                wprintf(L"%.2f km/h equivalem a %.2f m/s.\n", valor, valor / 3.6);
+                break;
+            case 2: // Conversão de km/h para mph
+                wprintf(L"Digite o valor em km/h: ");
+                scanf("%s", value_string);
+                while ((getchar()) != '\n'); // limpa o buffer
+                if (!validate_value(value_string)) { // valida o valor digitado
+                    wprintf(L"Valor inválido! Tente novamente.\n");
+                    goto m1v1;
+                }
+                valor = atof(value_string); // converte a string validada para double
+
+                wprintf(L"%.2f km/h equivalem a %.2f mph.\n", valor, valor * 0.621371);
+                break;
+            case 3: // Conversão de mph para km/h
+                wprintf(L"Digite o valor em mph: ");
+                scanf("%s", value_string);
+                while ((getchar()) != '\n'); // limpa o buffer
+                if (!validate_value(value_string)) { // valida o valor digitado
+                    wprintf(L"Valor inválido! Tente novamente.\n");
+                    goto m1v1;
+                }
+                valor = atof(value_string); // converte a string validada para double
+
+                wprintf(L"%.2f mph equivalem a %.2f km/h.\n", valor, valor / 0.621371);
+                break;
+            case 4: // Conversão de mph para m/s
+                wprintf(L"Digite o valor em mph: ");
+                scanf("%s", value_string);
+                while ((getchar()) != '\n'); // limpa o buffer
+                if (!validate_value(value_string)) { // valida o valor digitado
+                    wprintf(L"Valor inválido! Tente novamente.\n");
+                    goto m1v1;
+                }
+                valor = atof(value_string); // converte a string validada para double
+
+                wprintf(L"%.2f mph equivalem a %.2f m/s.\n", valor, valor / 2.23694);
+                break;
+            case 5: // Conversão de m/s para km/h
+                wprintf(L"Digite o valor em m/s: ");
+                scanf("%s", value_string);
+                while ((getchar()) != '\n'); // limpa o buffer
+                if (!validate_value(value_string)) { // valida o valor digitado
+                    wprintf(L"Valor inválido! Tente novamente.\n");
+                    goto m1v1;
+                }
+                valor = atof(value_string); // converte a string validada para double
+
+                wprintf(L"%.2f m/s equivalem a %.2f km/h.\n", valor, valor * 3.6);
+                break;
+            case 6: // Conversão de m/s para mph
+                wprintf(L"Digite o valor em m/s: ");
+                scanf("%s", value_string);
+                while ((getchar()) != '\n'); // limpa o buffer
+                if (!validate_value(value_string)) { // valida o valor digitado
+                    wprintf(L"Valor inválido! Tente novamente.\n");
+                    goto m1v1;
+                }
+                valor = atof(value_string); // converte a string validada para double
+
+                wprintf(L"%.2f m/s equivalem a %.2f mph.\n", valor, valor * 2.23694);
+                break;
+            default:
+                wprintf(L"Opção não encontrada! Tente novamente.\n");
+                break;
+            }
+        }
+    }
+}
 //  -----------------------------UNIDADES DE COMPRIMENTO----------------------------------
 
 void unidade_com_submenu_comprimento()
@@ -431,6 +542,7 @@ void unidade_com_submenu_temperatura() {
         
     }
 }
+
 
 //  -----------------------------CONVERSOR DE MASSA----------------------------------
 void unidade_com_submenu_massa(){
