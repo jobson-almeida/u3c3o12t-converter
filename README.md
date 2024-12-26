@@ -311,115 +311,104 @@ O programa foi projetado para lidar com erros comuns de entrada:
 
 # Conversor de Unidades de Dados
 
-Este programa implementa uma funcionalidade para conversão de unidades de dados. Ele permite que o usuário insira um valor em bytes e converta para outras unidades de medida como bits, kilobytes, megabytes, gigabytes e terabytes. O programa inclui validações de entrada para garantir a precisão das conversões.
+Um programa em C para conversão entre diferentes unidades de medida de dados digitais, incluindo bits, bytes, kilobytes, megabytes, gigabytes e terabytes.
 
-Requisitos
+## 🚀 Funcionalidades
 
-Um compilador C (como GCC ou Clang).
+- Conversão precisa entre múltiplas unidades de dados
+- Interface intuitiva via linha de comando
+- Validação robusta de entrada de dados
+- Suporte a números inteiros e decimais
 
-Uma biblioteca para suporte a caracteres wide (como wchar.h).
+## 📋 Requisitos
 
-Como Usar
+- Compilador C (GCC ou Clang)
+- Biblioteca para suporte a caracteres wide (`wchar.h`)
 
-Passo 1: Clonar ou copiar o código-fonte
+## 🔧 Instalação e Uso
 
-Copie o código-fonte para um arquivo chamado unidades_dados.c no seu ambiente de desenvolvimento.
+### Compilação
 
-Passo 2: Compilar o programa
+1. Clone ou copie o código-fonte para um arquivo `unidades_dados.c`
+2. Compile usando seu compilador C preferido:
 
-Compile o arquivo unidades_dados.c utilizando o compilador C de sua preferência. Por exemplo, no GCC:
-
+```bash
 gcc -o unidades_dados unidades_dados.c
+```
 
-Passo 3: Executar o programa
+### Execução
 
-Execute o binário gerado:
+Execute o programa compilado:
 
+```bash
 ./unidades_dados
+```
 
-Passo 4: Navegar no menu
+### Como Usar
 
-Ao iniciar o programa, você verá o menu principal com as seguintes opções:
+1. Ao iniciar, você verá o menu principal com as seguintes opções:
+   - 1: Bits
+   - 2: Bytes
+   - 3: Kilobytes (KB)
+   - 4: Megabytes (MB)
+   - 5: Gigabytes (GB)
+   - 6: Terabytes (TB)
+   - 0: Sair do programa
 
-1: Bits
+2. Digite o número correspondente à unidade desejada
+3. Insira o valor em bytes para conversão
+4. O resultado será exibido na unidade escolhida
+5. O menu será apresentado novamente para nova conversão ou para sair (opção 0)
 
-2: Bytes
+## 📝 Exemplos
 
-3: Kilobytes (KB)
+### Exemplo 1: Conversão para Bits
 
-4: Megabytes (MB)
-
-5: Gigabytes (GB)
-
-6: Terabytes (TB)
-
-0: Sair do programa
-
-Insira o número correspondente à unidade desejada.
-
-Digite um valor em bytes para ser convertido.
-
-O programa exibirá o valor convertido para a unidade escolhida.
-
-Passo 5: Continuar ou sair
-
-Após realizar uma conversão, o menu será exibido novamente.
-
-Digite 0 para encerrar o programa.
-
-Exemplos de Uso
-
-Entrada:
-
+```
 Escolha a unidade: 1
 Digite um valor em byte: 1000
+Resultado: 8000.00 bits
+```
 
-Saída:
+### Exemplo 2: Conversão para Kilobytes
 
-8000.00 bits
-
-Entrada:
-
+```
 Escolha a unidade: 3
 Digite um valor em byte: 5000
+Resultado: 5.00 KB
+```
 
-Saída:
+## 🛠️ Detalhes Técnicos
 
-5.00 Kb
+### Validações Implementadas
 
-Funcionalidades Implementadas
+- Verificação de opção válida (0-6)
+- Validação de entrada numérica (inteiros e decimais)
+- Limpeza de buffer após cada entrada
 
-Validação de Entradas:
+### Unidades Suportadas
 
-Verifica se a opção digitada é válida (números de 0 a 6).
+- Bits
+- Bytes
+- Kilobytes (KB)
+- Megabytes (MB)
+- Gigabytes (GB)
+- Terabytes (TB)
 
-Garante que o valor inserido seja um número (inteiro ou float).
+### Funções Auxiliares
 
-Conversões Suportadas:
+O programa utiliza funções auxiliares para validação:
+- `validar_inteiro()`: Valida números inteiros
+- `validar_float()`: Valida números decimais
 
-Bits
+## 👥 Contribuições
 
-Bytes
+Sugestões e melhorias são bem-vindas! Sinta-se à vontade para:
+- Abrir um Pull Request
+- Entrar em contato com sugestões
+- Reportar problemas encontrados
 
-Kilobytes
-
-Megabytes
-
-Gigabytes
-
-Terabytes
-
-Observações
-
-O programa utiliza funções auxiliares para validação de inteiros e floats (validar_inteiro e validar_float). Certifique-se de incluir as implementações dessas funções no mesmo arquivo ou como dependências.
-
-Para evitar problemas com a entrada de usuário, o buffer de entrada é limpo após cada leitura com while ((getchar()) != '\n');.
-
-Contribuições
-
-Sugestões e melhorias são bem-vindas! Abra um Pull Request ou entre em contato.
-
-Licença
+## 📄 Licença
 
 Este projeto é de uso livre e aberto para modificação.
 
