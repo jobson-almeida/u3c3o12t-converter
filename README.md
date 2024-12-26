@@ -309,6 +309,122 @@ O programa foi projetado para lidar com erros comuns de entrada:
 
 ---
 
+# Conversor de Unidades de Dados
+
+Este programa implementa uma funcionalidade para conversão de unidades de dados. Ele permite que o usuário insira um valor em bytes e converta para outras unidades de medida como bits, kilobytes, megabytes, gigabytes e terabytes. O programa inclui validações de entrada para garantir a precisão das conversões.
+
+Requisitos
+
+Um compilador C (como GCC ou Clang).
+
+Uma biblioteca para suporte a caracteres wide (como wchar.h).
+
+Como Usar
+
+Passo 1: Clonar ou copiar o código-fonte
+
+Copie o código-fonte para um arquivo chamado unidades_dados.c no seu ambiente de desenvolvimento.
+
+Passo 2: Compilar o programa
+
+Compile o arquivo unidades_dados.c utilizando o compilador C de sua preferência. Por exemplo, no GCC:
+
+gcc -o unidades_dados unidades_dados.c
+
+Passo 3: Executar o programa
+
+Execute o binário gerado:
+
+./unidades_dados
+
+Passo 4: Navegar no menu
+
+Ao iniciar o programa, você verá o menu principal com as seguintes opções:
+
+1: Bits
+
+2: Bytes
+
+3: Kilobytes (KB)
+
+4: Megabytes (MB)
+
+5: Gigabytes (GB)
+
+6: Terabytes (TB)
+
+0: Sair do programa
+
+Insira o número correspondente à unidade desejada.
+
+Digite um valor em bytes para ser convertido.
+
+O programa exibirá o valor convertido para a unidade escolhida.
+
+Passo 5: Continuar ou sair
+
+Após realizar uma conversão, o menu será exibido novamente.
+
+Digite 0 para encerrar o programa.
+
+Exemplos de Uso
+
+Entrada:
+
+Escolha a unidade: 1
+Digite um valor em byte: 1000
+
+Saída:
+
+8000.00 bits
+
+Entrada:
+
+Escolha a unidade: 3
+Digite um valor em byte: 5000
+
+Saída:
+
+5.00 Kb
+
+Funcionalidades Implementadas
+
+Validação de Entradas:
+
+Verifica se a opção digitada é válida (números de 0 a 6).
+
+Garante que o valor inserido seja um número (inteiro ou float).
+
+Conversões Suportadas:
+
+Bits
+
+Bytes
+
+Kilobytes
+
+Megabytes
+
+Gigabytes
+
+Terabytes
+
+Observações
+
+O programa utiliza funções auxiliares para validação de inteiros e floats (validar_inteiro e validar_float). Certifique-se de incluir as implementações dessas funções no mesmo arquivo ou como dependências.
+
+Para evitar problemas com a entrada de usuário, o buffer de entrada é limpo após cada leitura com while ((getchar()) != '\n');.
+
+Contribuições
+
+Sugestões e melhorias são bem-vindas! Abra um Pull Request ou entre em contato.
+
+Licença
+
+Este projeto é de uso livre e aberto para modificação.
+
+
+
 ## Colaboradores
 
 - Andressa Martins Santana Santos </br>
