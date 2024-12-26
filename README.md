@@ -320,6 +320,12 @@ conteúdo
 <br>
 
 ---
+## Colaboradores
 
-desenvolvido por G3S7
+Andressa Martins Santana Santos
+Camille Rodrigues Costa
+Erick dos Santos Rezende
+Jobson Ressureição de Almeida
+Lucas Silva de Souza
+Wilquer de Lima Pereira
  
