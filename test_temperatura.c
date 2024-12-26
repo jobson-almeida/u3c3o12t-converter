@@ -1,7 +1,7 @@
 #include "headers/minunit.h"
 #include "headers/converter.h"
 
-#define NUM_FAILED_TESTS 0
+#define NUM_FAILED_TESTS 1
 #define NUM_TESTS 1
    
 
@@ -18,18 +18,27 @@ void test_teardown(void)
  
 }
 
-//teste positivo para converter a temperatura de celsius para fahrenheit 
+// teste positivo para converter a temperatura de celsius para fahrenheit 
 MU_TEST(test_celsius_para_fahrenheit_pass)
 {
     mu_assert_float_eq(212.000000, celsius_para_fahrenheit(100));
 }
  
+// teste negativo para converter a temperatura de celsius para fahrenheit 
+MU_TEST(test_celsius_para_fahrenheit_fail)
+{
+    mu_assert_float_eq(212.000010, celsius_para_fahrenheit(100));
+} 
+
+
+
 
 MU_TEST_SUITE(test_suite)
 {
     MU_SUITE_CONFIGURE(&test_setup, &test_teardown);
 
     MU_RUN_TEST(test_celsius_para_fahrenheit_pass);
+    MU_RUN_TEST(test_celsius_para_fahrenheit_fail);
 }
 
 int main(int argc, char *argv[])
