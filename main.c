@@ -42,8 +42,9 @@ int validar_float(const char *entrada) {
         }
     }
     return 1; // Entrada válida
-} 
-
+}
+ 
+ 
 int main()
 {
     //Configurar as definições de localidades do programa de acordo com o ambiente em que o programa será executado
@@ -110,68 +111,10 @@ int main()
 
     return 0;
 }
-
-/*ESTE BLOCO DE CÓDIGO SERVE DE MODELO PARA TODAS AS CONVERSÕES
-    void unidade_com_submenu_nomeDaSuaGrandeza()
-    {
-        int option = -1;
-        float value = 0.0;
-
-        while (option != 0)
-        {
-            wprintf(L"\n");
-            wprintf(L":::: Grandeza ::::::::::::::::::::::::::::::::::::::\n");
-            wprintf(L"::                                                ::\n");
-            wprintf(L":: 1. Exemplo 1                                   ::\n");
-            wprintf(L":: 2. Exemplo 2                                   ::\n");
-            wprintf(L":: 3. Exemplo 3                                   ::\n");
-            wprintf(L":: 0. sair                                        ::\n");
-            wprintf(L"::                                                ::\n");
-            wprintf(L"::::::::::::::::::::::::::::::::::::::::::::::::::::\n\n");
-
-        m_x: // rótulo m_x
-            wprintf(L"Digite uma opção: ");
-            scanf("%s", option_string);
-            while ((getchar()) != '\n') ;       // limpar o buffer
-            if (!validar_inteiro(option_string) || atoi(option_string) > ...) // valida a opção digitada, aceita apenas inteiros
-            {
-                printf("Opção inválida. Digite apenas os números...\n");
-                goto m_x;
-            }
-            option = atoi(option_string); // converte de string para float
-
-
-            if (option != 0)
-            {
-
-                switch (option)
-                {
-                case 1:
-                case 2:
-                case 3:
-                    v3: // rótulo v3
-                    wprintf(L"Digite um valor: ");
-                    scanf("%s", value_string);
-                    while ((getchar()) != '\n'); // limpa o buffer
-                    if (!validar_float(value_string)) // valida o valor digitado, aceita ponto ou vígula, inteiro ou float
-                    {
-                        printf("Valor inválido! Tente novamente.\n");
-                        goto v3; // salto do rótulo v3
-                    }
-                    value = atof(value_string); // converte de string para float                    
-                    wprintf(L"faça a conversão %f\n", value);
-                
-                    break; 
-                }
-            }
-        }
-    }
-*/
+ 
 void unidade_com_submenu_velocidade(){
     int option = -1;
-    double valor = 0.0;
-    //char option_string[10]; // String para a opção digitada
-    //char value_string[20];  // String para o valor digitado
+    double valor = 0.0; 
 
     while (option != 0) {
         wprintf(L"\n:::: Conversor de Velocidade :::::::::::::::::::::::::\n");
