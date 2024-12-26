@@ -818,8 +818,7 @@ void unidade_com_submenu_dados()
     m9:
         wprintf(L"Escolha a unidade: ");
         scanf("%s", option_string);
-        while ((getchar()) != '\n')
-            ;
+        while ((getchar()) != '\n');
 
         // valida a opção digita como um inteiro de 0 a 6
         if (!validar_inteiro(option_string) || atoi(option_string) > 6)
@@ -832,12 +831,14 @@ void unidade_com_submenu_dados()
 
         if (opcao != 0)
         {
+        v9:
             wprintf(L"Digite um valor em byte: ");
             scanf("%s", value_string);
             while ((getchar()) != '\n') ;   // limpa o buffer
             if (!validar_float(value_string)) // valida o valor digitado, aceita ponto ou vígula, inteiro ou float
             {
                 wprintf(L"Valor inválido! Tente novamente.\n");
+                goto v9;
             }
             valor = strtod(value_string, NULL); // converte de string para float
             wprintf(L"%lf", valor);
