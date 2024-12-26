@@ -442,5 +442,6 @@ Este projeto é de uso livre e aberto para modificação.
 - Erick dos Santos Rezende </br>
 - Jobson Ressureição de Almeida </br>
 - Lucas Silva de Souza </br>
-- Wilquer de Lima Pereira
+- Wilquer de Lima Pereira </br>
+- Bartolomeu Neves Dias 
  
