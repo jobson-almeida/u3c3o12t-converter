@@ -815,7 +815,7 @@ void unidade_com_submenu_dados()
         wprintf(L":::::::::::::::::::::::::::::::::::::\n");
         wprintf(L"\n");
 
-    m9:
+    m9: //rótulo de entrada do menu
         wprintf(L"Escolha a unidade: ");
         scanf("%s", option_string);
         while ((getchar()) != '\n');
@@ -824,25 +824,24 @@ void unidade_com_submenu_dados()
         if (!validar_inteiro(option_string) || atoi(option_string) > 6)
         {
             wprintf(L"Opção inválida. Digite números de 0 a 6. \n");
-            goto m9;
-        }
-
+            goto m9; // salto para a entrada de opção do menu
+        } 
+        // converte de string para inteiro
         opcao = atoi(option_string);
 
         if (opcao != 0)
         {
-        v9:
+        v9: //rótulo da entrada do valor
             wprintf(L"Digite um valor em byte: ");
             scanf("%s", value_string);
             while ((getchar()) != '\n') ;   // limpa o buffer
             if (!validar_float(value_string)) // valida o valor digitado, aceita ponto ou vígula, inteiro ou float
             {
                 wprintf(L"Valor inválido! Tente novamente.\n");
-                goto v9;
+                goto v9; // salto para entrada do valor
             }
             valor = strtod(value_string, NULL); // converte de string para float
-            wprintf(L"%lf", valor);
-
+ 
             switch (opcao)
             { 
             case 1:
@@ -866,3 +865,4 @@ void unidade_com_submenu_dados()
             }
         }
     }
+}
