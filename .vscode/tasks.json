@@ -1,22 +1,29 @@
 {
-    "version": "2.0.0",
     "tasks": [
-      {
-        "label": "compilar",
-        "type": "shell",
-        "command": "gcc",
-        "args": [
-          "${workspaceFolder}/main.c",  // Caminho do seu código fonte
-          "-o",
-          "${workspaceFolder}/build/Debug/outDebug"  // Caminho onde o executável será salvo
-        ],
-        "group": {
-          "kind": "build",
-          "isDefault": true
-        },
-        "problemMatcher": ["$gcc"],  // Matcher de problemas para exibir erros de compilação
-        "detail": "Compilando o código C"
-      }
-    ]
-  }
+        {
+            "type": "cppbuild",
+            "label": "C/C++: gcc arquivo de build ativo",
+            "command": "/usr/bin/gcc",
+            "args": [
+                "-fdiagnostics-color=always",
+                "-g",
+                "${file}",
+                "-o",
+                "${fileDirname}/output/${fileBasenameNoExtension}", 
+                "-lm"
+            ],
+            "options": {
+                "cwd": "${fileDirname}"
+            },
+            "problemMatcher": [
+                "$gcc"
+            ],
+            "group": {
+                "kind": "test",
+                "isDefault": true
+            },
+            "detail": "Tarefa gerada pelo Depurador."
+        }
+    ],
+    "version": "2.0.0"
 }

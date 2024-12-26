@@ -13,8 +13,6 @@ void unidade_com_submenu_temperatura();
 void unidade_com_submenu_potencia();
 void convert_power(float value, int from_unit, int to_unit);
 
-bool validate_option(char c[2]); 
-bool validate_value(char c[17]); 
 int validar_inteiro(const char *entrada);
 int validar_float(const char *entrada);
  
@@ -45,63 +43,8 @@ int validar_float(const char *entrada) {
     }
     return 1; // Entrada válida
 }
-
-// valida os dados de entrada do menu principal e submenus. 
-// aceita apenas números não negativos.
-bool validate_option(char c[2])
-{
-    for (int i = 0; i < strlen(c); i++)
-    {   
-        //invalida o caractere se não for dígito
-        if (!isdigit(c[i]))
-        {
-            return false;
-        }
-    }
-    return true;
-}
-
-// valida os valores que serão convertidos
-// aceita apenas inteiros, floats ou doubles de até 16 caracteres
-bool validate_value(char c[17])
-{ 
-    int point = 0;
-    for (int i = 0; i < strlen(c); i++)
-    {
-
-        //replace o ponto para virgula
-        if (ispunct(c[i]))
-        {
-            c[i] = ',';
-            point++;
-        }
-
-        //invalida se ocorrência de ponto/virgula for maior que 1
-        if (point > 1)
-            return false;
-
-        //invalida se hover alguma letra
-        if (point == 0 && !isdigit(c[i]))
-            return false;
-
-        if (point == 1)
-        {  
-            //invalida se o ponto/vírgula for o primeiro caractere
-            if (i == 0)
-                return false;
-
-            // invalida se o valor, pue possui já um ponto, é maior ou igual a 2 dígitos 
-            // recebe um caractere não dígito e não ponto/vírgula
-            if (i >= 2 && !ispunct(c[i]) && !isdigit(c[i])) 
-                return false;
-        }
-    }
-    // retorna falso se um ponto ou vírgula estiver no final do valor
-    if(c[strlen(c)-1] == ',') return false;
-
-    return true;
-}
-
+ 
+ 
 int main()
 {
     //Configurar as definições de localidades do programa de acordo com o ambiente em que o programa será executado
@@ -130,7 +73,7 @@ int main()
         wprintf(L"Digite uma opção: ");
         scanf("%s", option_string);
         while ((getchar()) != '\n');  // limpar o buffer
-        if (!validate_option(option_string)) // valida a opção digitada, aceita apenas inteiros
+        if (!validar_inteiro(option_string)) // valida a opção digitada, aceita apenas inteiros
         {
             wprintf(L"Opção inválida. Digite apenas as opções presentes no menu\n");
             goto m;
@@ -168,68 +111,10 @@ int main()
 
     return 0;
 }
-
-/*ESTE BLOCO DE CÓDIGO SERVE DE MODELO PARA TODAS AS CONVERSÕES
-    void unidade_com_submenu_nomeDaSuaGrandeza()
-    {
-        int option = -1;
-        float value = 0.0;
-
-        while (option != 0)
-        {
-            wprintf(L"\n");
-            wprintf(L":::: Grandeza ::::::::::::::::::::::::::::::::::::::\n");
-            wprintf(L"::                                                ::\n");
-            wprintf(L":: 1. Exemplo 1                                   ::\n");
-            wprintf(L":: 2. Exemplo 2                                   ::\n");
-            wprintf(L":: 3. Exemplo 3                                   ::\n");
-            wprintf(L":: 0. sair                                        ::\n");
-            wprintf(L"::                                                ::\n");
-            wprintf(L"::::::::::::::::::::::::::::::::::::::::::::::::::::\n\n");
-
-        m_x: // rótulo m_x
-            wprintf(L"Digite uma opção: ");
-            scanf("%s", option_string);
-            while ((getchar()) != '\n') ;       // limpar o buffer
-            if (!validate_option(option_string) || atoi(option_string) > ...) // valida a opção digitada, aceita apenas inteiros
-            {
-                printf("Opção inválida. Digite apenas os números...\n");
-                goto m_x;
-            }
-            option = atoi(option_string); // converte de string para float
-
-
-            if (option != 0)
-            {
-
-                switch (option)
-                {
-                case 1:
-                case 2:
-                case 3:
-                    v3: // rótulo v3
-                    wprintf(L"Digite um valor: ");
-                    scanf("%s", value_string);
-                    while ((getchar()) != '\n'); // limpa o buffer
-                    if (!validate_value(value_string)) // valida o valor digitado, aceita ponto ou vígula, inteiro ou float
-                    {
-                        printf("Valor inválido! Tente novamente.\n");
-                        goto v3; // salto do rótulo v3
-                    }
-                    value = atof(value_string); // converte de string para float                    
-                    wprintf(L"faça a conversão %f\n", value);
-                
-                    break; 
-                }
-            }
-        }
-    }
-*/
+ 
 void unidade_com_submenu_velocidade(){
     int option = -1;
-    double valor = 0.0;
-    //char option_string[10]; // String para a opção digitada
-    //char value_string[20];  // String para o valor digitado
+    double valor = 0.0; 
 
     while (option != 0) {
         wprintf(L"\n:::: Conversor de Velocidade :::::::::::::::::::::::::\n");
@@ -244,11 +129,11 @@ void unidade_com_submenu_velocidade(){
         wprintf(L"::                                                ::\n");
         wprintf(L"::::::::::::::::::::::::::::::::::::::::::::::::::::\n\n");
 
-        wprintf(L"Digite uma opção: ");
     m1: // inicio do submenu
+        wprintf(L"Digite uma opção: ");
         scanf("%s", option_string);
         while ((getchar()) != '\n'); // limpa o buffer
-        if (!validate_option(option_string)) { // valida a opção digitada, aceita apenas inteiros
+        if (!validar_inteiro(option_string)) { // valida a opção digitada, aceita apenas inteiros
             wprintf(L"Opção inválida, digite apenas números\n");
             goto m1; // salto do submenu
         }
@@ -261,7 +146,7 @@ void unidade_com_submenu_velocidade(){
             m1v1: // inicio da validação do valor
                 scanf("%s", value_string);
                 while ((getchar()) != '\n'); // limpa o buffer
-                if (!validate_value(value_string)) { // valida o valor digitado
+                if (!validar_float(value_string)) { // valida o valor digitado
                     wprintf(L"Valor inválido! Tente novamente.\n");
                     goto m1v1;
                 }
@@ -273,7 +158,7 @@ void unidade_com_submenu_velocidade(){
                 wprintf(L"Digite o valor em km/h: ");
                 scanf("%s", value_string);
                 while ((getchar()) != '\n'); // limpa o buffer
-                if (!validate_value(value_string)) { // valida o valor digitado
+                if (!validar_float(value_string)) { // valida o valor digitado
                     wprintf(L"Valor inválido! Tente novamente.\n");
                     goto m1v1;
                 }
@@ -285,7 +170,7 @@ void unidade_com_submenu_velocidade(){
                 wprintf(L"Digite o valor em mph: ");
                 scanf("%s", value_string);
                 while ((getchar()) != '\n'); // limpa o buffer
-                if (!validate_value(value_string)) { // valida o valor digitado
+                if (!validar_float(value_string)) { // valida o valor digitado
                     wprintf(L"Valor inválido! Tente novamente.\n");
                     goto m1v1;
                 }
@@ -297,7 +182,7 @@ void unidade_com_submenu_velocidade(){
                 wprintf(L"Digite o valor em mph: ");
                 scanf("%s", value_string);
                 while ((getchar()) != '\n'); // limpa o buffer
-                if (!validate_value(value_string)) { // valida o valor digitado
+                if (!validar_float(value_string)) { // valida o valor digitado
                     wprintf(L"Valor inválido! Tente novamente.\n");
                     goto m1v1;
                 }
@@ -309,7 +194,7 @@ void unidade_com_submenu_velocidade(){
                 wprintf(L"Digite o valor em m/s: ");
                 scanf("%s", value_string);
                 while ((getchar()) != '\n'); // limpa o buffer
-                if (!validate_value(value_string)) { // valida o valor digitado
+                if (!validar_float(value_string)) { // valida o valor digitado
                     wprintf(L"Valor inválido! Tente novamente.\n");
                     goto m1v1;
                 }
@@ -321,7 +206,7 @@ void unidade_com_submenu_velocidade(){
                 wprintf(L"Digite o valor em m/s: ");
                 scanf("%s", value_string);
                 while ((getchar()) != '\n'); // limpa o buffer
-                if (!validate_value(value_string)) { // valida o valor digitado
+                if (!validar_float(value_string)) { // valida o valor digitado
                     wprintf(L"Valor inválido! Tente novamente.\n");
                     goto m1v1;
                 }
@@ -348,93 +233,110 @@ void unidade_com_submenu_comprimento() {
     float value = 0.0;
 
     while (option != 0) {
-        printf("\n");
-        printf(":::: Comprimento :::::::::::::::::::::::::::::::::::\n");
-        printf("::                                                ::\n");
-        printf(":: 1. metro -> centímetro                         ::\n");
-        printf(":: 2. metro -> milímetro                          ::\n");
-        printf(":: 3. centímetro -> metro                         ::\n");
-        printf(":: 4. centímetro -> milímetro                     ::\n");
-        printf(":: 5. milímetro -> centímetro                     ::\n");
-        printf(":: 6. milímetro -> metro                          ::\n");
-        printf(":: 0. sair                                        ::\n");
-        printf("::                                                ::\n");
-        printf("::::::::::::::::::::::::::::::::::::::::::::::::::::\n\n");
+        wprintf(L"\n");
+        wprintf(L":::: Comprimento :::::::::::::::::::::::::::::::::::\n");
+        wprintf(L"::                                                ::\n");
+        wprintf(L":: 1. metro -> centímetro                         ::\n");
+        wprintf(L":: 2. metro -> milímetro                          ::\n");
+        wprintf(L":: 3. centímetro -> metro                         ::\n");
+        wprintf(L":: 4. centímetro -> milímetro                     ::\n");
+        wprintf(L":: 5. milímetro -> centímetro                     ::\n");
+        wprintf(L":: 6. milímetro -> metro                          ::\n");
+        wprintf(L":: 0. voltar                                      ::\n");
+        wprintf(L"::                                                ::\n");
+        wprintf(L"::::::::::::::::::::::::::::::::::::::::::::::::::::\n\n");
 
-        printf("digite uma opção: ");
+    m1:
+        wprintf(L"digite uma opção: ");
         scanf("%s", entrada);
 
-        if (!validar_inteiro(entrada)) {
-            printf("Opção inválida! Tente novamente.\n");
-            continue; // Volta ao início do loop
+        if (!validar_inteiro(entrada))
+        {
+            wprintf(L"Opção inválida! Tente novamente.\n");
+            goto m1; // Volta ao início do loop
         }
 
         option = atoi(entrada); // Converte a entrada para inteiro
 
-        if (option != 0) {
-            switch (option) {
+        if (option != 0)
+        {
+            switch (option)
+            {
             case 1: // Conversão de metro para centímetro
-                printf("Digite o valor em metros: ");
+            m1v1:
+                wprintf(L"Digite o valor em metros: ");
                 scanf("%s", valor);
-                if (!validar_float(valor)) {
-                    printf("Valor inválido! Tente novamente.\n");
-                } else {
-                    value = atof(valor); // Converte string para float
-                    printf("%.2f metros equivalem a %.2f centímetros.\n", value, value * 100.0);
+                if (!validar_float(valor))
+                {
+                    wprintf(L"Valor inválido! Tente novamente.\n");
+                    goto m1v1;
                 }
+                value = atof(valor); // Converte string para float
+                wprintf(L"%.2f metros equivalem a %.2f centímetros.\n", value, value * 100.0);
                 break;
             case 2: // Conversão de metro para milímetro
-                printf("Digite o valor em metros: ");
+            m1v2:
+                wprintf(L"Digite o valor em metros: ");
                 scanf("%s", valor);
-                if (!validar_float(valor)) {
-                    printf("Valor inválido! Tente novamente.\n");
-                } else {
-                    value = atof(valor);
-                    printf("%.2f metros equivalem a %.2f milímetros.\n", value, value * 1000.0);
+                if (!validar_float(valor))
+                {
+                    wprintf(L"Valor inválido! Tente novamente.\n");
+                    goto m1v2;
                 }
+                value = atof(valor);
+                wprintf(L"%.2f metros equivalem a %.2f milímetros.\n", value, value * 1000.0);
                 break;
             case 3: // Conversão de centímetro para metro
-                printf("Digite o valor em centímetros: ");
+            m1v3:
+                wprintf(L"Digite o valor em centímetros: ");
                 scanf("%s", valor);
-                if (!validar_float(valor)) {
-                    printf("Valor inválido! Tente novamente.\n");
-                } else {
-                    value = atof(valor);
-                    printf("%.2f centímetros equivalem a %.2f metros.\n", value, value / 100.0);
+                if (!validar_float(valor))
+                {
+                    wprintf(L"Valor inválido! Tente novamente.\n");
+                    goto m1v3;
                 }
+                value = atof(valor);
+                wprintf(L"%.2f centímetros equivalem a %.2f metros.\n", value, value / 100.0);
                 break;
             case 4: // Conversão de centímetro para milímetro
-                printf("Digite o valor em centímetros: ");
+            m1v4:
+                wprintf(L"Digite o valor em centímetros: ");
                 scanf("%s", valor);
-                if (!validar_float(valor)) {
-                    printf("Valor inválido! Tente novamente.\n");
-                } else {
-                    value = atof(valor);
-                    printf("%.2f centímetros equivalem a %.2f milímetros.\n", value, value * 10.0);
+                if (!validar_float(valor))
+                {
+                    wprintf(L"Valor inválido! Tente novamente.\n");
+                    goto m1v4;
                 }
+                value = atof(valor);
+                wprintf(L"%.2f centímetros equivalem a %.2f milímetros.\n", value, value * 10.0);
                 break;
             case 5: // Conversão de milímetro para centímetro
-                printf("Digite o valor em milímetros: ");
+            m1v5:
+                wprintf(L"Digite o valor em milímetros: ");
                 scanf("%s", valor);
-                if (!validar_float(valor)) {
-                    printf("Valor inválido! Tente novamente.\n");
-                } else {
-                    value = atof(valor);
-                    printf("%.2f milímetros equivalem a %.2f centímetros.\n", value, value / 10.0);
+                if (!validar_float(valor))
+                {
+                    wprintf(L"Valor inválido! Tente novamente.\n");
+                    goto m1v5;
                 }
+                value = atof(valor);
+                wprintf(L"%.2f milímetros equivalem a %.2f centímetros.\n", value, value / 10.0);
                 break;
             case 6: // Conversão de milímetro para metro
-                printf("Digite o valor em milímetros: ");
+            m1v6:
+                wprintf(L"Digite o valor em milímetros: ");
                 scanf("%s", valor);
-                if (!validar_float(valor)) {
-                    printf("Valor inválido! Tente novamente.\n");
-                } else {
-                    value = atof(valor);
-                    printf("%.2f milímetros equivalem a %.2f metros.\n", value, value / 1000.0);
+                if (!validar_float(valor))
+                {
+                    wprintf(L"Valor inválido! Tente novamente.\n");
+                    goto m1v6;
                 }
+                value = atof(valor);
+                wprintf(L"%.2f milímetros equivalem a %.2f metros.\n", value, value / 1000.0);
                 break;
             default:
-                printf("Opção não encontrada!\n");
+                wprintf(L"Opção não encontrada! Tente novamente.\n");
+                goto m1;
                 break;
             }
         }
@@ -514,7 +416,7 @@ void unidade_com_submenu_temperatura() {
         while ((getchar()) != '\n');
         
         //O laço a seguir serve para impedir a inserção de letras, caracteres especiais ou números maiores que 6, caso ocorra a entrada destes, o laço envia para a função m4
-        if (!validate_option(option_string) || atoi(option_string) > 6){
+        if (!validar_inteiro(option_string) || atoi(option_string) > 6){
             wprintf(L"Opção inválida. Digite números de 0 a 6. \n");
             goto m4;
         }
@@ -603,7 +505,7 @@ void unidade_com_submenu_massa(){
         wprintf(L"Digite uma opção: ");
         scanf("%s", option_string);
         while ((getchar()) != '\n');  // limpa o buffer
-        if (!validate_option(option_string) || atoi(option_string) > 6) // valida a opção digitada, aceita apenas inteiros presente
+        if (!validar_inteiro(option_string) || atoi(option_string) > 6) // valida a opção digitada, aceita apenas inteiros presente
         {
             wprintf(L"Opção inválida. Digite números de 0 a 6. \n");
             goto m2;
@@ -619,7 +521,7 @@ void unidade_com_submenu_massa(){
                 wprintf(L"Digite o valor em tonelada: ");
                 scanf("%s", value_string);
                 while ((getchar()) != '\n'); // limpa o buffer
-                if (!validate_value(value_string)) // valida o valor digitado, aceita ponto ou vígula, inteiro ou float
+                if (!validar_float(value_string)) // valida o valor digitado, aceita ponto ou vígula, inteiro ou float
                 {
                     wprintf(L"Valor inválido! Tente novamente.\n");
                     goto m2v1;
@@ -770,7 +672,7 @@ void unidade_com_submenu_potencia()
         while ((getchar()) != '\n');
         
         //As unicas opções aceitas são os números representados no menu, caso contrário volta ao rótulo m4
-        if (!validate_option(option_string) || atoi(option_string) > 6){
+        if (!validar_inteiro(option_string) || atoi(option_string) > 6){
             wprintf(L"Opção inválida. Digite números de 0 a 6. \n");
             goto m6;
         }
@@ -784,7 +686,7 @@ void unidade_com_submenu_potencia()
             wprintf(L"Digite o valor: ");                      
             scanf("%s", value_string);
             while ((getchar()) != '\n'); // limpa o buffer
-            if (!validate_value(value_string)) // valida o valor digitado, aceita ponto ou vígula, inteiro ou float
+            if (!validar_float(value_string)) // valida o valor digitado, aceita ponto ou vígula, inteiro ou float
             {
                 wprintf(L"Valor inválido! Tente novamente.\n");
                 goto v6;
