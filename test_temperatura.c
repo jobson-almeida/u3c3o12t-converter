@@ -4,6 +4,10 @@
 #define NUM_FAILED_TESTS 0
 #define NUM_TESTS 0
    
+
+float celsius_para_fahrenheit(float celsius);
+
+
 void test_setup(void)
 {
  
@@ -13,10 +17,11 @@ void test_teardown(void)
 {
  
 }
- 
-MU_TEST(t)
+
+//teste positivo para converter a temperatura de celsius para fahrenheit 
+MU_TEST(test_celsius_para_fahrenheit_pass)
 {
-    mu_assert_float_eq(1, 1);
+    mu_assert_float_eq(212.000000, celsius_para_fahrenheit(100));
 }
  
 
