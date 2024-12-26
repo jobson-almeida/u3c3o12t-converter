@@ -800,8 +800,7 @@ void unidade_com_submenu_dados()
     int opcao = -1;
 
     while (opcao != 0)
-    {
-
+    {  
     wprintf(L"\n");
     wprintf(L":::: Dados (tabela de Bytes) ::::::::\n");
     wprintf(L"::                                 ::\n");
@@ -817,10 +816,20 @@ void unidade_com_submenu_dados()
     wprintf(L"\n");
 
     wprintf(L"Escolha a unidade: ");
-    scanf("%d", &opcao);
-    wprintf(L"Escolha o valor: ");
-    scanf("%lf", &valor);
-    unidade_com_submenu_dados(valor, opcao);
+   scanf("%s", option_string);
+        while ((getchar()) != '\n') ;
+
+        // valida a opção digita como um inteiro de 0 a 6
+        if (!validar_inteiro(option_string) || atoi(option_string) > 6)
+        {
+            wprintf(L"Opção inválida. Digite números de 0 a 6. \n"); 
+        }
+
+        opcao = atoi(option_string);
+
+//    wprintf(L"Escolha o valor: ");
+ //   scanf("%lf", &valor);
+  //  unidade_com_submenu_dados(valor, opcao);
 
    }
 }
