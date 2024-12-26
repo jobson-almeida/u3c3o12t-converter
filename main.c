@@ -13,8 +13,6 @@ void unidade_com_submenu_temperatura();
 void unidade_com_submenu_potencia();
 void convert_power(float value, int from_unit, int to_unit);
 
-bool validate_option(char c[2]); 
-bool validate_value(char c[17]); 
 int validar_inteiro(const char *entrada);
 int validar_float(const char *entrada);
  
@@ -44,63 +42,7 @@ int validar_float(const char *entrada) {
         }
     }
     return 1; // Entrada válida
-}
-
-// valida os dados de entrada do menu principal e submenus. 
-// aceita apenas números não negativos.
-bool validate_option(char c[2])
-{
-    for (int i = 0; i < strlen(c); i++)
-    {   
-        //invalida o caractere se não for dígito
-        if (!isdigit(c[i]))
-        {
-            return false;
-        }
-    }
-    return true;
-}
-
-// valida os valores que serão convertidos
-// aceita apenas inteiros, floats ou doubles de até 16 caracteres
-bool validate_value(char c[17])
-{ 
-    int point = 0;
-    for (int i = 0; i < strlen(c); i++)
-    {
-
-        //replace o ponto para virgula
-        if (ispunct(c[i]))
-        {
-            c[i] = ',';
-            point++;
-        }
-
-        //invalida se ocorrência de ponto/virgula for maior que 1
-        if (point > 1)
-            return false;
-
-        //invalida se hover alguma letra
-        if (point == 0 && !isdigit(c[i]))
-            return false;
-
-        if (point == 1)
-        {  
-            //invalida se o ponto/vírgula for o primeiro caractere
-            if (i == 0)
-                return false;
-
-            // invalida se o valor, pue possui já um ponto, é maior ou igual a 2 dígitos 
-            // recebe um caractere não dígito e não ponto/vírgula
-            if (i >= 2 && !ispunct(c[i]) && !isdigit(c[i])) 
-                return false;
-        }
-    }
-    // retorna falso se um ponto ou vírgula estiver no final do valor
-    if(c[strlen(c)-1] == ',') return false;
-
-    return true;
-}
+} 
 
 int main()
 {
@@ -130,7 +72,7 @@ int main()
         wprintf(L"Digite uma opção: ");
         scanf("%s", option_string);
         while ((getchar()) != '\n');  // limpar o buffer
-        if (!validate_option(option_string)) // valida a opção digitada, aceita apenas inteiros
+        if (!validar_inteiro(option_string)) // valida a opção digitada, aceita apenas inteiros
         {
             wprintf(L"Opção inválida. Digite apenas as opções presentes no menu\n");
             goto m;
@@ -191,7 +133,7 @@ int main()
             wprintf(L"Digite uma opção: ");
             scanf("%s", option_string);
             while ((getchar()) != '\n') ;       // limpar o buffer
-            if (!validate_option(option_string) || atoi(option_string) > ...) // valida a opção digitada, aceita apenas inteiros
+            if (!validar_inteiro(option_string) || atoi(option_string) > ...) // valida a opção digitada, aceita apenas inteiros
             {
                 printf("Opção inválida. Digite apenas os números...\n");
                 goto m_x;
@@ -211,7 +153,7 @@ int main()
                     wprintf(L"Digite um valor: ");
                     scanf("%s", value_string);
                     while ((getchar()) != '\n'); // limpa o buffer
-                    if (!validate_value(value_string)) // valida o valor digitado, aceita ponto ou vígula, inteiro ou float
+                    if (!validar_float(value_string)) // valida o valor digitado, aceita ponto ou vígula, inteiro ou float
                     {
                         printf("Valor inválido! Tente novamente.\n");
                         goto v3; // salto do rótulo v3
@@ -248,7 +190,7 @@ void unidade_com_submenu_velocidade(){
     m1: // inicio do submenu
         scanf("%s", option_string);
         while ((getchar()) != '\n'); // limpa o buffer
-        if (!validate_option(option_string)) { // valida a opção digitada, aceita apenas inteiros
+        if (!validar_inteiro(option_string)) { // valida a opção digitada, aceita apenas inteiros
             wprintf(L"Opção inválida, digite apenas números\n");
             goto m1; // salto do submenu
         }
@@ -261,7 +203,7 @@ void unidade_com_submenu_velocidade(){
             m1v1: // inicio da validação do valor
                 scanf("%s", value_string);
                 while ((getchar()) != '\n'); // limpa o buffer
-                if (!validate_value(value_string)) { // valida o valor digitado
+                if (!validar_float(value_string)) { // valida o valor digitado
                     wprintf(L"Valor inválido! Tente novamente.\n");
                     goto m1v1;
                 }
@@ -273,7 +215,7 @@ void unidade_com_submenu_velocidade(){
                 wprintf(L"Digite o valor em km/h: ");
                 scanf("%s", value_string);
                 while ((getchar()) != '\n'); // limpa o buffer
-                if (!validate_value(value_string)) { // valida o valor digitado
+                if (!validar_float(value_string)) { // valida o valor digitado
                     wprintf(L"Valor inválido! Tente novamente.\n");
                     goto m1v1;
                 }
@@ -285,7 +227,7 @@ void unidade_com_submenu_velocidade(){
                 wprintf(L"Digite o valor em mph: ");
                 scanf("%s", value_string);
                 while ((getchar()) != '\n'); // limpa o buffer
-                if (!validate_value(value_string)) { // valida o valor digitado
+                if (!validar_float(value_string)) { // valida o valor digitado
                     wprintf(L"Valor inválido! Tente novamente.\n");
                     goto m1v1;
                 }
@@ -297,7 +239,7 @@ void unidade_com_submenu_velocidade(){
                 wprintf(L"Digite o valor em mph: ");
                 scanf("%s", value_string);
                 while ((getchar()) != '\n'); // limpa o buffer
-                if (!validate_value(value_string)) { // valida o valor digitado
+                if (!validar_float(value_string)) { // valida o valor digitado
                     wprintf(L"Valor inválido! Tente novamente.\n");
                     goto m1v1;
                 }
@@ -309,7 +251,7 @@ void unidade_com_submenu_velocidade(){
                 wprintf(L"Digite o valor em m/s: ");
                 scanf("%s", value_string);
                 while ((getchar()) != '\n'); // limpa o buffer
-                if (!validate_value(value_string)) { // valida o valor digitado
+                if (!validar_float(value_string)) { // valida o valor digitado
                     wprintf(L"Valor inválido! Tente novamente.\n");
                     goto m1v1;
                 }
@@ -321,7 +263,7 @@ void unidade_com_submenu_velocidade(){
                 wprintf(L"Digite o valor em m/s: ");
                 scanf("%s", value_string);
                 while ((getchar()) != '\n'); // limpa o buffer
-                if (!validate_value(value_string)) { // valida o valor digitado
+                if (!validar_float(value_string)) { // valida o valor digitado
                     wprintf(L"Valor inválido! Tente novamente.\n");
                     goto m1v1;
                 }
@@ -514,7 +456,7 @@ void unidade_com_submenu_temperatura() {
         while ((getchar()) != '\n');
         
         //O laço a seguir serve para impedir a inserção de letras, caracteres especiais ou números maiores que 6, caso ocorra a entrada destes, o laço envia para a função m4
-        if (!validate_option(option_string) || atoi(option_string) > 6){
+        if (!validar_inteiro(option_string) || atoi(option_string) > 6){
             wprintf(L"Opção inválida. Digite números de 0 a 6. \n");
             goto m4;
         }
@@ -603,7 +545,7 @@ void unidade_com_submenu_massa(){
         wprintf(L"Digite uma opção: ");
         scanf("%s", option_string);
         while ((getchar()) != '\n');  // limpa o buffer
-        if (!validate_option(option_string) || atoi(option_string) > 6) // valida a opção digitada, aceita apenas inteiros presente
+        if (!validar_inteiro(option_string) || atoi(option_string) > 6) // valida a opção digitada, aceita apenas inteiros presente
         {
             wprintf(L"Opção inválida. Digite números de 0 a 6. \n");
             goto m2;
@@ -619,7 +561,7 @@ void unidade_com_submenu_massa(){
                 wprintf(L"Digite o valor em tonelada: ");
                 scanf("%s", value_string);
                 while ((getchar()) != '\n'); // limpa o buffer
-                if (!validate_value(value_string)) // valida o valor digitado, aceita ponto ou vígula, inteiro ou float
+                if (!validar_float(value_string)) // valida o valor digitado, aceita ponto ou vígula, inteiro ou float
                 {
                     wprintf(L"Valor inválido! Tente novamente.\n");
                     goto m2v1;
@@ -770,7 +712,7 @@ void unidade_com_submenu_potencia()
         while ((getchar()) != '\n');
         
         //As unicas opções aceitas são os números representados no menu, caso contrário volta ao rótulo m4
-        if (!validate_option(option_string) || atoi(option_string) > 6){
+        if (!validar_inteiro(option_string) || atoi(option_string) > 6){
             wprintf(L"Opção inválida. Digite números de 0 a 6. \n");
             goto m6;
         }
@@ -784,7 +726,7 @@ void unidade_com_submenu_potencia()
             wprintf(L"Digite o valor: ");                      
             scanf("%s", value_string);
             while ((getchar()) != '\n'); // limpa o buffer
-            if (!validate_value(value_string)) // valida o valor digitado, aceita ponto ou vígula, inteiro ou float
+            if (!validar_float(value_string)) // valida o valor digitado, aceita ponto ou vígula, inteiro ou float
             {
                 wprintf(L"Valor inválido! Tente novamente.\n");
                 goto v6;
