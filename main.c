@@ -816,9 +816,9 @@ void unidade_com_submenu_dados()
     wprintf(L":::::::::::::::::::::::::::::::::::::\n");
     wprintf(L"\n");
 
-    printf("Escolha a unidade: ");
+    wprintf(L"Escolha a unidade: ");
     scanf("%d", &opcao);
-    printf("Escolha o valor: ");
+    wprintf(L"Escolha o valor: ");
     scanf("%lf", &valor);
     unidade_com_submenu_dados(valor, opcao);
 
