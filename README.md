@@ -74,8 +74,7 @@ O submenu **Comprimento** permite realizar as seguintes conversões:
 ---
 
 
-# Massa
-
+# Massa 
 Bem-vindo ao manual de usuário da feature **Massa** do submenu! Este guia fornecerá instruções detalhadas sobre como utilizar corretamente as opções disponíveis. Esta funcionalidade permite converter medidas de massa entre diferentes unidades de forma simples e intuitiva.
 
 ## Funcionalidades Disponíveis
@@ -85,7 +84,7 @@ O submenu **Massa** permite realizar conversões de valores entre toneladas, qui
 ---
 
 ## Como Utilizar
-
+ 
 ## Acessando o Submenu Massa
 
 1. Inicie o programa principal.
@@ -114,8 +113,8 @@ O submenu **Massa** permite realizar conversões de valores entre toneladas, qui
 3. O programa exibirá:
    ```
    5.00 tonelada equivalem a 5000.00 quilos.
-   ```
----
+ 
+   ``` 
 
 - **Conversões Implementadas:**
   - Baseadas em relações de medida padronizadas:
@@ -170,8 +169,54 @@ Melhorias sempre são bem-vindas: existem outras escalas de temperatura e estas 
 
 # Velocidade
 
-conteúdo<br><br>
+Este programa é um conversor de unidades de velocidade, permitindo a conversão entre três unidades de medida de velocidade: km/h (quilômetros por hora), m/s (metros por segundo), e mph (milhas por hora). O usuário pode escolher entre seis opções de conversão, com a possibilidade de sair do programa a qualquer momento.
 
+Funcionalidades:
+
+km/h para m/s: Converte velocidade de km/h para metros por segundo.
+km/h para mph: Converte velocidade de km/h para milhas por hora.
+mph para km/h: Converte velocidade de milhas por hora para quilômetros por hora.
+mph para m/s: Converte velocidade de milhas por hora para metros por segundo.
+m/s para km/h: Converte velocidade de metros por segundo para quilômetros por hora.
+m/s para mph: Converte velocidade de metros por segundo para milhas por hora.
+
+Como Funciona:
+
+O programa exibe um menu interativo onde o usuário pode escolher a conversão desejada. Após selecionar a opção, o usuário deve informar o valor da velocidade a ser convertido. O programa, então, exibirá o resultado da conversão.
+
+Menu de Opções
+km/h → m/s
+km/h → mph
+mph → km/h
+mph → m/s
+m/s → km/h
+m/s → mph
+Sair
+
+Instruções:
+
+Compile o código usando um compilador de C, como gcc.
+Execute o programa. O menu de opções será exibido.
+Selecione a opção desejada, insira o valor da velocidade e veja o resultado da conversão.
+Para sair, escolha a opção 0.
+
+Exemplo de Execução:
+
+::::::: Conversor de Velocidade ::::::::::::::::::::::::::
+::                                                ::
+:: 1. km/h -> m/s                                 ::
+:: 2. km/h -> mph                                 ::
+:: 3. mph -> km/h                                 ::
+:: 4. mph -> m/s                                  ::
+:: 5. m/s -> km/h                                 ::
+:: 6. m/s -> mph                                  ::
+:: 0. Sair                                        ::
+::                                                ::
+:::::::::::::::::::::::::::::::::::::::::::::::::::: 
+
+Digite uma opção: 1
+Digite o valor da velocidade: 90
+m/s: 25.00
 
 # Potência
  
