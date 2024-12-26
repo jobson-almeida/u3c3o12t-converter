@@ -846,18 +846,21 @@ void unidade_com_submenu_dados()
             switch (opcao)
             { 
             case 1:
+                wprintf(L"%.2lf bits\n", valor * 8);
+                break;                
+            case 2:
                 wprintf(L"%.2lf bytes\n", valor);
                 break;
-            case 2:
+            case 3:
                 wprintf(L"%.2lf Kb\n", valor * 0.001);
                 break;
-            case 3:
+            case 4:
                 wprintf(L"%.2lf MB\n", valor * 0.000001);
                 break;
-            case 4:
+            case 5:
                 wprintf(L"%.2lf bytes\n", valor * 1e-9);
                 break;
-            case 5:
+            case 6:
                 wprintf(L"%.2lf TB\n", valor * 1e-12);
                 break;
             }
