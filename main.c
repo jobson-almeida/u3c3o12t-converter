@@ -129,8 +129,8 @@ void unidade_com_submenu_velocidade(){
         wprintf(L"::                                                ::\n");
         wprintf(L"::::::::::::::::::::::::::::::::::::::::::::::::::::\n\n");
 
-        wprintf(L"Digite uma opção: ");
     m1: // inicio do submenu
+        wprintf(L"Digite uma opção: ");
         scanf("%s", option_string);
         while ((getchar()) != '\n'); // limpa o buffer
         if (!validar_inteiro(option_string)) { // valida a opção digitada, aceita apenas inteiros
