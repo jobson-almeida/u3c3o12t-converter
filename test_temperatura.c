@@ -38,6 +38,18 @@ MU_TEST(test_celsius_para_kelvin_fail)
     mu_assert_float_eq(373.189994, celsius_para_kelvin(100));
 }
 
+// teste positivo para converter a temperatura de fahrenheit para kelvin
+MU_TEST(test_fahrenheit_para_kelvin_ok)
+{
+    mu_assert_float_eq(310.927765, fahrenheit_para_kelvin(100));
+}
+
+// teste negativo para converter a temperatura de fahrenheit para kelvin
+MU_TEST(test_fahrenheit_para_kelvin_fail)
+{
+    mu_assert_float_eq(310.926765, fahrenheit_para_kelvin(100));
+}
+
 MU_TEST_SUITE(test_suite)
 {
     MU_SUITE_CONFIGURE(&test_setup, &test_teardown);
@@ -47,6 +59,9 @@ MU_TEST_SUITE(test_suite)
 
     MU_RUN_TEST(test_celsius_para_kelvin_ok);
     MU_RUN_TEST(test_celsius_para_kelvin_fail);
+
+    MU_RUN_TEST(test_fahrenheit_para_kelvin_ok);
+    MU_RUN_TEST(test_fahrenheit_para_kelvin_fail);
 }
 
 int main(int argc, char *argv[])
