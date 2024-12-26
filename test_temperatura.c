@@ -1,10 +1,8 @@
 #include "headers/minunit.h"
 #include "headers/converter.h"
 
-#define NUM_FAILED_TESTS 5
-#define NUM_TESTS 10
-
-float celsius_para_fahrenheit(float celsius);
+#define NUM_FAILED_TESTS 6
+#define NUM_TESTS 12
 
 void test_setup(void)
 {
@@ -74,11 +72,24 @@ MU_TEST(test_kelvin_para_celsius_fail)
     mu_assert_float_eq(-173.145994, kelvin_para_celsius(100));
 }
 
+// teste positivo para converter a temperatura de kelvin para fahrenheit
+MU_TEST(test_kelvin_para_fahrenheit_pass)
+{
+    mu_assert_float_eq(-279.670013, kelvin_para_fahrenheit(100));
+}
+
+// teste negativo para converter a temperatura de kelvin para fahrenheit
+MU_TEST(test_kelvin_para_fahrenheit_fail)
+{
+    mu_assert_float_eq(-279.670413, kelvin_para_fahrenheit(100));
+}
+
 
 MU_TEST_SUITE(test_suite)
-{
+{   
+    // inicia a configuração dos testes 
     MU_SUITE_CONFIGURE(&test_setup, &test_teardown);
-
+ 
     MU_RUN_TEST(test_celsius_para_fahrenheit_pass);
     MU_RUN_TEST(test_celsius_para_fahrenheit_fail);
 
@@ -92,7 +103,10 @@ MU_TEST_SUITE(test_suite)
     MU_RUN_TEST(test_fahrenheit_para_celsius_fail);
 
     MU_RUN_TEST(test_kelvin_para_celsius_pass);
-    MU_RUN_TEST(test_kelvin_para_celsius_fail);        
+    MU_RUN_TEST(test_kelvin_para_celsius_fail);    
+
+    MU_RUN_TEST(test_kelvin_para_fahrenheit_pass);
+    MU_RUN_TEST(test_kelvin_para_fahrenheit_fail);    
 }
 
 int main(int argc, char *argv[])
