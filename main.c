@@ -795,43 +795,44 @@ void unidade_com_submenu_potencia()
 
 void unidade_com_submenu_dados()
 {
-    
-   double valor;
+
+    double valor;
     int opcao = -1;
 
     while (opcao != 0)
-    {  
-    wprintf(L"\n");
-    wprintf(L":::: Dados (tabela de Bytes) ::::::::\n");
-    wprintf(L"::                                 ::\n");
-    wprintf(L":: 1 - Bits                        ::\n");
-    wprintf(L":: 2 - Bytes                       ::\n");
-    wprintf(L":: 3 - Kilobytes (KB)              ::\n");
-    wprintf(L":: 4 - Megabytes (MB)              ::\n");
-    wprintf(L":: 5 - Gigabytes (GB)              ::\n");
-    wprintf(L":: 6 - Terabytes (TB)              ::\n");
-    wprintf(L":: 0 - Voltar                      ::\n");
-    wprintf(L"::                                 ::\n");
-    wprintf(L":::::::::::::::::::::::::::::::::::::\n");
-    wprintf(L"\n");
+    {
+        wprintf(L"\n");
+        wprintf(L":::: Dados (tabela de Bytes) ::::::::\n");
+        wprintf(L"::                                 ::\n");
+        wprintf(L":: 1 - Bits                        ::\n");
+        wprintf(L":: 2 - Bytes                       ::\n");
+        wprintf(L":: 3 - Kilobytes (KB)              ::\n");
+        wprintf(L":: 4 - Megabytes (MB)              ::\n");
+        wprintf(L":: 5 - Gigabytes (GB)              ::\n");
+        wprintf(L":: 6 - Terabytes (TB)              ::\n");
+        wprintf(L":: 0 - Voltar                      ::\n");
+        wprintf(L"::                                 ::\n");
+        wprintf(L":::::::::::::::::::::::::::::::::::::\n");
+        wprintf(L"\n");
 
-    wprintf(L"Escolha a unidade: ");
-   scanf("%s", option_string);
-        while ((getchar()) != '\n') ;
+    m9:
+        wprintf(L"Escolha a unidade: ");
+        scanf("%s", option_string);
+        while ((getchar()) != '\n');
 
         // valida a opção digita como um inteiro de 0 a 6
         if (!validar_inteiro(option_string) || atoi(option_string) > 6)
         {
-            wprintf(L"Opção inválida. Digite números de 0 a 6. \n"); 
+            wprintf(L"Opção inválida. Digite números de 0 a 6. \n");
+            goto m9;
         }
 
         opcao = atoi(option_string);
 
-//    wprintf(L"Escolha o valor: ");
- //   scanf("%lf", &valor);
-  //  unidade_com_submenu_dados(valor, opcao);
-
-   }
+        //    wprintf(L"Escolha o valor: ");
+        //   scanf("%lf", &valor);
+        //  unidade_com_submenu_dados(valor, opcao);
+    }
 }
 
 void converter_dados(double valor, char unidade)
