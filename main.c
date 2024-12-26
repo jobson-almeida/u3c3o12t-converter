@@ -459,8 +459,7 @@ void unidade_com_submenu_temperatura()
     m4:
         wprintf(L"Digite uma opção: ");
         scanf("%s", option_string);
-        while ((getchar()) != '\n')
-            ;
+        while ((getchar()) != '\n')  ; // limpa o buffer 
 
         // O laço a seguir serve para impedir a inserção de letras, caracteres especiais ou números maiores que 6, caso ocorra a entrada destes, o laço envia para a função m4
         if (!validar_inteiro(option_string) || atoi(option_string) > 6)
@@ -480,8 +479,7 @@ void unidade_com_submenu_temperatura()
             if (!validate_temperatura(temp_string))
             {
                 wprintf(L"Entrada inválida. Digite apenas números (utilizando vírgula). \n");
-                while ((getchar()) != '\n')
-                    ;
+                while ((getchar()) != '\n')  ;
                 continue;
             }
 
@@ -557,8 +555,7 @@ void unidade_com_submenu_massa()
     m2:
         wprintf(L"Digite uma opção: ");
         scanf("%s", option_string);
-        while ((getchar()) != '\n')
-            ;                                                           // limpa o buffer
+        while ((getchar()) != '\n');     // limpa o buffer
         if (!validar_inteiro(option_string) || atoi(option_string) > 6) // valida a opção digitada, aceita apenas inteiros presente
         {
             wprintf(L"Opção inválida. Digite números de 0 a 6. \n");
@@ -574,8 +571,7 @@ void unidade_com_submenu_massa()
             m2v1:
                 wprintf(L"Digite o valor em tonelada: ");
                 scanf("%s", value_string);
-                while ((getchar()) != '\n')
-                    ;                             // limpa o buffer
+                while ((getchar()) != '\n') ;   // limpa o buffer
                 if (!validar_float(value_string)) // valida o valor digitado, aceita ponto ou vígula, inteiro ou float
                 {
                     wprintf(L"Valor inválido! Tente novamente.\n");
@@ -618,8 +614,7 @@ void unidade_com_submenu_massa()
                 wprintf(L"Digite o valor em quilogramas: ");
                 if (scanf("%f", &value) == 0)
                 {
-                    while (getchar() != '\n')
-                        ; // Limpa o buffer
+                    while (getchar() != '\n') ; // Limpa o buffer
                     wprintf(L"Valor inválido! Tente novamente.\n");
                 }
                 else
@@ -646,8 +641,7 @@ void unidade_com_submenu_massa()
                 wprintf(L"Digite o valor em gramas: ");
                 if (scanf("%f", &value) == 0)
                 {
-                    while (getchar() != '\n')
-                        ; // Limpa o buffer
+                    while (getchar() != '\n') ; // Limpa o buffer
                     wprintf(L"Valor inválido! Tente novamente.\n");
                 }
                 else
