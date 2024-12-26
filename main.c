@@ -242,84 +242,101 @@ void unidade_com_submenu_comprimento() {
         wprintf(L":: 4. centímetro -> milímetro                     ::\n");
         wprintf(L":: 5. milímetro -> centímetro                     ::\n");
         wprintf(L":: 6. milímetro -> metro                          ::\n");
-        wprintf(L":: 0. sair                                        ::\n");
+        wprintf(L":: 0. voltar                                      ::\n");
         wprintf(L"::                                                ::\n");
         wprintf(L"::::::::::::::::::::::::::::::::::::::::::::::::::::\n\n");
 
+    m1:
         wprintf(L"digite uma opção: ");
         scanf("%s", entrada);
 
-        if (!validar_inteiro(entrada)) {
+        if (!validar_inteiro(entrada))
+        {
             wprintf(L"Opção inválida! Tente novamente.\n");
-            continue; // Volta ao início do loop
+            goto m1; // Volta ao início do loop
         }
 
         option = atoi(entrada); // Converte a entrada para inteiro
 
-        if (option != 0) {
-            switch (option) {
+        if (option != 0)
+        {
+            switch (option)
+            {
             case 1: // Conversão de metro para centímetro
+            m1v1:
                 wprintf(L"Digite o valor em metros: ");
                 scanf("%s", valor);
-                if (!validar_float(valor)) {
+                if (!validar_float(valor))
+                {
                     wprintf(L"Valor inválido! Tente novamente.\n");
-                } else {
-                    value = atof(valor); // Converte string para float
-                    wprintf(L"%.2f metros equivalem a %.2f centímetros.\n", value, value * 100.0);
+                    goto m1v1;
                 }
+                value = atof(valor); // Converte string para float
+                wprintf(L"%.2f metros equivalem a %.2f centímetros.\n", value, value * 100.0);
                 break;
             case 2: // Conversão de metro para milímetro
+            m1v2:
                 wprintf(L"Digite o valor em metros: ");
                 scanf("%s", valor);
-                if (!validar_float(valor)) {
+                if (!validar_float(valor))
+                {
                     wprintf(L"Valor inválido! Tente novamente.\n");
-                } else {
-                    value = atof(valor);
-                    wprintf(L"%.2f metros equivalem a %.2f milímetros.\n", value, value * 1000.0);
+                    goto m1v2;
                 }
+                value = atof(valor);
+                wprintf(L"%.2f metros equivalem a %.2f milímetros.\n", value, value * 1000.0);
                 break;
             case 3: // Conversão de centímetro para metro
+            m1v3:
                 wprintf(L"Digite o valor em centímetros: ");
                 scanf("%s", valor);
-                if (!validar_float(valor)) {
+                if (!validar_float(valor))
+                {
                     wprintf(L"Valor inválido! Tente novamente.\n");
-                } else {
-                    value = atof(valor);
-                    wprintf(L"%.2f centímetros equivalem a %.2f metros.\n", value, value / 100.0);
+                    goto m1v3;
                 }
+                value = atof(valor);
+                wprintf(L"%.2f centímetros equivalem a %.2f metros.\n", value, value / 100.0);
                 break;
             case 4: // Conversão de centímetro para milímetro
+            m1v4:
                 wprintf(L"Digite o valor em centímetros: ");
                 scanf("%s", valor);
-                if (!validar_float(valor)) {
+                if (!validar_float(valor))
+                {
                     wprintf(L"Valor inválido! Tente novamente.\n");
-                } else {
-                    value = atof(valor);
-                    wprintf(L"%.2f centímetros equivalem a %.2f milímetros.\n", value, value * 10.0);
+                    goto m1v4;
                 }
+                value = atof(valor);
+                wprintf(L"%.2f centímetros equivalem a %.2f milímetros.\n", value, value * 10.0);
                 break;
             case 5: // Conversão de milímetro para centímetro
+            m1v5:
                 wprintf(L"Digite o valor em milímetros: ");
                 scanf("%s", valor);
-                if (!validar_float(valor)) {
+                if (!validar_float(valor))
+                {
                     wprintf(L"Valor inválido! Tente novamente.\n");
-                } else {
-                    value = atof(valor);
-                    wprintf(L"%.2f milímetros equivalem a %.2f centímetros.\n", value, value / 10.0);
+                    goto m1v5;
                 }
+                value = atof(valor);
+                wprintf(L"%.2f milímetros equivalem a %.2f centímetros.\n", value, value / 10.0);
                 break;
             case 6: // Conversão de milímetro para metro
+            m1v6:
                 wprintf(L"Digite o valor em milímetros: ");
                 scanf("%s", valor);
-                if (!validar_float(valor)) {
+                if (!validar_float(valor))
+                {
                     wprintf(L"Valor inválido! Tente novamente.\n");
-                } else {
-                    value = atof(valor);
-                    wprintf(L"%.2f milímetros equivalem a %.2f metros.\n", value, value / 1000.0);
+                    goto m1v6;
                 }
+                value = atof(valor);
+                wprintf(L"%.2f milímetros equivalem a %.2f metros.\n", value, value / 1000.0);
                 break;
             default:
-                wprintf(L"Opção não encontrada!\n");
+                wprintf(L"Opção não encontrada! Tente novamente.\n");
+                goto m1;
                 break;
             }
         }
