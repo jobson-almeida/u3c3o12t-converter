@@ -818,7 +818,8 @@ void unidade_com_submenu_dados()
     m9:
         wprintf(L"Escolha a unidade: ");
         scanf("%s", option_string);
-        while ((getchar()) != '\n');
+        while ((getchar()) != '\n')
+            ;
 
         // valida a opção digita como um inteiro de 0 a 6
         if (!validar_inteiro(option_string) || atoi(option_string) > 6)
@@ -829,33 +830,35 @@ void unidade_com_submenu_dados()
 
         opcao = atoi(option_string);
 
-        //    wprintf(L"Escolha o valor: ");
-        //   scanf("%lf", &valor);
-        //  unidade_com_submenu_dados(valor, opcao);
-    }
-}
+        if (opcao != 0)
+        {
+            wprintf(L"Digite um valor em byte: ");
+            scanf("%s", value_string);
+            while ((getchar()) != '\n') ;   // limpa o buffer
+            if (!validar_float(value_string)) // valida o valor digitado, aceita ponto ou vígula, inteiro ou float
+            {
+                wprintf(L"Valor inválido! Tente novamente.\n");
+            }
+            valor = strtod(value_string, NULL); // converte de string para float
+            wprintf(L"%lf", valor);
 
-void converter_dados(double valor, char unidade)
-{
-    switch (unidade)
-    {
-    case 1:
-        printf("%.2lf bytes\n", valor);
-        break;
-    case 2:
-        printf("%.2lf Kb\n", valor * 0.001);
-        break;
-    case 3:
-        printf("%.2lf MB\n", valor * 0.000001);
-        break;
-    case 4:
-        printf("%.2lf bytes\n", valor * 1e-9);
-        break;
-    case 5:
-        printf("%.2lf TB\n", valor * 1e-12);
-        break;
-    default:
-        printf("inválida\n");
-        break;
+            switch (opcao)
+            { 
+            case 1:
+                wprintf(L"%.2lf bytes\n", valor);
+                break;
+            case 2:
+                wprintf(L"%.2lf Kb\n", valor * 0.001);
+                break;
+            case 3:
+                wprintf(L"%.2lf MB\n", valor * 0.000001);
+                break;
+            case 4:
+                wprintf(L"%.2lf bytes\n", valor * 1e-9);
+                break;
+            case 5:
+                wprintf(L"%.2lf TB\n", valor * 1e-12);
+                break;
+            }
+        }
     }
-}
