@@ -2,9 +2,9 @@
 #include <locale.h>
 #include <wchar.h>
 #include <stdbool.h>
-#include <stdlib.h> 
+#include <stdlib.h>
 #include <string.h>
-#include <ctype.h> 
+#include <ctype.h>
 
 void unidade_com_submenu_comprimento();
 void unidade_com_submenu_massa();
@@ -15,14 +15,17 @@ void convert_power(float value, int from_unit, int to_unit);
 
 int validar_inteiro(const char *entrada);
 int validar_float(const char *entrada);
- 
-char option_string[2]; 
-char value_string[17]; 
+
+char option_string[2];
+char value_string[17];
 
 // Função para validar se a entrada é um número inteiro
-int validar_inteiro(const char *entrada) {
-    for (int i = 0; entrada[i] != '\0'; i++) {
-        if (!isdigit(entrada[i])) {
+int validar_inteiro(const char *entrada)
+{
+    for (int i = 0; entrada[i] != '\0'; i++)
+    {
+        if (!isdigit(entrada[i]))
+        {
             return 0; // Retorna inválido se não for um dígito
         }
     }
@@ -30,24 +33,29 @@ int validar_inteiro(const char *entrada) {
 }
 
 // Função para validar se a entrada é um número float válido
-int validar_float(const char *entrada) {
+int validar_float(const char *entrada)
+{
     int ponto_encontrado = 0; // Para rastrear se já encontramos um ponto decimal
-    for (int i = 0; entrada[i] != '\0'; i++) {
-        if (!isdigit(entrada[i])) {
-            if (entrada[i] == '.' && !ponto_encontrado) {
+    for (int i = 0; entrada[i] != '\0'; i++)
+    {
+        if (!isdigit(entrada[i]))
+        {
+            if (entrada[i] == '.' && !ponto_encontrado)
+            {
                 ponto_encontrado = 1; // Primeiro ponto decimal é válido
-            } else {
+            }
+            else
+            {
                 return 0; // Caracter inválido encontrado
             }
         }
     }
     return 1; // Entrada válida
 }
- 
- 
+
 int main()
 {
-    //Configurar as definições de localidades do programa de acordo com o ambiente em que o programa será executado
+    // Configurar as definições de localidades do programa de acordo com o ambiente em que o programa será executado
     setlocale(LC_ALL, "");
 
     setlocale(LC_NUMERIC, "C");
@@ -69,10 +77,11 @@ int main()
         wprintf(L"::                                                                                          ::\n");
         wprintf(L"::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::\n\n");
 
-  m: // início do salto
+    m: // início do salto
         wprintf(L"Digite uma opção: ");
         scanf("%s", option_string);
-        while ((getchar()) != '\n');  // limpar o buffer
+        while ((getchar()) != '\n')
+            ;                                // limpar o buffer
         if (!validar_inteiro(option_string)) // valida a opção digitada, aceita apenas inteiros
         {
             wprintf(L"Opção inválida. Digite apenas as opções presentes no menu\n");
@@ -111,12 +120,14 @@ int main()
 
     return 0;
 }
- 
-void unidade_com_submenu_velocidade(){
-    int option = -1;
-    double valor = 0.0; 
 
-    while (option != 0) {
+void unidade_com_submenu_velocidade()
+{
+    int option = -1;
+    double valor = 0.0;
+
+    while (option != 0)
+    {
         wprintf(L"\n:::: Conversor de Velocidade :::::::::::::::::::::::::\n");
         wprintf(L"::                                                ::\n");
         wprintf(L":: 1. km/h -> m/s                                 ::\n");
@@ -132,21 +143,27 @@ void unidade_com_submenu_velocidade(){
     m1: // inicio do submenu
         wprintf(L"Digite uma opção: ");
         scanf("%s", option_string);
-        while ((getchar()) != '\n'); // limpa o buffer
-        if (!validar_inteiro(option_string)) { // valida a opção digitada, aceita apenas inteiros
+        while ((getchar()) != '\n')
+            ; // limpa o buffer
+        if (!validar_inteiro(option_string))
+        { // valida a opção digitada, aceita apenas inteiros
             wprintf(L"Opção inválida, digite apenas números\n");
             goto m1; // salto do submenu
         }
         option = atoi(option_string); // converte a string validada para inteiro
 
-        if (option != 0) {
-            switch (option) {
+        if (option != 0)
+        {
+            switch (option)
+            {
             case 1: // Conversão de km/h para m/s
                 wprintf(L"Digite o valor em km/h: ");
             m1v1: // inicio da validação do valor
                 scanf("%s", value_string);
-                while ((getchar()) != '\n'); // limpa o buffer
-                if (!validar_float(value_string)) { // valida o valor digitado
+                while ((getchar()) != '\n')
+                    ; // limpa o buffer
+                if (!validar_float(value_string))
+                { // valida o valor digitado
                     wprintf(L"Valor inválido! Tente novamente.\n");
                     goto m1v1;
                 }
@@ -157,8 +174,10 @@ void unidade_com_submenu_velocidade(){
             case 2: // Conversão de km/h para mph
                 wprintf(L"Digite o valor em km/h: ");
                 scanf("%s", value_string);
-                while ((getchar()) != '\n'); // limpa o buffer
-                if (!validar_float(value_string)) { // valida o valor digitado
+                while ((getchar()) != '\n')
+                    ; // limpa o buffer
+                if (!validar_float(value_string))
+                { // valida o valor digitado
                     wprintf(L"Valor inválido! Tente novamente.\n");
                     goto m1v1;
                 }
@@ -169,8 +188,10 @@ void unidade_com_submenu_velocidade(){
             case 3: // Conversão de mph para km/h
                 wprintf(L"Digite o valor em mph: ");
                 scanf("%s", value_string);
-                while ((getchar()) != '\n'); // limpa o buffer
-                if (!validar_float(value_string)) { // valida o valor digitado
+                while ((getchar()) != '\n')
+                    ; // limpa o buffer
+                if (!validar_float(value_string))
+                { // valida o valor digitado
                     wprintf(L"Valor inválido! Tente novamente.\n");
                     goto m1v1;
                 }
@@ -181,8 +202,10 @@ void unidade_com_submenu_velocidade(){
             case 4: // Conversão de mph para m/s
                 wprintf(L"Digite o valor em mph: ");
                 scanf("%s", value_string);
-                while ((getchar()) != '\n'); // limpa o buffer
-                if (!validar_float(value_string)) { // valida o valor digitado
+                while ((getchar()) != '\n')
+                    ; // limpa o buffer
+                if (!validar_float(value_string))
+                { // valida o valor digitado
                     wprintf(L"Valor inválido! Tente novamente.\n");
                     goto m1v1;
                 }
@@ -193,8 +216,10 @@ void unidade_com_submenu_velocidade(){
             case 5: // Conversão de m/s para km/h
                 wprintf(L"Digite o valor em m/s: ");
                 scanf("%s", value_string);
-                while ((getchar()) != '\n'); // limpa o buffer
-                if (!validar_float(value_string)) { // valida o valor digitado
+                while ((getchar()) != '\n')
+                    ; // limpa o buffer
+                if (!validar_float(value_string))
+                { // valida o valor digitado
                     wprintf(L"Valor inválido! Tente novamente.\n");
                     goto m1v1;
                 }
@@ -205,8 +230,10 @@ void unidade_com_submenu_velocidade(){
             case 6: // Conversão de m/s para mph
                 wprintf(L"Digite o valor em m/s: ");
                 scanf("%s", value_string);
-                while ((getchar()) != '\n'); // limpa o buffer
-                if (!validar_float(value_string)) { // valida o valor digitado
+                while ((getchar()) != '\n')
+                    ; // limpa o buffer
+                if (!validar_float(value_string))
+                { // valida o valor digitado
                     wprintf(L"Valor inválido! Tente novamente.\n");
                     goto m1v1;
                 }
@@ -223,16 +250,18 @@ void unidade_com_submenu_velocidade(){
 }
 //  -----------------------------UNIDADES DE COMPRIMENTO----------------------------------
 
-void unidade_com_submenu_comprimento() {
+void unidade_com_submenu_comprimento()
+{
 
     setlocale(LC_NUMERIC, "C");
-    
+
     char entrada[50]; // Buffer para a entrada
     int option = -1;
     char valor[50]; // Buffer para o valor
     float value = 0.0;
 
-    while (option != 0) {
+    while (option != 0)
+    {
         wprintf(L"\n");
         wprintf(L":::: Comprimento :::::::::::::::::::::::::::::::::::\n");
         wprintf(L"::                                                ::\n");
@@ -345,147 +374,168 @@ void unidade_com_submenu_comprimento() {
 
 //  -----------------------------CONVERSÃO DE TEMPERATURA----------------------------------
 
-//Este bloco realiza a conversão de temperatura para Celsius, Fahrenheit, Kelvin ou outras escalas desejadas a partir da entrada de um valor pelo usuário
+// Este bloco realiza a conversão de temperatura para Celsius, Fahrenheit, Kelvin ou outras escalas desejadas a partir da entrada de um valor pelo usuário
 
-//Essa função serve para validar a entrada de dados em temperatura para que sejam apenas float
-float validate_temperatura(const char *temp_string){
-    int decimal_count = 0; // Contador de vírgulas 
-    
-    for (size_t i = 0; i < strlen(temp_string); i++) { 
-        if (!isdigit(temp_string[i])) { 
-            if (temp_string[i] == ',' && decimal_count == 0) { 
-                decimal_count++; // Conta uma vírgula válida 
-            } else { 
-                return 0; // Retorna 0 se algum caractere não for dígito ou vírgula 
-            } 
-        } 
-    } 
+// Essa função serve para validar a entrada de dados em temperatura para que sejam apenas float
+float validate_temperatura(const char *temp_string)
+{
+    int decimal_count = 0; // Contador de vírgulas
+
+    for (size_t i = 0; i < strlen(temp_string); i++)
+    {
+        if (!isdigit(temp_string[i]))
+        {
+            if (temp_string[i] == ',' && decimal_count == 0)
+            {
+                decimal_count++; // Conta uma vírgula válida
+            }
+            else
+            {
+                return 0; // Retorna 0 se algum caractere não for dígito ou vírgula
+            }
+        }
+    }
     return 1; // Retorna 1 se todos os caracteres forem válidos
 }
 
-//Declaração das funções do tipo float que contém o cálculo da conversão entre as unidades de temperatura Celsius, Fahrenheit e Kelvin
-float celsius_para_fahrenheit(float celsius) {
-    return (celsius * 9/5) + 32;
+// Declaração das funções do tipo float que contém o cálculo da conversão entre as unidades de temperatura Celsius, Fahrenheit e Kelvin
+float celsius_para_fahrenheit(float celsius)
+{
+    return (celsius * 9 / 5) + 32;
 }
 
-float celsius_para_kelvin(float celsius) {
+float celsius_para_kelvin(float celsius)
+{
     return (celsius + 273.15);
 }
 
-float fahrenheit_para_kelvin(float fahrenheit) {
-    return ((fahrenheit - 32) * 5/9 + 273.15);
+float fahrenheit_para_kelvin(float fahrenheit)
+{
+    return ((fahrenheit - 32) * 5 / 9 + 273.15);
 }
 
-float fahrenheit_para_celsius(float fahrenheit) {
-    return ((fahrenheit - 32) * 5/9);
+float fahrenheit_para_celsius(float fahrenheit)
+{
+    return ((fahrenheit - 32) * 5 / 9);
 }
 
-float kelvin_para_celsius(float kelvin) {
+float kelvin_para_celsius(float kelvin)
+{
     return (kelvin - 273.15);
 }
 
-float kelvin_para_fahrenheit(float kelvin) {
-    return ((kelvin - 273.15) * 9/5 + 32);
+float kelvin_para_fahrenheit(float kelvin)
+{
+    return ((kelvin - 273.15) * 9 / 5 + 32);
 }
 
-//Inicialização da função que mostrará o menu e os resultados somente da unidade de temperatura
-void unidade_com_submenu_temperatura() {
-    //Declarando variáveis
+// Inicialização da função que mostrará o menu e os resultados somente da unidade de temperatura
+void unidade_com_submenu_temperatura()
+{
+    // Declarando variáveis
     int option = -1;
     float temperatura, resultado;
     char temp_string[10];
 
-    //Esse laço tem a funcionalidade de abrir um menu com as opções de entrada
-    while (option != 0) {
+    // Esse laço tem a funcionalidade de abrir um menu com as opções de entrada
+    while (option != 0)
+    {
         wprintf(L"\n::::::: Temperatura ::::::::::::::::::::::::::::::::\n"
-               "::                                                ::\n"
-               ":: 1. Celsius -> Fahrenheit                       ::\n"
-               ":: 2. Celsius -> Kelvin                           ::\n"
-               ":: 3. Fahrenheit -> Kelvin                        ::\n"
-               ":: 4. Fahrenheit -> Celsius                       ::\n"
-               ":: 5. Kelvin -> Celsius                           ::\n"
-               ":: 6. Kelvin -> Fahrenheit                        ::\n"
-               ":: 0. Sair                                        ::\n"
-               "::                                                ::\n"
-               ":::::::::::::::::::::::::::::::::::::::::::::::::::: \n\n");
-    
-    //A função a seguir exibe a entrada de dados
+                "::                                                ::\n"
+                ":: 1. Celsius -> Fahrenheit                       ::\n"
+                ":: 2. Celsius -> Kelvin                           ::\n"
+                ":: 3. Fahrenheit -> Kelvin                        ::\n"
+                ":: 4. Fahrenheit -> Celsius                       ::\n"
+                ":: 5. Kelvin -> Celsius                           ::\n"
+                ":: 6. Kelvin -> Fahrenheit                        ::\n"
+                ":: 0. Sair                                        ::\n"
+                "::                                                ::\n"
+                ":::::::::::::::::::::::::::::::::::::::::::::::::::: \n\n");
+
+    // A função a seguir exibe a entrada de dados
     m4:
         wprintf(L"Digite uma opção: ");
         scanf("%s", option_string);
-        while ((getchar()) != '\n');
-        
-        //O laço a seguir serve para impedir a inserção de letras, caracteres especiais ou números maiores que 6, caso ocorra a entrada destes, o laço envia para a função m4
-        if (!validar_inteiro(option_string) || atoi(option_string) > 6){
+        while ((getchar()) != '\n')
+            ;
+
+        // O laço a seguir serve para impedir a inserção de letras, caracteres especiais ou números maiores que 6, caso ocorra a entrada destes, o laço envia para a função m4
+        if (!validar_inteiro(option_string) || atoi(option_string) > 6)
+        {
             wprintf(L"Opção inválida. Digite números de 0 a 6. \n");
             goto m4;
         }
 
         option = atoi(option_string);
 
-        //A entrada do valor de temperatura é realizada dentro desse laço, onde também faz a modificação de identificar apenas a vírgula como separador
-        if (option != 0) {
+        // A entrada do valor de temperatura é realizada dentro desse laço, onde também faz a modificação de identificar apenas a vírgula como separador
+        if (option != 0)
+        {
             wprintf(L"\nDigite a temperatura a ser convertida (utilize vírgula): ");
             scanf("%s", temp_string);
 
-            if (!validate_temperatura(temp_string)) {
+            if (!validate_temperatura(temp_string))
+            {
                 wprintf(L"Entrada inválida. Digite apenas números (utilizando vírgula). \n");
-                while ((getchar()) != '\n');
+                while ((getchar()) != '\n')
+                    ;
                 continue;
             }
-            
 
-            for (int i = 0; temp_string[i] != '\0'; i++){
-                if (temp_string[i] == ','){
+            for (int i = 0; temp_string[i] != '\0'; i++)
+            {
+                if (temp_string[i] == ',')
+                {
                     temp_string[i] = '.';
                 }
             }
 
             temperatura = strtof(temp_string, NULL);
-        
-            //Esse switch-case envia para o caso escolhido de 1 a 6 para converter a temperatura e mostrar o resultado ao usuário
-            switch (option) {
-                case 1:
-                    resultado = celsius_para_fahrenheit(temperatura);
-                    wprintf(L"Resultado: %.2f °F\n", resultado);
-                    break;
-                case 2:
-                    resultado = celsius_para_kelvin(temperatura);
-                    wprintf(L"Resultado: %.2f K\n", resultado);
-                    break;
-                case 3:
-                    resultado = fahrenheit_para_kelvin(temperatura);
-                    wprintf(L"Resultado: %.2f K\n", resultado);
-                    break;
-                case 4:
-                    resultado = fahrenheit_para_celsius(temperatura);
-                    wprintf(L"Resultado: %.2f °C\n", resultado);
-                    break;
-                case 5:
-                    resultado = kelvin_para_celsius(temperatura);
-                    wprintf(L"Resultado: %.2f °C\n", resultado);
-                    break;
-                case 6:
-                    resultado = kelvin_para_fahrenheit(temperatura);
-                    wprintf(L"Resultado: %.2f °F\n", resultado);
-                    break; 
+
+            // Esse switch-case envia para o caso escolhido de 1 a 6 para converter a temperatura e mostrar o resultado ao usuário
+            switch (option)
+            {
+            case 1:
+                resultado = celsius_para_fahrenheit(temperatura);
+                wprintf(L"Resultado: %.2f °F\n", resultado);
+                break;
+            case 2:
+                resultado = celsius_para_kelvin(temperatura);
+                wprintf(L"Resultado: %.2f K\n", resultado);
+                break;
+            case 3:
+                resultado = fahrenheit_para_kelvin(temperatura);
+                wprintf(L"Resultado: %.2f K\n", resultado);
+                break;
+            case 4:
+                resultado = fahrenheit_para_celsius(temperatura);
+                wprintf(L"Resultado: %.2f °C\n", resultado);
+                break;
+            case 5:
+                resultado = kelvin_para_celsius(temperatura);
+                wprintf(L"Resultado: %.2f °C\n", resultado);
+                break;
+            case 6:
+                resultado = kelvin_para_fahrenheit(temperatura);
+                wprintf(L"Resultado: %.2f °F\n", resultado);
+                break;
             }
         }
-        //Caso a entrada seja 0, imprime uma mensagem de que o sistema está encerrando
-        else{
+        // Caso a entrada seja 0, imprime uma mensagem de que o sistema está encerrando
+        else
+        {
             wprintf(L"Encerrando...\n");
         }
-        
     }
 }
 
-
 //  -----------------------------CONVERSOR DE MASSA----------------------------------
-void unidade_com_submenu_massa(){
+void unidade_com_submenu_massa()
+{
     int option = -1;
     float value = 0.0;
     float resultado = 0.0;
-    
+
     while (option != 0)
     {
         wprintf(L"\n");
@@ -501,10 +551,11 @@ void unidade_com_submenu_massa(){
         wprintf(L"::                                                ::\n");
         wprintf(L"::::::::::::::::::::::::::::::::::::::::::::::::::::\n\n");
 
-        m2:
+    m2:
         wprintf(L"Digite uma opção: ");
         scanf("%s", option_string);
-        while ((getchar()) != '\n');  // limpa o buffer
+        while ((getchar()) != '\n')
+            ;                                                           // limpa o buffer
         if (!validar_inteiro(option_string) || atoi(option_string) > 6) // valida a opção digitada, aceita apenas inteiros presente
         {
             wprintf(L"Opção inválida. Digite números de 0 a 6. \n");
@@ -517,10 +568,11 @@ void unidade_com_submenu_massa(){
             switch (option)
             {
             case 1: // Conversão de tonelada para quilograma
-                m2v1: 
+            m2v1:
                 wprintf(L"Digite o valor em tonelada: ");
                 scanf("%s", value_string);
-                while ((getchar()) != '\n'); // limpa o buffer
+                while ((getchar()) != '\n')
+                    ;                             // limpa o buffer
                 if (!validar_float(value_string)) // valida o valor digitado, aceita ponto ou vígula, inteiro ou float
                 {
                     wprintf(L"Valor inválido! Tente novamente.\n");
@@ -535,7 +587,8 @@ void unidade_com_submenu_massa(){
                 wprintf(L"Digite o valor em toneladas: ");
                 if (scanf("%f", &value) == 0)
                 {
-                    while (getchar() != '\n'); // Limpa o buffer
+                    while (getchar() != '\n')
+                        ; // Limpa o buffer
                     wprintf(L"Valor inválido! Tente novamente.\n");
                 }
                 else
@@ -548,7 +601,8 @@ void unidade_com_submenu_massa(){
                 wprintf(L"Digite o valor em quilogramas: ");
                 if (scanf("%f", &value) == 0)
                 {
-                    while (getchar() != '\n'); // Limpa o buffer
+                    while (getchar() != '\n')
+                        ; // Limpa o buffer
                     wprintf(L"Valor inválido! Tente novamente.\n");
                 }
                 else
@@ -561,7 +615,8 @@ void unidade_com_submenu_massa(){
                 wprintf(L"Digite o valor em quilogramas: ");
                 if (scanf("%f", &value) == 0)
                 {
-                    while (getchar() != '\n'); // Limpa o buffer
+                    while (getchar() != '\n')
+                        ; // Limpa o buffer
                     wprintf(L"Valor inválido! Tente novamente.\n");
                 }
                 else
@@ -574,7 +629,8 @@ void unidade_com_submenu_massa(){
                 wprintf(L"Digite o valor em gramas: ");
                 if (scanf("%f", &value) == 0)
                 {
-                    while (getchar() != '\n'); // Limpa o buffer
+                    while (getchar() != '\n')
+                        ; // Limpa o buffer
                     wprintf(L"Valor inválido! Tente novamente.\n");
                 }
                 else
@@ -587,7 +643,8 @@ void unidade_com_submenu_massa(){
                 wprintf(L"Digite o valor em gramas: ");
                 if (scanf("%f", &value) == 0)
                 {
-                    while (getchar() != '\n'); // Limpa o buffer
+                    while (getchar() != '\n')
+                        ; // Limpa o buffer
                     wprintf(L"Valor inválido! Tente novamente.\n");
                 }
                 else
@@ -595,12 +652,12 @@ void unidade_com_submenu_massa(){
                     resultado = value / 1000000.0; // 1 t = 1kk g
                     wprintf(L"%.2f gramas equivalem a %.6f toneladas.\n", value, resultado);
                 }
-                break; 
+                break;
             }
             resultado = 0.0;
         }
     }
-} 
+}
 
 //  -----------------------------UNIDADES DE POTENCIA----------------------------------
 
@@ -609,40 +666,42 @@ void convert_power(float value, int from_unit, int to_unit)
 {
     float result;
     const char *unit_names[] = {"Watts (W)", "Quilowatts (kW)", "Cavalos-Vapor (cv)"};
-    
+
     // Primeiro convertemos para Watts como unidade intermediária
     float watts;
-    switch(from_unit) {
-        case 1: // De Watts
-            watts = value;
-            break;
-        case 2: // De Quilowatts
-            watts = value * 1000.0;
-            break;
-        case 3: // De Cavalos-Vapor
-            watts = value * 735.49875;
-            break;
-        default:
-            wprintf(L"Unidade de origem inválida!\n");
-            return;
+    switch (from_unit)
+    {
+    case 1: // De Watts
+        watts = value;
+        break;
+    case 2: // De Quilowatts
+        watts = value * 1000.0;
+        break;
+    case 3: // De Cavalos-Vapor
+        watts = value * 735.49875;
+        break;
+    default:
+        wprintf(L"Unidade de origem inválida!\n");
+        return;
     }
-    
+
     // Depois convertemos de Watts para a unidade de destino
-    switch(to_unit) {
-        case 1: // Para Watts
-            result = watts;
-            break;
-        case 2: // Para Quilowatts
-            result = watts / 1000.0;
-            break;
-        case 3: // Para Cavalos-Vapor
-            result = watts / 735.49875;
-            break;
-        default:
-            wprintf(L"Unidade de destino inválida!\n");
-            return;
+    switch (to_unit)
+    {
+    case 1: // Para Watts
+        result = watts;
+        break;
+    case 2: // Para Quilowatts
+        result = watts / 1000.0;
+        break;
+    case 3: // Para Cavalos-Vapor
+        result = watts / 735.49875;
+        break;
+    default:
+        wprintf(L"Unidade de destino inválida!\n");
+        return;
     }
-    
+
     wprintf(L"Resultado: %.4f %s\n", result, unit_names[to_unit - 1]);
 }
 
@@ -665,58 +724,116 @@ void unidade_com_submenu_potencia()
         wprintf(L":: 0. Sair                                       ::\n");
         wprintf(L"::                                               ::\n");
         wprintf(L":::::::::::::::::::::::::::::::::::::::::::::::::::\n\n");
-       
- m6:
+
+    m6:
         wprintf(L"Digite uma opção: ");
         scanf("%s", option_string);
-        while ((getchar()) != '\n');
-        
-        //As unicas opções aceitas são os números representados no menu, caso contrário volta ao rótulo m4
-        if (!validar_inteiro(option_string) || atoi(option_string) > 6){
+        while ((getchar()) != '\n')
+            ;
+
+        // As unicas opções aceitas são os números representados no menu, caso contrário volta ao rótulo m4
+        if (!validar_inteiro(option_string) || atoi(option_string) > 6)
+        {
             wprintf(L"Opção inválida. Digite números de 0 a 6. \n");
             goto m6;
         }
 
         option = atoi(option_string);
-         
+
         if (option > 0)
         {
 
-        v6: 
-            wprintf(L"Digite o valor: ");                      
+        v6:
+            wprintf(L"Digite o valor: ");
             scanf("%s", value_string);
-            while ((getchar()) != '\n'); // limpa o buffer
+            while ((getchar()) != '\n')
+                ;                             // limpa o buffer
             if (!validar_float(value_string)) // valida o valor digitado, aceita ponto ou vígula, inteiro ou float
             {
                 wprintf(L"Valor inválido! Tente novamente.\n");
                 goto v6;
             }
-            value = atof(value_string); // converte de string para float 
-            
+            value = atof(value_string); // converte de string para float
+
             // Mapeamento correto das opções do menu para as unidades
             int from_unit, to_unit;
-            switch(option) {
-                case 1: // W -> kW
-                    from_unit = 1; to_unit = 2;
-                    break;
-                case 2: // W -> cv
-                    from_unit = 1; to_unit = 3;
-                    break;
-                case 3: // kW -> W
-                    from_unit = 2; to_unit = 1;
-                    break;
-                case 4: // kW -> cv
-                    from_unit = 2; to_unit = 3;
-                    break;
-                case 5: // cv -> W
-                    from_unit = 3; to_unit = 1;
-                    break;
-                case 6: // cv -> kW
-                    from_unit = 3; to_unit = 2;
-                    break;
+            switch (option)
+            {
+            case 1: // W -> kW
+                from_unit = 1;
+                to_unit = 2;
+                break;
+            case 2: // W -> cv
+                from_unit = 1;
+                to_unit = 3;
+                break;
+            case 3: // kW -> W
+                from_unit = 2;
+                to_unit = 1;
+                break;
+            case 4: // kW -> cv
+                from_unit = 2;
+                to_unit = 3;
+                break;
+            case 5: // cv -> W
+                from_unit = 3;
+                to_unit = 1;
+                break;
+            case 6: // cv -> kW
+                from_unit = 3;
+                to_unit = 2;
+                break;
             }
-            
+
             convert_power(value, from_unit, to_unit);
         }
+    }
+}
+
+void unidade_com_submenu_dados()
+{
+    double valor;
+    int unidade;
+
+    printf(" Dados            \n");
+    printf(" -----------------\n");
+    printf(" 1. Byte (B)      \n");
+    printf(" 2. Kilobyte (kB) \n");
+    printf(" 3. Megabyte (MB) \n");
+    printf(" 4. Gigabyte (GB) \n");
+    printf(" 5. Terabyte (TB) \n");
+    printf(" 0. Sair \n");
+
+    printf("Escolha a unidade: ");
+    scanf("%d", &unidade);
+    printf("Escolha o valor: ");
+    scanf("%lf", &valor);
+    unidade_com_submenu_dados(valor, unidade);
+
+    return 0;
+}
+
+void converter_dados(double valor, char unidade)
+{
+    switch (unidade)
+    {
+    case 1:
+        printf("%.2lf bytes\n", valor);
+        break;
+    case 2:
+        printf("%.2lf Kb\n", valor * 0.001);
+        break;
+    case 3:
+        printf("%.2lf MB\n", valor * 0.000001);
+        break;
+    case 4:
+        printf("%.2lf bytes\n", valor * 1e-9);
+        break;
+    case 5:
+        printf("%.2lf TB\n", valor * 1e-12);
+        break;
+    default:
+        printf("inválida\n");
+        break;
     }
 }
