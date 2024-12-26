@@ -795,14 +795,19 @@ void unidade_com_submenu_dados()
     double valor;
     int unidade;
 
-    printf(" Dados            \n");
-    printf(" -----------------\n");
-    printf(" 1. Byte (B)      \n");
-    printf(" 2. Kilobyte (kB) \n");
-    printf(" 3. Megabyte (MB) \n");
-    printf(" 4. Gigabyte (GB) \n");
-    printf(" 5. Terabyte (TB) \n");
-    printf(" 0. Sair \n");
+    wprintf(L"\n");
+    wprintf(L":::: Dados (tabela de Bytes) ::::::::\n");
+    wprintf(L"::                                 ::\n");
+    wprintf(L":: 1 - Bits                        ::\n");
+    wprintf(L":: 2 - Bytes                       ::\n");
+    wprintf(L":: 3 - Kilobytes (KB)              ::\n");
+    wprintf(L":: 4 - Megabytes (MB)              ::\n");
+    wprintf(L":: 5 - Gigabytes (GB)              ::\n");
+    wprintf(L":: 6 - Terabytes (TB)              ::\n");
+    wprintf(L":: 0 - Voltar                      ::\n");
+    wprintf(L"::                                 ::\n");
+    wprintf(L":::::::::::::::::::::::::::::::::::::\n");
+    wprintf(L"\n");
 
     printf("Escolha a unidade: ");
     scanf("%d", &unidade);
