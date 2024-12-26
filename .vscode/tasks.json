@@ -10,7 +10,7 @@
                 "${file}",
                 "-o",
                 "${fileDirname}/output/${fileBasenameNoExtension}", 
-                "${fileDirname}/headers/*.c",
+                //"${fileDirname}/headers/*.c",
                 "-lm"
             ],
             "options": {

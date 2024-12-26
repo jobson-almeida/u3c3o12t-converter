@@ -307,6 +307,15 @@ O programa foi projetado para lidar com erros comuns de entrada:
 - Você pode tentar novamente sem a necessidade de reiniciar o programa.
 <br><br> 
 
+---
+
+## 🛠️ Testes
+
+Um conjunto de testes da unidades de temperaturas foi desenvolvido como parte de requisitos e melhorias que poderão ser implementadas, no futuro, para as demais unidades.
+Para compilar e realizar os teste é necessário habilitar o argumento do arquivo tasks.json que indica onde estão localizas as bibliotecas obrigatórias.
+ 
+<br><br>
+
 # Dados
 
 conteúdo
