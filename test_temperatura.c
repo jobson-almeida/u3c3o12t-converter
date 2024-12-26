@@ -2,7 +2,7 @@
 #include "headers/converter.h"
 
 #define NUM_FAILED_TESTS 0
-#define NUM_TESTS 0
+#define NUM_TESTS 1
    
 
 float celsius_para_fahrenheit(float celsius);
@@ -29,7 +29,7 @@ MU_TEST_SUITE(test_suite)
 {
     MU_SUITE_CONFIGURE(&test_setup, &test_teardown);
 
-    MU_RUN_TEST(t);
+    MU_RUN_TEST(test_celsius_para_fahrenheit_pass);
 }
 
 int main(int argc, char *argv[])
