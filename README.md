@@ -395,11 +395,32 @@ Resultado: 5.00 KB
 - Gigabytes (GB)
 - Terabytes (TB)
 
+## Testes
+Um conjunto de testes das unidades de temperatura foi desenvolvido como parte dos requisitos e melhorias que poderão ser implementadas, no futuro, para as demais unidades.
+Para compilar e realizar os teste é necessário habilitar o argumento comentado do arquivo tasks.json que indica onde estão localizas as bibliotecas obrigatórias.
+Caso prefira utilizar o terminal no ambiente Linux execute os comandos abaixo, na raiz do projeto. 
+
+### Compilação
+
+```bash
+gcc -g test_temperatura.c -o test_temperatura ./headers/*.c -lm
+```
+
+### Execução
+ 
+```bash
+./test_temperatura
+```
+
+### Biblioteca de tercerios
+- minunit: Teste unitário
+
+
 ### Funções Auxiliares
 
 O programa utiliza funções auxiliares para validação:
 - `validar_inteiro()`: Valida números inteiros
-- `validar_float()`: Valida números decimais
+- `validar_float()`: Valida números decimais 
 
 ## 👥 Contribuições
 
