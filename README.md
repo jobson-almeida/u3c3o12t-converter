@@ -307,25 +307,14 @@ O programa foi projetado para lidar com erros comuns de entrada:
 - Você pode tentar novamente sem a necessidade de reiniciar o programa.
 <br><br> 
 
-# Dados
-
-conteúdo
-
-
-&nbsp;
-<br>
-<br>
-<br>
-<br>
-<br>
-
 ---
+
 ## Colaboradores
 
-Andressa Martins Santana Santos
-Camille Rodrigues Costa
-Erick dos Santos Rezende
-Jobson Ressureição de Almeida
-Lucas Silva de Souza
-Wilquer de Lima Pereira
+- Andressa Martins Santana Santos </br>
+- Camille Rodrigues Costa </br>
+- Erick dos Santos Rezende </br>
+- Jobson Ressureição de Almeida </br>
+- Lucas Silva de Souza </br>
+- Wilquer de Lima Pereira
  
