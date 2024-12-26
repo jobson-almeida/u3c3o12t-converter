@@ -11,6 +11,8 @@ void unidade_com_submenu_massa();
 void unidade_com_submenu_velocidade();
 void unidade_com_submenu_temperatura();
 void unidade_com_submenu_potencia();
+void unidade_com_submenu_dados();
+void converter_dados(double valor, char unidade);
 void convert_power(float value, int from_unit, int to_unit);
 
 int validar_inteiro(const char *entrada);
@@ -107,6 +109,7 @@ int main()
             unidade_com_submenu_potencia();
             break;
         case 9:
+            unidade_com_submenu_dados();
             break;
         case 0:
             wprintf(L"Encerrando...\n");
@@ -792,8 +795,12 @@ void unidade_com_submenu_potencia()
 
 void unidade_com_submenu_dados()
 {
-    double valor;
-    int unidade;
+    
+   double valor;
+    int opcao = -1;
+
+    while (opcao != 0)
+    {
 
     wprintf(L"\n");
     wprintf(L":::: Dados (tabela de Bytes) ::::::::\n");
@@ -810,12 +817,12 @@ void unidade_com_submenu_dados()
     wprintf(L"\n");
 
     printf("Escolha a unidade: ");
-    scanf("%d", &unidade);
+    scanf("%d", &opcao);
     printf("Escolha o valor: ");
     scanf("%lf", &valor);
-    unidade_com_submenu_dados(valor, unidade);
+    unidade_com_submenu_dados(valor, opcao);
 
-    return 0;
+   }
 }
 
 void converter_dados(double valor, char unidade)
